@@ -1,0 +1,18 @@
+{
+    "navbar": {
+      "buttonLabel": "EN/FR"
+    },
+    "signin": {
+      "resetPassword": "Reset Password",
+      "signin": "Signin",
+      "Username": "Username",
+      "Password": "Password"
+    },
+    "resetPassword": {
+        "resetPassword":"Reset Password"
+    },
+    "latestNews": {
+        "title": "Latest News"
+    }
+  }
+  

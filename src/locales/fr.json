@@ -1,0 +1,18 @@
+{
+    "navbar": {
+      "buttonLabel": "FR/EN"
+    },
+    "signin": {
+      "resetPassword": "Réinitialiser le mot de passe",
+      "signin": "Se connecter",
+      "Username": "Nom d'utilisateur",
+      "Password": "Mot de passe"
+    },
+    "resetPassword": {
+      "resetPassword": "Réinitialiser le mot de passe"
+    },
+    "latestNews": {
+      "title": "Dernières actualités"
+    }
+  }
+  
