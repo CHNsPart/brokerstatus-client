@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <div id="navigation" className={`flex justify-between px-5 py-3 z-10 w-full`}>
       <img className="h-12 w-auto" id="logo" alt="Logo" />
-      <Button onClick={() => console.log('Button clicked')} label={t('navbar.buttonLabel')} />
+      <Button type={"lang"} label={t('navbar.buttonLabel')} />
     </div>
   );
 }

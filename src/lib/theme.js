@@ -54,3 +54,36 @@ export const exampleNewsData = [
         news: "5 asdknfeia fa",
     }
 ]
+
+export var exampleDocumentLibrarydata = {
+  "Policies": {
+    "one": "pdf 1",
+    "two": "pdf 2",
+    "three": "pdf 3",
+  },
+  "Compensations": {
+      "one": "pdf 1",
+      "two": "pdf 2",
+      "three": "pdf 3",
+  },
+  "Forms": {
+      "one": "pdf 1",
+      "two": "pdf 2",
+      "three": "pdf 3",
+  },
+  "Product Sheets": {
+      "one": "pdf 1",
+      "two": "pdf 2",
+      "three": "pdf 3",
+  },
+  "Bydown Calculator": {
+      "one": "pdf 1",
+      "two": "pdf 2",
+      "three": "pdf 3",
+  },
+  "Trailer Fee Calculator": {
+      "one": "pdf 1",
+      "two": "pdf 2",
+      "three": "pdf 3",
+  },
+};

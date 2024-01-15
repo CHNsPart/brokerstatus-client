@@ -1,18 +1,30 @@
 {
-    "navbar": {
-      "buttonLabel": "FR/EN"
-    },
-    "signin": {
-      "resetPassword": "Réinitialiser le mot de passe",
-      "signin": "Se connecter",
-      "Username": "Nom d'utilisateur",
-      "Password": "Mot de passe"
-    },
-    "resetPassword": {
-      "resetPassword": "Réinitialiser le mot de passe"
-    },
-    "latestNews": {
-      "title": "Dernières actualités"
-    }
+  "navbar": {
+    "buttonLabel": "FR/EN"
+  },
+  "signin": {
+    "resetPassword": "Réinitialiser le mot de passe",
+    "signin": "Se connecter",
+    "Username": "Nom d'utilisateur",
+    "Password": "Mot de passe"
+  },
+  "resetPassword": {
+    "resetPassword": "Réinitialiser le mot de passe"
+  },
+  "latestNews": {
+    "title": "Dernières actualités"
+  },
+  "home": {
+    "dealBtn" : "Vignette Aperçu des offres",
+    "docBtn" : "Mosaïque de bibliothèque de documents"
+  },
+  "documentLib": {
+    "Document Library": "Bibliothèque de documents",
+    "Policies": "Politiques",
+    "Compensations": "Compensations",
+    "Forms": "Formulaires",
+    "Product Sheets": "Fiches Produits",
+    "Bydown Calculator": "Calculateur Bydown",
+    "Trailer Fee Calculator": "Calculateur de frais de remorque"
   }
-  
+}

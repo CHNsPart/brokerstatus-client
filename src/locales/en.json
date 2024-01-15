@@ -1,18 +1,30 @@
 {
-    "navbar": {
-      "buttonLabel": "EN/FR"
-    },
-    "signin": {
-      "resetPassword": "Reset Password",
-      "signin": "Signin",
-      "Username": "Username",
-      "Password": "Password"
-    },
-    "resetPassword": {
-        "resetPassword":"Reset Password"
-    },
-    "latestNews": {
-        "title": "Latest News"
-    }
+  "navbar": {
+    "buttonLabel": "EN/FR"
+  },
+  "signin": {
+    "resetPassword": "Reset Password",
+    "signin": "Signin",
+    "Username": "Username",
+    "Password": "Password"
+  },
+  "resetPassword": {
+    "resetPassword": "Reset Password"
+  },
+  "latestNews": {
+    "title": "Latest News"
+  },
+  "home": {
+    "dealBtn" : "Deals Overview Tile",
+    "docBtn" : "Document Library Tile"
+  },
+  "documentLib": {
+    "Document Library": "Document Library",
+    "Policies": "Policies",
+    "Compensations": "Compensations",
+    "Forms": "Forms",
+    "Product Sheets": "Product Sheets",
+    "Bydown Calculator": "Bydown Calculator",
+    "Trailer Fee Calculator": "Trailer Fee Calculator"
   }
-  
+}

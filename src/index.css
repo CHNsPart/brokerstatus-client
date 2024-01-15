@@ -16,7 +16,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -33,6 +33,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: azure;
   cursor: pointer;
   transition: border-color 0.25s;
 }

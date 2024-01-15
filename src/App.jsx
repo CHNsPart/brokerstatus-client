@@ -8,6 +8,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Signin from './pages/Signin';
 import LatesNews from './components/LatesNews';
 import ResetPassword from './pages/ResetPassword';
+import Home from './pages/Home';
+import DocumentLib from './pages/DocumentLib';
+import DealsOverview from './pages/DealsOverview';
 
 function App() {
   
@@ -60,8 +63,14 @@ function App() {
       <div id="pageContainer">
         <Navbar/>
         <Switch>
+            {/* Public Routes */}
             <Route path="/" exact component={Signin} />
             <Route path="/resetPassword" exact component={ResetPassword} />
+            
+            {/* Protected Routes */}
+            <Route path="/home" exact component={Home} />
+            <Route path="/deals" exact component={DealsOverview} />
+            <Route path="/docs" exact component={DocumentLib} />
         </Switch>
         <LatesNews newsData={exampleNewsData}/>
       </div>

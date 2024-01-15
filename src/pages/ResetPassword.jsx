@@ -5,7 +5,7 @@ const ResetPassword = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="h-full w-full flex justify-center items-center p-5">
+    <section className="h-full w-full flex justify-center items-center p-5">
         <form className="border-2 p-5 rounded-xl flex flex-col gap-2 min-w-1/2 justify-center items-start">
             <div className="w-full flex justify-around items-center">
                 <label htmlFor="username" className="pr-2">{t('signin.Username')}</label>
@@ -20,7 +20,7 @@ const ResetPassword = () => {
                 <Button label={t('resetPassword.resetPassword')} />
             </div>
         </form>
-    </div>
+    </section>
   );
 }
 
