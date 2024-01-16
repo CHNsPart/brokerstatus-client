@@ -72,6 +72,20 @@ input:focus {
   border: 2px solid grey;
 }
 
+/* Add this section to style the checkbox */
+input[type="checkbox"] {
+  width: 18px; /* Set the width of the checkbox */
+  height: 18px; /* Set the height of the checkbox */
+  margin-right: 8px; /* Add some spacing between the checkbox and the label */
+}
+
+/* Style for the label associated with the checkbox */
+label.checkbox-label {
+  font-size: 0.9em; /* Adjust the font size for the label */
+  display: inline-flex;
+  align-items: center;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

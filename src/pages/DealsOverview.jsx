@@ -1,8 +1,11 @@
+import DealsSearch from "../components/DealsSearch"
+import PipelineDeals from "../components/PipelineDeals"
 
 function DealsOverview() {
   return (
-    <section className="h-full w-full flex justify-center items-center gap-2 p-5">
-        DealsOverview
+    <section className="h-fit w-full flex flex-col justify-between items-start gap-2 p-5">
+        <DealsSearch/>
+        <PipelineDeals/>
     </section>
   )
 }

@@ -8,10 +8,10 @@ function Home() {
   return (
     <section className="h-full w-full flex justify-center items-center gap-2 p-5">
         <Link to={"/deals"}>
-            <Button type={"tile"} label={t('home.dealBtn')} />
+            <Button variant={"tile"} label={t('home.dealBtn')} />
         </Link>
         <Link to={"/docs"}>
-            <Button type={"tile"} label={t('home.docBtn')} />
+            <Button variant={"tile"} label={t('home.docBtn')} />
         </Link>
     </section>
   )

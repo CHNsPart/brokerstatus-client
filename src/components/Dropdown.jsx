@@ -7,7 +7,7 @@ function Dropdown({ label, options }) {
   return (
     <div className="mb-4">
       <label className="block text-sm font-medium text-gray-700">{t(label)}</label>
-      <select className="mt-1 p-2 border border-gray-300 rounded-md">
+      <select className="mt-1 p-2 w-full md:w-2/3 border border-gray-300 rounded-md">
         {Object.entries(options).map(([key, value]) => (
           <option key={key} value={key}>{t(value)}</option>
         ))}

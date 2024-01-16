@@ -7,7 +7,7 @@ function DocumentLib() {
 
   return (
     <section className="h-full w-full flex justify-start items-center gap-2 p-5">
-      <div className="max-w-md">
+      <div className="w-1/3">
         {Object.entries(exampleDocumentLibrarydata).map(([label, options]) => (
           <Dropdown key={label} label={t(`documentLib.${label}`)} options={options} />
         ))}

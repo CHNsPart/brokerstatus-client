@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { MdSignLanguage } from "react-icons/md";
 
-function Button({ onClick, label, type }) {
+function Button({ onClick, label, variant }) {
   const { i18n } = useTranslation();
 
   const handleLanguageToggle = () => {
@@ -9,7 +10,7 @@ function Button({ onClick, label, type }) {
     onClick(); // Call the provided onClick function
   };
 
-  if(type==="tile"){
+  if(variant==="tile"){
     return (
       <button className="themeButton px-10 py-20" onClick={onclick}>
         {label}
@@ -17,9 +18,17 @@ function Button({ onClick, label, type }) {
     )
   }
 
-  if(type==="lang"){
+  if(variant==="lang"){
     return (
-      <button className="themeButton" onClick={handleLanguageToggle}>
+      <button className="themeButton flex justify-center items-center gap-2" onClick={handleLanguageToggle}>
+        <MdSignLanguage/>{label}
+      </button>
+    )
+  }
+
+  if(variant==="search"){
+    return (
+      <button className="themeButton w-full flex justify-center items-center gap-2" onClick={onClick}>
         {label}
       </button>
     )
@@ -35,7 +44,7 @@ function Button({ onClick, label, type }) {
 Button.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string
+  variant: PropTypes.string
 };
 
 export default Button;

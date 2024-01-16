@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "buttonLabel": "FR/EN"
+    "buttonLabel": "FR"
   },
   "signin": {
     "resetPassword": "Réinitialiser le mot de passe",
@@ -15,8 +15,8 @@
     "title": "Dernières actualités"
   },
   "home": {
-    "dealBtn" : "Vignette Aperçu des offres",
-    "docBtn" : "Mosaïque de bibliothèque de documents"
+    "dealBtn" : "Aperçu des offres",
+    "docBtn" : "Bibliothèque de documents"
   },
   "documentLib": {
     "Document Library": "Bibliothèque de documents",

@@ -15,14 +15,14 @@ function LatestNews({ newsData }) {
   }, [newsData]);
 
   return (
-    <div id="latesNewsWrapper" className="w-full flex items-center gap-5">
+    <div id="latesNewsWrapper" className="w-full h-fit flex items-center">
       <span
-        className="h-full p-5"
+        className="h-full md:w-1/6 w-1/3 p-5"
         id="latestNewsSection"
       >
         {t('latestNews.title')}
       </span>
-      <p>{newsData[currentNewsIndex]?.news}</p>
+      <p className='w-full h-full p-5 bg-white flex items-center'>{newsData[currentNewsIndex]?.news}</p>
     </div>
   );
 }

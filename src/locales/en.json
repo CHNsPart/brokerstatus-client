@@ -1,6 +1,6 @@
 {
   "navbar": {
-    "buttonLabel": "EN/FR"
+    "buttonLabel": "EN"
   },
   "signin": {
     "resetPassword": "Reset Password",
@@ -15,8 +15,8 @@
     "title": "Latest News"
   },
   "home": {
-    "dealBtn" : "Deals Overview Tile",
-    "docBtn" : "Document Library Tile"
+    "dealBtn" : "Deals Overview",
+    "docBtn" : "Document Library"
   },
   "documentLib": {
     "Document Library": "Document Library",
