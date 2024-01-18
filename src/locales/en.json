@@ -26,5 +26,26 @@
     "Product Sheets": "Product Sheets",
     "Bydown Calculator": "Bydown Calculator",
     "Trailer Fee Calculator": "Trailer Fee Calculator"
+  },
+  "dealsSearch": {
+    "DealsSearch": "Deals Search",
+    "BDM": "BDM",
+    "MortgageNumber": "Mortgage Number / Source App ID",
+    "BorrowerLastName": "Borrower Last Name",
+    "Agent": "Agent",
+    "DateType": "Date Type",
+    "From": "From",
+    "To": "To",
+    "SelectAll": "Selext All",
+    "AppReceived": "App Received",
+    "InUnderwriting": "In Underwriting",
+    "ReadyToFund": "Ready To Fund",
+    "btn": {
+      "ClearSearch": "Clear Search",
+      "Search": "Search"
+    }
+  },
+  "dealView": {
+    "BacktoList": "Back to List"
   }
 }

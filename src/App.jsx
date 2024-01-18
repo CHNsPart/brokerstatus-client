@@ -11,6 +11,7 @@ import ResetPassword from './pages/ResetPassword';
 import Home from './pages/Home';
 import DocumentLib from './pages/DocumentLib';
 import DealsOverview from './pages/DealsOverview';
+import DealView from './pages/DealView';
 
 function App() {
   
@@ -71,6 +72,7 @@ function App() {
             <Route path="/home" exact component={Home} />
             <Route path="/deals" exact component={DealsOverview} />
             <Route path="/docs" exact component={DocumentLib} />
+            <Route path="/dview" exact component={DealView} />
         </Switch>
         <LatesNews newsData={exampleNewsData}/>
       </div>

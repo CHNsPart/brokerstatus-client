@@ -26,5 +26,26 @@
     "Product Sheets": "Fiches Produits",
     "Bydown Calculator": "Calculateur Bydown",
     "Trailer Fee Calculator": "Calculateur de frais de remorque"
+  },
+  "dealsSearch": {
+    "DealsSearch": "Recherche d'offres",
+    "BDM": "BDM",
+    "MortgageNumber": "Numéro de prêt hypothécaire / ID d'application source",
+    "BorrowerLastName": "Nom du demandeur",
+    "Agent": "Agent",
+    "DateType": "Type de date",
+    "From": "De",
+    "To": "À",
+    "SelectAll": "Sélectionner tout",
+    "AppReceived": "Demande reçue",
+    "InUnderwriting": "En souscription",
+    "ReadyToFund": "Prêt à financer",
+    "btn": {
+      "ClearSearch": "Effacer la recherche",
+      "Search": "Recherche"
+    }
+  },
+  "dealView": {
+    "BacktoList": "Retour à la liste"
   }
 }

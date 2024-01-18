@@ -1,37 +1,10 @@
 
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { HiOutlineUpload } from "react-icons/hi";
+import { BiMessageAdd } from "react-icons/bi";
 
-function PipelineDeals() {
-  // Example data from the backend
-  const initialData = {
-    columns: [
-      'Broker',
-      'BDM',
-      'Status',
-      'Mortgage #',
-      'Purpose',
-      'Borrower Name',
-      'App Date',
-      'Closing Date',
-      'Amount',
-      'Condition',
-      'Actions', // 11th column for rounded action buttons
-    ],
-    rows: [
-      ['--', '--', 'Approved', '1714935', 'Purchased', 'Test Borrower', '16/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714936', 'Purchased', 'Test Borrower', '17/11/2023', '22/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714937', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714938', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$206', '5/10'],
-      ['--', '--', 'Approved', '1714939', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714910', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714921', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714911', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714936', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714930', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714958', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-      ['--', '--', 'Approved', '1714995', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],    ],
-  };
-
+function PipelineDeals({initialData}) {
   const [data] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
@@ -45,7 +18,7 @@ function PipelineDeals() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="w-full h-full p-5">
+    <div className="w-full h-fit p-5">
       <div className="flex flex-col h-full gap-2">
         <span>Pipleline Deals</span>
         <div className="rounded-md h-full border-2 p-5 overflow-auto">
@@ -64,8 +37,8 @@ function PipelineDeals() {
                     <td key={cellIndex} className="border p-2">{cell}</td>
                   ))}
                   <td className="border p-2 flex justify-around">
-                    <button className="rounded-full bg-green-500 p-2 text-white">Action 1</button>
-                    <button className="rounded-full bg-blue-500 p-2 text-white">Action 2</button>
+                    <button className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
+                    <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
                   </td>
                 </tr>
               ))}
@@ -88,5 +61,9 @@ function PipelineDeals() {
     </div>
   );
 }
+
+PipelineDeals.propTypes = {
+  initialData: PropTypes.object,
+};
 
 export default PipelineDeals;
