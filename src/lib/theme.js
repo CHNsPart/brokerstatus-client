@@ -36,7 +36,6 @@ export const themes = {
       logo: johnLogo
     }
   };  
-  
 
 export function getSubdomain() {
     const parts = window.location.hostname.split('.');
