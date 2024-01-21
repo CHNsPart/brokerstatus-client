@@ -14,6 +14,13 @@ function PipelineDeals({initialData}) {
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = data.rows.slice(indexOfFirstRow, indexOfLastRow);
 
+
+  const handleTableBtn = (cell) => {
+    if(cell === 3) {
+      window.location.href = "/dview"
+    }
+  }
+
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -34,7 +41,9 @@ function PipelineDeals({initialData}) {
               {currentRows.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex} className="border p-2">{cell}</td>
+                    <td key={cellIndex} className={`border p-2`}>
+                      <span onClick={()=>handleTableBtn(cellIndex)} className={`${cellIndex===3 ? `text-center p-2 rounded-full cursor-pointer hover:bg-zinc-200 border-b-black bg-zinc-100` : ``}`}>{cell}</span>
+                    </td>
                   ))}
                   <td className="border p-2 flex justify-around">
                     <button className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
