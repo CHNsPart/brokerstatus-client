@@ -51,6 +51,7 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
             <input type="file" multiple onChange={handleFileInputChange} className="min-w-full z-50 opacity-0" />
         </span>
 
+        
         {/* Drop-down Section */}
         <div
           className="border flex items-center border-dashed border-zinc-500 rounded-lg p-4 mb-4"
