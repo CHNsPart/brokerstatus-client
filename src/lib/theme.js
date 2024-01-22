@@ -259,3 +259,41 @@ export const pipelineTableData = {
     ['Borker', 'BDM', 'Approved', '1714958', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
     ['Borker', 'BDM', 'Approved', '1714995', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],    ],
 };
+
+
+export const exampleDealViewMessagesData = [
+  {
+    "topic": "Message Topic 1",
+    "conversation": [
+      {
+        "sender": "Test Broker",
+        "receiver": "Test Underwriter",
+        "timestamp": "21/12/23, 12:30am",
+        "message":"Document X has been uploaded to satisfy condition y",
+      },
+      {
+        "sender": "Test Underwriter",
+        "receiver": "Test Broker",
+        "timestamp": "21/12/23, 12:30am",
+        "message":"Document has been received, validated and accepted. Thanks",
+      },
+    ]
+  },
+  {
+    "topic": "Message Topic 2",
+    "conversation": [
+      {
+        "sender": "Test Broker",
+        "receiver": "Test Underwriter",
+        "timestamp": "11/28/2023, 10:00am",
+        "message":"Signed Commitment has been uploaded",
+      },
+      {
+        "sender": "Test Credit Admin",
+        "receiver": "Test Broker",
+        "timestamp": "21/12/23, 11:30am",
+        "message":"Document has been received, accepted",
+      },
+    ]
+  }
+]

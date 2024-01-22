@@ -3,12 +3,14 @@ import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
 import { BiMessageAdd } from "react-icons/bi";
 import LabeledInput from "../components/LabeledInput";
-import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, getSubdomain, themes } from "../lib/theme";
+import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData, getSubdomain, themes } from "../lib/theme";
 import { useEffect, useState } from "react";
 import Contacts from "../components/DealView/Contacts";
 import Conditions from "../components/DealView/Conditions";
 import Documents from "../components/DealView/Documents";
 import Details from "../components/DealView/Details";
+import Messages from "../components/DealView/Messages";
+import DocumentUploadModal from "../components/Modals/DocumentUploadModal";
 
 function DealView() {
   const { t } = useTranslation();
@@ -38,6 +40,17 @@ function DealView() {
     clickedButton.style.color = theme.primaryButtonTextColor;
 };
     
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const openModal = () => {
+  setIsModalOpen(true);
+};
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
         <div className="w-full h-fit flex flex-col justify-between gap-5">
@@ -48,7 +61,7 @@ function DealView() {
                 <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
                    <span className="mr-2">1810631 (CMLS-30333332) - Test Borrower - (Outstanding Condition 2/10)</span>
                    <div className="flex justify-around gap-2">
-                    <button className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
+                    <button onClick={openModal} className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
                     <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
                   </div>
                 </div>
@@ -64,6 +77,11 @@ function DealView() {
                 </div>
             </div>
         </div>
+        {isModalOpen && (
+
+                <DocumentUploadModal isOpen={isModalOpen} onClose={closeModal} />
+
+        )}
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <div className="border-2 p-5 flex flex-col gap-5">
                 <ul className="flex flex-wrap w-fit border-2 rounded-lg text-sm gap-2 font-medium text-center">
@@ -75,31 +93,7 @@ function DealView() {
                 </ul>
                 { tabs === "Details" &&            
                     <div className="flex flex-col md:flex-row w-full justify-between items-center gap-5">
-                        {/* <div className="w-full flex flex-col gap-5">
-                            <LabeledInput label="Purpose of Loan" type="text" value="100" />
-                            <LabeledInput label="Request of Amount" type="text" value="100" />
-                            <LabeledInput label="Est. Value/pur Price" type="text" value="100" />
-                            <LabeledInput label="LTV" type="text" value="100" />
-                            <LabeledInput label="Term" type="text" value="100" />
-                            <LabeledInput label="Amortization" type="text" value="100" />
-                            <LabeledInput label="Closing Date" type="text" value="100" />
-                            <LabeledInput label="First Payment Date" type="text" value="100" />
-                            <LabeledInput label="Solicitor Name" type="text" value="100" />
-                            <LabeledInput label="Solicitor Firm" type="text" value="100" />
-                        </div> */}
-                        {/* <div className="w-full flex flex-col gap-5">
-                            <LabeledInput label="Purpose of Loan" type="text" value="100" />
-                            <LabeledInput label="Request of Amount" type="text" value="100" />
-                            <LabeledInput label="Est. Value/pur Price" type="text" value="100" />
-                            <LabeledInput label="LTV" type="text" value="100" />
-                            <LabeledInput label="Term" type="text" value="100" />
-                            <LabeledInput label="Amortization" type="text" value="100" />
-                            <LabeledInput label="Closing Date" type="text" value="100" />
-                            <LabeledInput label="First Payment Date" type="text" value="100" />
-                            <LabeledInput label="Solicitor Name" type="text" value="100" />
-                            <LabeledInput label="Solicitor Firm" type="text" value="100" />
-                        </div> */}
-                    <Details data={exampleDealViewDetailsData} />
+\                        <Details data={exampleDealViewDetailsData} />
                     </div>
                 }
                 { tabs === "Contacts" &&            
@@ -120,6 +114,13 @@ function DealView() {
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
                         {exampleDealViewDocumentsData.map((document) => (
                             <Documents key={document.index} {...document} />
+                        ))}
+                    </div>
+                }
+                { tabs === "Messages" &&            
+                    <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
+                        {exampleDealViewMessagesData.map((message, index) => (
+                            <Messages key={index} {...message} />
                         ))}
                     </div>
                 }
