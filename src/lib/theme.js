@@ -229,6 +229,56 @@ export const exampleDealViewDetailsData = [
     type: "text",
     value: "Doe and Associates",
   },
+  {
+    label: "App Received Date",
+    type: "text",
+    value: "22/09/23",
+  },
+  {
+    label: "Total Mortgage",
+    type: "text",
+    value: "235,000,00",
+  },
+  {
+    label: "Product",
+    type: "text",
+    value: "Home/House",
+  },
+  {
+    label: "Product Type",
+    type: "text",
+    value: "Tangable",
+  },
+  {
+    label: "Interest Rate",
+    type: "text",
+    value: "20%",
+  },
+  {
+    label: "Principal And Interest",
+    type: "text",
+    value: "200,000,00",
+  },
+  {
+    label: "Insurer",
+    type: "text",
+    value: "Mr. Insurers Kilm",
+  },
+  {
+    label: "Insurer Ref Number",
+    type: "text",
+    value: "1354985355",
+  },
+  {
+    label: "Insurance Premium",
+    type: "text",
+    value: "125FE7FVA896",
+  },
+  {
+    label: "Payment Frequency",
+    type: "text",
+    value: "20",
+  },
 ];
 
 export const pipelineTableData = {

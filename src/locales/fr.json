@@ -46,6 +46,42 @@
     }
   },
   "dealView": {
-    "BacktoList": "Retour à la liste"
+    "BacktoList": "Retour à la liste",
+    "tabs": {
+      "Details": "Détails"
+    },
+    "details":{
+      "Purpose of Loan": "Objectif du prêt",
+      "Request of Amount": "Demande de montant",
+      "LTV": "LTV",
+      "Term": "Terme",
+      "Amortization": "Amortissement",
+      "Closing Date": "Date de clôture",
+      "First Payment Date": "Date du premier paiement",
+      "Solicitor Name": "Nom du notaire",
+      "Solicitor Firm": "Cabinet du notaire",
+      "App Received Date": "Date de réception de la demande",
+      "Total Mortgage": "Hypothèque totale",
+      "Product": "Produit",
+      "Product Type": "Type de produit",
+      "Interest Rate": "Taux d'intérêt",
+      "Principal And Interest": "Principal et intérêt",
+      "Insurer": "Assureur",
+      "Insurer Ref Number": "Numéro de référence de l'assureur",
+      "Insurance Premium": "Prime d'assurance",
+      "Payment Frequency": "Fréquence de paiement",
+      "Amount": "Montant",
+      "Closing": "Clôture",
+      "Property": "Propriété"
+    },
+    "contacts": {
+      "E-mail": "Courriel",
+      "Mobile": "Mobile",
+      "Work": "Travail",
+      "Address": "Adresse"
+    },
+    "messages": {
+      "Reply": "Répondre"
+    }    
   }
 }

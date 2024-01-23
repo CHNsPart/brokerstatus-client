@@ -46,6 +46,42 @@
     }
   },
   "dealView": {
-    "BacktoList": "Back to List"
+    "tabs": {
+      "Details": "Details"
+    },
+    "details":{
+      "Purpose of Loan": "Purpose of Loan",
+      "Request of Amount": "Request of Amount",
+      "LTV": "LTV",
+      "Term": "Term",
+      "Amortization": "Amortization",
+      "Closing Date": "Closing Date",
+      "First Payment Date": "First Payment Date",
+      "Solicitor Name": "Solicitor Name",
+      "Solicitor Firm": "Solicitor Firm",
+      "App Received Date": "App Received Date",
+      "Total Mortgage": "Total Mortgage",
+      "Product": "Product",
+      "Product Type": "Product Type",
+      "Interest Rate": "Interest Rate",
+      "Principal And Interest": "Principal And Interest",
+      "Insurer": "Insurer",
+      "Insurer Ref Number": "Insurer Ref Number",
+      "Insurance Premium": "Insurance Premium",
+      "Payment Frequency": "Payment Frequency",
+      "BacktoList": "Back to List",
+      "Amount": "Amount",
+      "Closing": "Closing",
+      "Property": "Property"
+    },
+    "contacts": {
+      "E-mail": "E-mail",
+      "Mobile": "Mobile",
+      "Work": "Work",
+      "Address":"Address"
+    },
+    "messages": {
+      "Reply": "Reply"
+    }
   }
 }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { HiOutlineUpload } from 'react-icons/hi';
+import Button from '../Button';
 
 function Conditions({ index, description }) {
   return (
@@ -10,7 +10,7 @@ function Conditions({ index, description }) {
         <span>{description}</span>
       </div>
       <div className="flex justify-around gap-2">
-        <button className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload /></button>
+        <Button variant={"docUpload"} />
       </div>
     </div>
   );

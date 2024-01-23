@@ -1,14 +1,15 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { HiOutlineUpload } from "react-icons/hi";
 import { BiMessageAdd } from "react-icons/bi";
+import Button from './Button';
+import { useTranslation } from 'react-i18next';
 
 function PipelineDeals({initialData}) {
+  const { t } = useTranslation();
   const [data] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
-
   // Calculate the index range for the current page
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -33,7 +34,7 @@ function PipelineDeals({initialData}) {
             <thead>
               <tr>
                 {data.columns.map((col, index) => (
-                  <th key={index} className="border p-2">{col}</th>
+                  <th key={index} className="border p-2">{t(col)}</th>
                 ))}
               </tr>
             </thead>
@@ -46,7 +47,7 @@ function PipelineDeals({initialData}) {
                     </td>
                   ))}
                   <td className="border p-2 flex justify-around">
-                    <button className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
+                    <Button variant={"docUpload"} />
                     <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
                   </td>
                 </tr>

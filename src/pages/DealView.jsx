@@ -1,4 +1,3 @@
-import { HiOutlineUpload } from "react-icons/hi";
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
 import { BiMessageAdd } from "react-icons/bi";
@@ -10,7 +9,6 @@ import Conditions from "../components/DealView/Conditions";
 import Documents from "../components/DealView/Documents";
 import Details from "../components/DealView/Details";
 import Messages from "../components/DealView/Messages";
-import DocumentUploadModal from "../components/Modals/DocumentUploadModal";
 
 function DealView() {
   const { t } = useTranslation();
@@ -39,17 +37,6 @@ function DealView() {
     clickedButton.style.backgroundColor = theme.primaryButtonBgColor;
     clickedButton.style.color = theme.primaryButtonTextColor;
 };
-    
-
-const [isModalOpen, setIsModalOpen] = useState(false);
-
-const openModal = () => {
-  setIsModalOpen(true);
-};
-
-const closeModal = () => {
-  setIsModalOpen(false);
-};
 
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
@@ -61,27 +48,22 @@ const closeModal = () => {
                 <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
                    <span className="mr-2">1810631 (CMLS-30333332) - Test Borrower - (Outstanding Condition 2/10)</span>
                    <div className="flex justify-around gap-2">
-                    <button onClick={openModal} className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white"><HiOutlineUpload/></button>
+                    <Button variant={"docUpload"} />
                     <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-5">
                     <div className="flex flex-col w-full gap-5 items-center">
-                        <LabeledInput label="Amount" type="text" value="100" />
-                        <LabeledInput label="Property" type="text" value="100" />
+                        <LabeledInput label={"Amount"} type="text" value="100" />
+                        <LabeledInput label={"Property"} type="text" value="100" />
                     </div>
                     <div className="flex flex-col w-full gap-5 items-center">
-                        <LabeledInput label="Closing" type="text" value="100" />
-                        <LabeledInput label="Product" type="text" value="100" />
+                        <LabeledInput label={"Closing"} type="text" value="100" />
+                        <LabeledInput label={"Product"} type="text" value="100" />
                     </div>
                 </div>
             </div>
         </div>
-        {isModalOpen && (
-
-                <DocumentUploadModal isOpen={isModalOpen} onClose={closeModal} />
-
-        )}
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <div className="border-2 p-5 flex flex-col gap-5">
                 <ul className="flex flex-wrap w-fit border-2 rounded-lg text-sm gap-2 font-medium text-center">

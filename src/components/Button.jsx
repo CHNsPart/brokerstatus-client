@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { MdSignLanguage } from "react-icons/md";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {themes, getSubdomain} from '../lib/theme';
+import { HiOutlineUpload } from 'react-icons/hi';
+import DocumentUploadModal from './Modals/DocumentUploadModal';
 
 function Button({ onClick, label, variant }) {
 
@@ -22,6 +24,16 @@ function Button({ onClick, label, variant }) {
 
   const handleLanguageToggle = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   if(variant==="tile"){
@@ -48,6 +60,19 @@ function Button({ onClick, label, variant }) {
     )
   }
 
+  if(variant==="docUpload"){
+    return (
+      <>
+        <button onClick={openModal} className="rounded-full bg-green-500 hover:bg-green-700 p-2 text-white">
+          <HiOutlineUpload />
+        </button>
+        {isModalOpen && (
+            <DocumentUploadModal isOpen={isModalOpen} onClose={closeModal} />
+        )}
+      </>
+    )
+  }
+
   if(variant==="tabs"){
     return (
       <button className={`${label} tabs w-full text-black bg-transparent flex justify-center items-center gap-2`} onClick={onClick}>
@@ -55,6 +80,7 @@ function Button({ onClick, label, variant }) {
       </button>
     )
   }
+  
 
   return (
     <button className="themeButton" onClick={onClick}>
@@ -65,7 +91,7 @@ function Button({ onClick, label, variant }) {
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   variant: PropTypes.string
 };
 
