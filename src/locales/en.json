@@ -1,23 +1,29 @@
 {
+
   "navbar": {
     "buttonLabel": "EN"
   },
+
   "signin": {
     "resetPassword": "Reset Password",
     "signin": "Signin",
     "Username": "Username",
     "Password": "Password"
   },
+
   "resetPassword": {
     "resetPassword": "Reset Password"
   },
+
   "latestNews": {
     "title": "Latest News"
   },
+
   "home": {
     "dealBtn" : "Deals Overview",
     "docBtn" : "Document Library"
   },
+
   "documentLib": {
     "Document Library": "Document Library",
     "Policies": "Policies",
@@ -27,6 +33,7 @@
     "Bydown Calculator": "Bydown Calculator",
     "Trailer Fee Calculator": "Trailer Fee Calculator"
   },
+
   "dealsSearch": {
     "DealsSearch": "Deals Search",
     "BDM": "BDM",
@@ -36,7 +43,7 @@
     "DateType": "Date Type",
     "From": "From",
     "To": "To",
-    "SelectAll": "Selext All",
+    "SelectAll": "Select All",
     "AppReceived": "App Received",
     "InUnderwriting": "In Underwriting",
     "ReadyToFund": "Ready To Fund",
@@ -45,13 +52,16 @@
       "Search": "Search"
     }
   },
+
   "dealView": {
+    "backtoList": "Back to List",
     "tabs": {
       "Details": "Details"
     },
     "details":{
       "Purpose of Loan": "Purpose of Loan",
       "Request of Amount": "Request of Amount",
+      "Est. Value/pur Price": "Est. Value/pur Price",
       "LTV": "LTV",
       "Term": "Term",
       "Amortization": "Amortization",
@@ -69,7 +79,6 @@
       "Insurer Ref Number": "Insurer Ref Number",
       "Insurance Premium": "Insurance Premium",
       "Payment Frequency": "Payment Frequency",
-      "BacktoList": "Back to List",
       "Amount": "Amount",
       "Closing": "Closing",
       "Property": "Property"
@@ -84,4 +93,5 @@
       "Reply": "Reply"
     }
   }
+
 }

@@ -1,6 +1,5 @@
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
-import { BiMessageAdd } from "react-icons/bi";
 import LabeledInput from "../components/LabeledInput";
 import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData, getSubdomain, themes } from "../lib/theme";
 import { useEffect, useState } from "react";
@@ -42,14 +41,14 @@ function DealView() {
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <a className="w-fit" href="/deals">
-                <Button label={t(`dealView.BacktoList`)}  />
+                <Button label={t(`dealView.backtoList`)}  />
             </a>
             <div className="border-2 p-5">
                 <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
                    <span className="mr-2">1810631 (CMLS-30333332) - Test Borrower - (Outstanding Condition 2/10)</span>
                    <div className="flex justify-around gap-2">
                     <Button variant={"docUpload"} />
-                    <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
+                    <Button variant={"msg"} />
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-5">
@@ -75,7 +74,7 @@ function DealView() {
                 </ul>
                 { tabs === "Details" &&            
                     <div className="flex flex-col md:flex-row w-full justify-between items-center gap-5">
-\                        <Details data={exampleDealViewDetailsData} />
+                        <Details data={exampleDealViewDetailsData} />
                     </div>
                 }
                 { tabs === "Contacts" &&            

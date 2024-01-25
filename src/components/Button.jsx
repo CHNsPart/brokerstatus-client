@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import {themes, getSubdomain} from '../lib/theme';
 import { HiOutlineUpload } from 'react-icons/hi';
 import DocumentUploadModal from './Modals/DocumentUploadModal';
+import MessageModal from './Modals/MessageModal';
+import { BiMessageAdd } from 'react-icons/bi';
 
 function Button({ onClick, label, variant }) {
 
@@ -68,6 +70,32 @@ function Button({ onClick, label, variant }) {
         </button>
         {isModalOpen && (
             <DocumentUploadModal isOpen={isModalOpen} onClose={closeModal} />
+        )}
+      </>
+    )
+  }
+
+  if(variant==="msg"){
+    return (
+      <>
+        <button onClick={openModal} className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white">
+          <BiMessageAdd/>
+        </button>
+        {isModalOpen && (
+            <MessageModal isOpen={isModalOpen} onClose={closeModal} />
+        )}
+      </>
+    )
+  }
+
+  if(variant==="reply"){
+    return (
+      <>
+        <button onClick={openModal} className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 px-5 text-white">
+          {label}
+        </button>
+        {isModalOpen && (
+            <MessageModal reply={true} isOpen={isModalOpen} onClose={closeModal} />
         )}
       </>
     )

@@ -293,7 +293,7 @@ export const pipelineTableData = {
     'Closing Date',
     'Amount',
     'Condition',
-    'Actions', // 11th column for rounded action buttons
+    'Actions',
   ],
   rows: [
     ['Borker', 'BDM', 'Approved', '1714935', 'Purchased', 'Test Borrower', '16/11/2023', '21/12/2023', '$256', '2/10'],
@@ -307,7 +307,8 @@ export const pipelineTableData = {
     ['Borker', 'BDM', 'Approved', '1714936', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
     ['Borker', 'BDM', 'Approved', '1714930', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
     ['Borker', 'BDM', 'Approved', '1714958', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],
-    ['Borker', 'BDM', 'Approved', '1714995', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],    ],
+    ['Borker', 'BDM', 'Approved', '1714995', 'Purchased', 'Test Borrower', '17/11/2023', '21/12/2023', '$256', '2/10'],    
+  ],
 };
 
 

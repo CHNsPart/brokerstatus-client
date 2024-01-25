@@ -1,7 +1,7 @@
 // Contacts.jsx
 import PropTypes from 'prop-types';
-import { BiMessageAdd } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
+import Button from '../Button';
 
 function Contacts({ name, role, email, mobile, work, address }) {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ function Contacts({ name, role, email, mobile, work, address }) {
       <div className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg mb-2.5">
         <span>{name} - {role}</span>
         <div className="flex justify-around gap-2">
-          <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 text-white"><BiMessageAdd/></button>
+          <Button variant={"msg"} />
         </div>
       </div>
       <div className="flex flex-col w-full md:w-2/3 px-5 md:px-10 text-wrap">

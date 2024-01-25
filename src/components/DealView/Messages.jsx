@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useTranslation } from 'react-i18next';
+import Button from "../Button";
 export default function Messages({ topic, conversation }) {
   const { t } = useTranslation();
   return (
@@ -8,7 +9,7 @@ export default function Messages({ topic, conversation }) {
         <div className="border-2 p-2 flex justify-between items-center w-full rounded-lg mb-2.5">
           <span>{topic}</span>
           <div className="flex justify-around gap-2">
-            <button className="rounded-full bg-blue-500 hover:bg-blue-700 p-2 px-5 text-white">{t("dealView.messages.Reply")}</button>
+            <Button variant={"reply"} label={t("dealView.messages.Reply")} />
           </div>
         </div>
         {conversation && conversation.map((con, index) => (

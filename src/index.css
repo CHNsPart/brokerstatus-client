@@ -92,6 +92,35 @@ label.checkbox-label {
   align-items: center;
 }
 
+textarea {
+  width: 100%;
+  max-width: 220px;
+  height: 100px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid lightgrey;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+textarea:hover {
+  border: 2px solid lightgrey;
+  box-shadow: 0px 0px 20px -17px;
+}
+
+textarea:active {
+  transform: scale(0.95);
+}
+
+textarea:focus {
+  border: 2px solid grey;
+}
+
+
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

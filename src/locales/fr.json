@@ -46,13 +46,14 @@
     }
   },
   "dealView": {
-    "BacktoList": "Retour à la liste",
+    "backtoList": "Retour à la liste",
     "tabs": {
       "Details": "Détails"
     },
     "details":{
       "Purpose of Loan": "Objectif du prêt",
       "Request of Amount": "Demande de montant",
+      "Est. Value/pur Price": "Valeur estimée/prix pur",
       "LTV": "LTV",
       "Term": "Terme",
       "Amortization": "Amortissement",

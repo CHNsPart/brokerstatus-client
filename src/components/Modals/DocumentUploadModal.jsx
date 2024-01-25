@@ -49,7 +49,7 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
     <div className={`document-upload-modal ${isOpen ? 'flex' : 'hidden'} fixed inset-0 items-center justify-center`}>
       <div className="modal-backdrop absolute bg-black/50 inset-0" onClick={onClose}></div>
 
-      <div className="modal-content rounded-lg absolute max-w-fit p-10 overflow-auto bg-white z-50">
+      <div className="modal-content rounded-lg absolute max-w-[18rem] md:min-w-fit p-10 overflow-auto bg-white z-50">
         <div className="modal-header flex justify-between items-center">
           <h2 className='text-zinc-500'>Attach Document to Account</h2>
           <button className='text-red-500 bg-transparent border-none hover:text-red-600 p-0' onClick={onClose}><IoIosCloseCircle size={30}/></button>
@@ -107,7 +107,7 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
         )}
 
         {/* Buttons Section */}
-        <div className="buttons-section w-full flex justify-center items-center mt-5 gap-4">
+        <div className="buttons-section w-full flex flex-col md:flex-row justify-center items-center mt-5 gap-4">
           <button onClick={onClose} className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg">
             Cancel/Clear
           </button>
