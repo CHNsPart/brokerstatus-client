@@ -15,34 +15,34 @@ export const themes = {
     latestNewsColor: '#1e1e1e',
     logo: defaultLogo,
   },
-    sam: {
-      backgroundColor: "#fff",
-      textColor: "#333333",
-      navBackgroundColor: "#007bff",
-      navTextColor: "#ffffff",
-      primaryButtonBgColor: "#2196f3",
-      secondaryButtonBgColor: "#03a9f4",
-      primaryButtonTextColor: "#ffffff",
-      latestNewsColor: "#2196f3",
-      logo: samLogo
-    },
-    john: {
-      backgroundColor: "#fff",
-      textColor: "#333333",
-      navBackgroundColor: "#e74c3c",
-      navTextColor: "#ffffff",
-      primaryButtonBgColor: "#ff5722",
-      secondaryButtonBgColor: "#ff472f",
-      primaryButtonTextColor: "#ffffff",
-      latestNewsColor: "#e74c3c",
-      logo: johnLogo
-    }
-  };  
+  sam: {
+    backgroundColor: "#fff",
+    textColor: "#333333",
+    navBackgroundColor: "#007bff",
+    navTextColor: "#ffffff",
+    primaryButtonBgColor: "#2196f3",
+    secondaryButtonBgColor: "#03a9f4",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#2196f3",
+    logo: samLogo
+  },
+  john: {
+    backgroundColor: "#fff",
+    textColor: "#333333",
+    navBackgroundColor: "#e74c3c",
+    navTextColor: "#ffffff",
+    primaryButtonBgColor: "#ff5722",
+    secondaryButtonBgColor: "#ff472f",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#e74c3c",
+    logo: johnLogo
+  }
+};  
 
 export function getSubdomain() {
-    const parts = window.location.hostname.split('.');
-    return parts.length > 1 ? parts[0] : null;
-  }
+  const parts = window.location.hostname.split('.');
+  return parts.length > 1 ? parts[0] : null;
+}
 
 
 export const exampleNewsData = [

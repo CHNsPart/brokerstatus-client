@@ -1,17 +1,17 @@
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
 import LabeledInput from "../components/LabeledInput";
-import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData, getSubdomain, themes } from "../lib/theme";
-import { useEffect, useState } from "react";
+import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/theme";
+import { useEffect } from "react";
 import Contacts from "../components/DealView/Contacts";
 import Conditions from "../components/DealView/Conditions";
 import Documents from "../components/DealView/Documents";
 import Details from "../components/DealView/Details";
 import Messages from "../components/DealView/Messages";
+import useTabs from "../hooks/useTabs";
 
 function DealView() {
   const { t } = useTranslation();
-  const [tabs, setTabs] = useState("Details");
 
   useEffect(() => {
     // Run handleTabs on the initial render
@@ -20,22 +20,7 @@ function DealView() {
     });
   }, []);
 
-  const handleTabs = (e) => {
-    const buttons = document.querySelectorAll('.tabs');
-    const clickedButton = e.target;
-    setTabs(clickedButton.textContent)
-
-    const subdomain = getSubdomain();
-    const theme = themes[subdomain] || themes.default;
-  
-    buttons.forEach((button) => {
-      button.style.backgroundColor = "transparent";
-      button.style.color = "black";
-    });
-    
-    clickedButton.style.backgroundColor = theme.primaryButtonBgColor;
-    clickedButton.style.color = theme.primaryButtonTextColor;
-};
+  const { activeTab, handleTabs } = useTabs();
 
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
@@ -72,33 +57,33 @@ function DealView() {
                     </li>
                     ))}
                 </ul>
-                { tabs === "Details" &&            
+                { activeTab === "Details" &&            
                     <div className="flex flex-col md:flex-row w-full justify-between items-center gap-5">
                         <Details data={exampleDealViewDetailsData} />
                     </div>
                 }
-                { tabs === "Contacts" &&            
+                { activeTab === "Contacts" &&            
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
                         {exampleDealViewContactData.map((contact, index) => (
                             <Contacts key={index} {...contact} />
                         ))}
                     </div>
                 }
-                { tabs === "Conditions" &&            
+                { activeTab === "Conditions" &&            
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
                         {exampleDealViewConditions.map((condition) => (
                             <Conditions key={condition.index} {...condition} />
                         ))}
                     </div>
                 }
-                { tabs === "Documents" &&            
+                { activeTab === "Documents" &&            
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
                         {exampleDealViewDocumentsData.map((document) => (
                             <Documents key={document.index} {...document} />
                         ))}
                     </div>
                 }
-                { tabs === "Messages" &&            
+                { activeTab === "Messages" &&            
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
                         {exampleDealViewMessagesData.map((message, index) => (
                             <Messages key={index} {...message} />

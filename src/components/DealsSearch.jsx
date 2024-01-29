@@ -20,7 +20,7 @@ function DealsSearch({ onSearch }) {
     readyToFund: false,
   });
 
-  // Handle change function to update the state
+
   const handleChange = (e) => {
       const { id, type, checked, value } = e.target;
       setFormData((prevData) => ({
@@ -29,7 +29,7 @@ function DealsSearch({ onSearch }) {
       }));
   };
 
-  // Handle submit function (you can modify this as needed)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
@@ -103,7 +103,7 @@ function DealsSearch({ onSearch }) {
                     </div>
                     </div>
                     <div className="w-full flex justify-around items-center gap-2 mt-5">
-                        <Button variant={"search"} label={t("dealsSearch.btn.ClearSearch")} />
+                        <button className="w-full bg-zinc-500">{t("dealsSearch.btn.ClearSearch")}</button>
                         <Button variant={"search"} type={"submit"} label={t("dealsSearch.btn.Search")} />
                     </div>
                 </form>
