@@ -34,4 +34,5 @@ const useAxios = (url, options = {}) => {
   return { data, error, loading, refetch: fetchData };
 };
 
+
 export default useAxios;

@@ -96,4 +96,5 @@ function DealView() {
   )
 }
 
+
 export default DealView;

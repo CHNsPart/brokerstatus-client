@@ -24,4 +24,5 @@ const useTabs = () => {
   return { activeTab, handleTabs };
 };
 
+
 export default useTabs;
