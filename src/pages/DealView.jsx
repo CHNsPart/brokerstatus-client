@@ -1,7 +1,7 @@
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
 import LabeledInput from "../components/LabeledInput";
-import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/theme";
+import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/utils";
 import { useEffect } from "react";
 import Contacts from "../components/DealView/Contacts";
 import Conditions from "../components/DealView/Conditions";

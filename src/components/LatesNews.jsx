@@ -17,7 +17,7 @@ function LatestNews({ newsData }) {
   return (
     <div id="latesNewsWrapper" className="w-full h-fit flex items-center">
       <span
-        className="h-full md:w-1/6 w-1/3 p-5"
+        className="h-full w-1/3 md:w-1/6 p-5"
         id="latestNewsSection"
       >
         {t('latestNews.title')}

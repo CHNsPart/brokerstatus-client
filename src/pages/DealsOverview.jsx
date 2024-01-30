@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DealsSearch from "../components/DealsSearch"
 import PipelineDeals from "../components/PipelineDeals"
-import { pipelineTableData } from "../lib/theme"
+import { pipelineTableData } from "../lib/utils"
 
 function DealsOverview() {
 

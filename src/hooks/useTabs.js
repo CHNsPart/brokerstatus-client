@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { getSubdomain, themes } from '../lib/theme';
+import { themes } from '../lib/theme';
+import { getSubdomain } from '../lib/utils';
 
 const useTabs = () => {
   const [activeTab, setActiveTab] = useState('');

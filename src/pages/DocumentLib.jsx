@@ -1,5 +1,5 @@
 import Dropdown from '../components/Dropdown';
-import { exampleDocumentLibrarydata } from '../lib/theme'; // Update the path accordingly
+import { exampleDocumentLibrarydata } from '../lib/utils'; // Update the path accordingly
 import { useTranslation } from 'react-i18next';
 
 function DocumentLib() {

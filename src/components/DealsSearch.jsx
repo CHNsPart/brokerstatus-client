@@ -96,8 +96,8 @@ function DealsSearch({ onSearch }) {
                             <label htmlFor="inUnderwriting">{t("dealsSearch.InUnderwriting")}</label>
                         </div>
                         <div className="w-full flex justify-between items-center gap-2">
-                            <input checked={formData.readyToFund} onChange={handleChange} autoComplete="off" id="readtToFund" type='checkbox' />
-                            <label htmlFor="readtToFund">{t("dealsSearch.ReadyToFund")}</label>
+                            <input checked={formData.readyToFund} onChange={handleChange} autoComplete="off" id="readyToFund" type='checkbox' />
+                            <label htmlFor="readyToFund">{t("dealsSearch.ReadyToFund")}</label>
                         </div>
                         {/* </div> */}
                     </div>

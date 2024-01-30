@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { IoIosCloseCircle } from "react-icons/io";
-import { getSubdomain, themes } from "../../lib/theme";
+import { themes } from "../../lib/theme";
+import { getSubdomain } from "../../lib/utils";
 
 export default function MessageModal({ isOpen, onClose, reply }) {
     const [message, setMessage] = useState({

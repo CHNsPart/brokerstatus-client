@@ -1,28 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { MdSignLanguage } from "react-icons/md";
-import { useEffect, useState } from 'react';
-import {themes, getSubdomain} from '../lib/theme';
+import { useState } from 'react';
 import { HiOutlineUpload } from 'react-icons/hi';
 import DocumentUploadModal from './Modals/DocumentUploadModal';
 import MessageModal from './Modals/MessageModal';
 import { BiMessageAdd } from 'react-icons/bi';
+import useTheme from '../hooks/useTheme';
 
 function Button({ onClick, label, variant }) {
 
   const { i18n } = useTranslation();
 
-  useEffect(() => {
-    // Detect subdomain
-    const subdomain = getSubdomain();
-    // Get the theme based on subdomain or use the default theme
-    const theme = themes[subdomain] || themes.default;
-    const themeButton = document.getElementsByClassName("themeButton");
-    for (let i = 0; i < themeButton.length; i++) {
-        themeButton[i].style.backgroundColor = theme.primaryButtonBgColor;
-        themeButton[i].style.color = theme.primaryButtonTextColor;
-    }
-  }, []);
+  useTheme(true);
 
   const handleLanguageToggle = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');

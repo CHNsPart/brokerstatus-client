@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { IoIosCloseCircle } from "react-icons/io";
 import PropTypes from 'prop-types';
-import { getSubdomain, themes } from '../../lib/theme';
+import { themes } from '../../lib/theme';
+import { getSubdomain } from '../../lib/utils';
+
 
 const DocumentUploadModal = ({ isOpen, onClose }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);

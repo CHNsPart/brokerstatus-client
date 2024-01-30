@@ -134,21 +134,15 @@ These files store key-value pairs where keys represent translation keys and valu
 
 The `lib` directory contains utility files and configuration related to the application. Below are the details of the files:
 
-### Theme Configuration (`theme.js`)
+```
+/lib
+  - theme.js
+  - utils.js
+```
 
-The `theme.js` file within the `lib` directory contains theme configurations for different subdomains. These themes define the visual appearance of the application based on the subdomain. Below are the details of the themes:
+### For dummy json data (`utils.js`)
 
-**Default Theme:**
-
-* Background Color: `#fff`
-* Text Color: `black`
-* Navigation Background Color: `#1e1e1e`
-* Navigation Text Color: `white`
-* Primary Button Background Color: `#000`
-* Secondary Button Background Color: `#000`
-* Primary Button Text Color: `#ffffff`
-* Latest News Color: `#1e1e1e`
-* Logo: [defaultLogo]
+The `utils.js` file contains `getSubdomain` function and dummy json data for the components.
 
 ### Utility Function
 
@@ -167,6 +161,101 @@ john.localhost #for john theme
 ```
 
 Replace `localhost` with your local domain if needed.
+
+### Theme Configuration (`theme.js`)
+
+The `theme.js` file within the `lib` directory contains theme configurations for different subdomains. These themes define the visual appearance of the application based on the subdomain. Below are the details of the themes:
+
+**Default Theme:**
+
+* Background Color: `#fff`
+* Text Color: `black`
+* Navigation Background Color: `#1e1e1e`
+* Navigation Text Color: `white`
+* Primary Button Background Color: `#000`
+* Secondary Button Background Color: `#000`
+* Primary Button Text Color: `#ffffff`
+* Latest News Color: `#1e1e1e`
+* Logo: [defaultLogo]
+
+## Custom Hooks
+
+### 1. `useAxios`
+
+The `useAxios` hook is a custom React hook designed for handling asynchronous HTTP requests using Axios. It provides state variables for data, error, and loading status.
+
+#### Usage:
+
+```jsx
+import useAxios from '../path/to/useAxios';
+
+const MyComponent = () => {
+  const { data, error, loading, refetch } = useAxios('https://api.example.com/data');
+
+  // Your component logic here
+
+  return (
+    // Your JSX here
+  );
+};
+
+export default MyComponent;
+```
+
+### 2. `useTabs`
+
+The `useTabs` hook manages tab functionality in a React component. It keeps track of the active tab and provides a function to handle tab clicks.
+
+```jsx
+import useTabs from '../path/to/useTabs';
+
+const MyComponent = () => {
+  const { activeTab, handleTabs } = useTabs();
+
+  // Your component logic here
+
+  return (
+    // Your JSX here
+  );
+};
+
+export default MyComponent;
+```
+
+### 3. `useTheme`
+
+The `useTheme` hook applies theme styles to the application based on the subdomain. It updates the body background color, text color, navigation styles, and more.
+
+```jsx
+import useTheme from '../path/to/useTheme';
+
+const MyComponent = () => {
+  useTheme();
+  /* useTheme(true) is used in the Button component 
+   for the buttons only */
+
+  // Your component logic here
+
+  return (
+    // Your JSX here
+  );
+};
+
+export default MyComponent;
+```
+
+## API Directory
+
+### `api.js`
+
+The `api.js` file in the `api` directory contains functions for making HTTP requests using the Axios library. It sets up a base URL and includes functionalities to handle JWT tokens.
+
+```
+/api
+  - api.js
+```
+
+This file serves as a central location for managing API requests and authentication tokens. The `axiosInstance` can be used throughout the application to make consistent requests to the specified backend API URL. The `setAuthToken` function helps in handling and updating the JWT token for authentication.
 
 ## Dependencies
 
