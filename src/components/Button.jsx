@@ -28,9 +28,10 @@ function Button({ onClick, label, variant }) {
     setIsModalOpen(false);
   };
 
+
   if(variant==="tile"){
     return (
-      <button className="themeButton px-10 py-20" onClick={onClick}>
+      <button className="themeButton w-32 md:w-56 h-44 flex justify-center items-center overflow-hidden whitespace-normal" onClick={onClick}>
         {label}
       </button>
     )
