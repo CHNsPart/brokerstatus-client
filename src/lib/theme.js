@@ -15,7 +15,7 @@ export const themes = {
     latestNewsColor: '#1e1e1e',
     logo: defaultLogo,
   },
-  sam: {
+  cmls: {
     backgroundColor: "#fff",
     textColor: "#333333",
     navBackgroundColor: "#007bff",
@@ -26,7 +26,18 @@ export const themes = {
     latestNewsColor: "#2196f3",
     logo: samLogo
   },
-  john: {
+  intellifi: {
+    backgroundColor: "#fff",
+    textColor: "#333333",
+    navBackgroundColor: "#46e3ff",
+    navTextColor: "#333",
+    primaryButtonBgColor: "#0d97af",
+    secondaryButtonBgColor: "#135d6a",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#0d97af",
+    logo: johnLogo
+  },
+  duca: {
     backgroundColor: "#fff",
     textColor: "#333333",
     navBackgroundColor: "#ff0000",
@@ -36,5 +47,27 @@ export const themes = {
     primaryButtonTextColor: "#ffffff",
     latestNewsColor: "#ff0000",
     logo: johnLogo
-  }
+  },
+  peoples: {
+    backgroundColor: "#fff",
+    textColor: "#4C5454",
+    navBackgroundColor: "#1EA896",
+    navTextColor: "#ffffff",
+    primaryButtonBgColor: "#FF715B",
+    secondaryButtonBgColor: "#ff372f",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#1EA896",
+    logo: johnLogo
+  },
+  strive: {
+    backgroundColor: "#fff",
+    textColor: "#563F1B",
+    navBackgroundColor: "#F7F052",
+    navTextColor: "#ffffff",
+    primaryButtonBgColor: "#38726C",
+    secondaryButtonBgColor: "#38726C",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#38726C",
+    logo: johnLogo
+  },
 };  

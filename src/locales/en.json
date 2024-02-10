@@ -1,7 +1,8 @@
 {
 
   "navbar": {
-    "buttonLabel": "FR"
+    "buttonLabel": "FR",
+    "logout":"Log out"
   },
 
   "signin": {

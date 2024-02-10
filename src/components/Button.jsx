@@ -7,6 +7,7 @@ import DocumentUploadModal from './Modals/DocumentUploadModal';
 import MessageModal from './Modals/MessageModal';
 import { BiMessageAdd } from 'react-icons/bi';
 import useTheme from '../hooks/useTheme';
+import { FaSignOutAlt } from "react-icons/fa";
 
 function Button({ onClick, label, variant }) {
 
@@ -76,6 +77,14 @@ function Button({ onClick, label, variant }) {
             <MessageModal isOpen={isModalOpen} onClose={closeModal} />
         )}
       </>
+    )
+  }
+
+  if(variant==="logout"){
+    return (
+      <button className="themeButton w-full flex justify-center items-center gap-2 bg-red-500-" onClick={onClick}>
+        <FaSignOutAlt/> {label}
+      </button>
     )
   }
 

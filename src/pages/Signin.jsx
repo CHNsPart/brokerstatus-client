@@ -1,13 +1,19 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from 'react-i18next';
+import { login } from "../api/api";
+
 
 const Signin = () => {
+
   const { t } = useTranslation();
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   });
+
+  const [errorMsg, setErrorMsg] = useState("")
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -17,10 +23,22 @@ const Signin = () => {
     }));
   };
 
-  const handleAuth = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(credentials)
-  }
+    const username = credentials.username;
+    const password = credentials.password;
+  
+    const user = await login(username, password);
+  
+    if (user) {
+      // Login successful, you can navigate or perform other actions
+      console.log('Login successful:', user);
+      window.location = "/home"
+    } else {
+      // Login failed, handle accordingly
+      setErrorMsg(t('Wrong Credintials!'));
+    }
+  };
 
   
   return (
@@ -54,11 +72,20 @@ const Signin = () => {
                 </a>
             </div>
             <div className="w-full flex justify-center items-center">
-                <Button onClick={handleAuth} label={t('signin.signin')} />
+                <Button onClick={handleLogin} label={t('signin.signin')} />
             </div>
+            { errorMsg !== "" && 
+              <span className="w-full text-center text-red-500">{errorMsg}</span>
+            }
         </form>
     </section>
   );
 }
 
 export default Signin;
+
+
+
+
+
+
