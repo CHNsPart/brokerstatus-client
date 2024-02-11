@@ -17,6 +17,9 @@ function App() {
 
   useTheme();
 
+  const token = localStorage.getItem("authToken");
+  console.log(token)
+
   return (
     <Router>
       <div id="pageContainer">
@@ -27,10 +30,17 @@ function App() {
             <Route path="/resetPassword" exact component={ResetPassword} />
             
             {/* Protected Routes */}
-            <Route path="/home" exact component={Home} />
-            <Route path="/deals" exact component={DealsOverview} />
-            <Route path="/docs" exact component={DocumentLib} />
-            <Route path="/dview" exact component={DealView} />
+            {
+              token ? 
+              <>
+                <Route path="/home" exact component={Home} />
+                <Route path="/deals" exact component={DealsOverview} />
+                <Route path="/docs" exact component={DocumentLib} />
+                <Route path="/dview" exact component={DealView} />
+              </>
+              :
+              <Route path="*" exact component={Signin} />
+            }
         </Switch>
         <LatesNews newsData={exampleNewsData}/>
       </div>

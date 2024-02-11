@@ -49,7 +49,22 @@ const login = async (username, password) => {
   }
 };
 
+const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/clientBrokerAgentAccountSummaries?page=${page}&pageSize=${pageSize}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+
   
 
-export { axiosInstance, setAuthToken, login };
-
+export { axiosInstance, setAuthToken, login, getClientBrokerAgentAccountSummaries };
