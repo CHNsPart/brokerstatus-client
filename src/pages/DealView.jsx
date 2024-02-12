@@ -1,7 +1,7 @@
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
 import LabeledInput from "../components/LabeledInput";
-import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDetailsData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/utils";
+import { exampleDealViewConditions, exampleDealViewContactData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/utils";
 import { useEffect } from "react";
 import Contacts from "../components/DealView/Contacts";
 import Conditions from "../components/DealView/Conditions";
@@ -9,8 +9,11 @@ import Documents from "../components/DealView/Documents";
 import Details from "../components/DealView/Details";
 import Messages from "../components/DealView/Messages";
 import useTabs from "../hooks/useTabs";
+import { useParams } from "react-router-dom";
 
 function DealView() {
+
+  const { accountID } = useParams(); 
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -59,7 +62,7 @@ function DealView() {
                 </ul>
                 { activeTab === "Details" &&            
                     <div className="flex flex-col md:flex-row w-full justify-between items-center gap-5">
-                        <Details data={exampleDealViewDetailsData} />
+                        <Details accountID={accountID} />
                     </div>
                 }
                 { activeTab === "Contacts" &&            

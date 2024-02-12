@@ -1,22 +1,34 @@
 // AuthContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext();
+
+const isTokenExpired = (token) => {
+  const decodedToken = jwtDecode(token);
+  const currentTime = Date.now() / 1000; // Convert to seconds
+  return decodedToken.exp < currentTime;
+};
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
-
-      const user = fetchUserDetails(authToken); 
+      const user = fetchUserDetails(authToken);
       setUserDetails(user);
-      setIsAuthenticated(true);
+
+      // Check if the token is expired
+      const isExpired = isTokenExpired(authToken);
+      if (isExpired) {
+        // Token is expired, log out the user
+        logout();
+      } else {
+        setIsAuthenticated(true);
+      }
     }
   }, []);
 
@@ -24,14 +36,14 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem('authToken', token);
     setUserDetails(user);
     setIsAuthenticated(true);
-    window.location = "/home"
+    window.location = "/home";
   };
 
   const logout = () => {
     localStorage.removeItem('authToken');
     setUserDetails(null);
     setIsAuthenticated(false);
-    window.location = "/"
+    window.location = "/";
   };
 
   return (
@@ -49,23 +61,20 @@ AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const fetchUserDetails = (token) => {
+  try {
+    const decodedToken = jwtDecode(token);
+    const user = decodedToken;
 
-  const fetchUserDetails = (token) => {
-    try {
-      const decodedToken = jwtDecode(token);
+    return user;
+  } catch (error) {
+    console.error('Error decoding user details from token:', error);
+    return null;
+  }
+};
 
-      const user = decodedToken;
+fetchUserDetails.propTypes = {
+  token: PropTypes.string.isRequired,
+};
 
-      return user;
-    } catch (error) {
-      console.error('Error decoding user details from token:', error);
-      return null;
-    }
-  };
-  
-  
-  fetchUserDetails.propTypes = {
-    token: PropTypes.string.isRequired,
-  };
-  
 export { AuthProvider, useAuth, fetchUserDetails };

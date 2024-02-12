@@ -18,7 +18,6 @@ function App() {
   useTheme();
 
   const token = localStorage.getItem("authToken");
-  console.log(token)
 
   return (
     <Router>
@@ -36,7 +35,7 @@ function App() {
                 <Route path="/home" exact component={Home} />
                 <Route path="/deals" exact component={DealsOverview} />
                 <Route path="/docs" exact component={DocumentLib} />
-                <Route path="/dview" exact component={DealView} />
+                <Route path="/dview/:accountID" exact component={DealView} />
               </>
               :
               <Route path="*" exact component={Signin} />
