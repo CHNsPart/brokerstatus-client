@@ -65,7 +65,6 @@ const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
   }
 };
 
-
 const getAccountByAccountId = async (accoundID) => {
   try {
     const token = localStorage.getItem("authToken")
