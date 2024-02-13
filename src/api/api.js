@@ -183,6 +183,46 @@ const getAccountByAccountId = async (accoundID) => {
   }
 };
 
+const getFullAccountByAccountId = async (accoundID) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/accounts/${accoundID}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+
+const getConditionTrackingByAccoundId = async (accountID) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/activeConditionTrackings/${accountID}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
   
 
-export { axiosInstance, setAuthToken, login, getClientBrokerAgentAccountSummaries, getAccountByAccountId };
+export { 
+  axiosInstance, 
+  setAuthToken, 
+  login, 
+  getClientBrokerAgentAccountSummaries, 
+  getFullAccountByAccountId,
+  getAccountByAccountId,
+  getConditionTrackingByAccoundId
+};

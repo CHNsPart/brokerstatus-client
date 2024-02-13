@@ -12,8 +12,6 @@ function Details({ accountID }) {
       try {
         const apiData = await getAccountByAccountId(accountID);
         if (apiData) {
-          // Handle fetched data
-          console.log(apiData)
           setAccountDetails(apiData)
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
