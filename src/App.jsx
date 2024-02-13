@@ -2,7 +2,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import { exampleNewsData } from './lib/utils';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Signin from './pages/Signin';
 import LatesNews from './components/LatesNews';
