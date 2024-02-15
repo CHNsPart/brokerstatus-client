@@ -1,12 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from 'react-i18next';
 import { login } from "../api/api";
+import { useAuth } from "../context/AuthContext";
 
 
 const Signin = () => {
 
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
+
+  useEffect(()=>{
+    isAuthenticated? window.location.replace("/home") : ""
+  })
 
   const [credentials, setCredentials] = useState({
     username: "",

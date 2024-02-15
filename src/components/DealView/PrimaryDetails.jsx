@@ -14,6 +14,7 @@ export default function PrimaryDetails({ accountID }) {
       try {
         const apiData = await getFullAccountByAccountId(accountID);
         if (apiData) {
+          console.log(apiData)
           setPrimaryDetails(apiData)
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
@@ -37,12 +38,12 @@ export default function PrimaryDetails({ accountID }) {
     </div>
     <div className="flex flex-col md:flex-row justify-between items-center gap-5">
         <div className="flex flex-col w-full gap-5 items-center">
-            <LabeledInput label={"Amount"} type="text" value="100" />
-            <LabeledInput label={"Property"} type="text" value="100" />
+            <LabeledInput label={"Amount"} type="number" value={primaryDetails.totalLendingAmount} />
+            <LabeledInput label={"Property"} type="text" value={primaryDetails.listProperties} />
         </div>
         <div className="flex flex-col w-full gap-5 items-center">
-            <LabeledInput label={"Closing"} type="text" value="100" />
-            <LabeledInput label={"Product"} type="text" value="100" />
+            <LabeledInput label={"Closing"} type="text" value={primaryDetails.closedDate} />
+            <LabeledInput label={"Product"} type="text" value={primaryDetails.listComponents} />
         </div>
     </div>
 </div>

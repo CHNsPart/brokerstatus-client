@@ -3,9 +3,11 @@ import { themes } from '../lib/theme';
 import PropTypes from 'prop-types';
 import { getSubdomain } from '../lib/utils';
 
-const useTheme = ( onlyBtn = false ) => {
+const useTheme =  ( onlyBtn = false ) => {
+
   useEffect(() => {
     const subdomain = getSubdomain();
+
     const theme = themes[subdomain] || themes.default;
 
     if(onlyBtn) {

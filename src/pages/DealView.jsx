@@ -1,6 +1,6 @@
 import Button from "../components/Button"
 import { useTranslation } from 'react-i18next';
-import { exampleDealViewContactData, exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/utils";
+import { exampleDealViewDocumentsData, exampleDealViewMessagesData } from "../lib/utils";
 import { useEffect } from "react";
 import Contacts from "../components/DealView/Contacts";
 import Conditions from "../components/DealView/Conditions";
@@ -49,9 +49,7 @@ function DealView() {
                 }
                 { activeTab === "Contacts" &&            
                     <div className="flex flex-col md:flex-col w-full justify-between items-start gap-5">
-                        {exampleDealViewContactData.map((contact, index) => (
-                            <Contacts key={index} {...contact} />
-                        ))}
+                        <Contacts accountID={accountID} />
                     </div>
                 }
                 { activeTab === "Conditions" &&            

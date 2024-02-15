@@ -216,6 +216,22 @@ const getConditionTrackingByAccoundId = async (accountID) => {
   }
 };
   
+const getInternalLoanContactsByAccoundId = async (accountID) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/internalLoanContacts/${accountID}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+  
 
 export { 
   axiosInstance, 
@@ -224,5 +240,6 @@ export {
   getClientBrokerAgentAccountSummaries, 
   getFullAccountByAccountId,
   getAccountByAccountId,
-  getConditionTrackingByAccoundId
+  getConditionTrackingByAccoundId,
+  getInternalLoanContactsByAccoundId
 };

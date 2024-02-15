@@ -7,7 +7,8 @@ const AuthContext = createContext();
 
 const isTokenExpired = (token) => {
   const decodedToken = jwtDecode(token);
-  const currentTime = Date.now() / 1000; // Convert to seconds
+  const currentTime = Date.now() / 1000; 
+
   return decodedToken.exp < currentTime;
 };
 
@@ -25,6 +26,7 @@ const AuthProvider = ({ children }) => {
       const isExpired = isTokenExpired(authToken);
       if (isExpired) {
         // Token is expired, log out the user
+        localStorage.removeItem("authToken");
         logout();
       } else {
         setIsAuthenticated(true);

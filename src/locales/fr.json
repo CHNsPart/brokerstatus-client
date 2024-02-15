@@ -78,9 +78,7 @@
     },
     "contacts": {
       "E-mail": "Courriel",
-      "Mobile": "Mobile",
-      "Work": "Travail",
-      "Address": "Adresse"
+      "Key": "Clé primaire"
     },
     "messages": {
       "Reply": "Répondre"
