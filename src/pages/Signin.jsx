@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import { useTranslation } from 'react-i18next';
 import { login } from "../api/api";
 import { useAuth } from "../context/AuthContext";
+import { getSubdomain } from "../lib/utils";
 
 
 const Signin = () => {
@@ -10,15 +11,40 @@ const Signin = () => {
   const { t } = useTranslation();
   const { isAuthenticated } = useAuth();
 
-  useEffect(()=>{
-    isAuthenticated? window.location.replace("/home") : ""
-  })
+  // useEffect(()=>{
 
+  //   const emailAddress = credentials.username || "";
+  //   const [, domain] = emailAddress.split('@');
+  //   const organization = domain.split('.')[0] ?? "";
+
+  //   const subdomain = getSubdomain();
+
+  //   if(!isAuthenticated && subdomain!==organization) {
+  //     window.location.href = `http://${organization.toLowerCase()}.localhost:5173/`;
+  //   }
+  // }, [credentials.username, isAuthenticated])
+
+  
+  
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   });
-
+  
+  useEffect(() => {
+    if (credentials && credentials.username) {
+      const emailAddress = credentials.username;
+      const [, domain] = emailAddress.split('@');
+      const organization = domain ? domain.split('.')[0] : '';
+  
+      const subdomain = getSubdomain();
+  
+      if (!isAuthenticated && subdomain !== organization) {
+        window.location.href = `http://${organization.toLowerCase()}.localhost:5173/`;
+      }
+    }
+  }, [credentials, isAuthenticated]);
+  
   const [errorMsg, setErrorMsg] = useState("")
 
   const handleChange = (e) => {
@@ -89,9 +115,3 @@ const Signin = () => {
 }
 
 export default Signin;
-
-
-
-
-
-

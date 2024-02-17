@@ -228,7 +228,7 @@ function PipelineDeals({ searchData }) {
                   ))}
                   <td className="border px-5 w-full h-full p-2 flex gap-2 items-center justify-around">
                     <Button variant={"docUpload"} />
-                    <Button variant={"msg"} />
+                    {/* <Button variant={"msg"} /> */}
                   </td>
                 </tr>
               ))}

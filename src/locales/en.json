@@ -86,7 +86,9 @@
     },
     "contacts": {
       "E-mail": "E-mail",
-      "Key": "Primary Key"
+      "Mobile": "Mobile",
+      "Work": "Work",
+      "Address": "Address"
     },
     "messages": {
       "Reply": "Reply"
