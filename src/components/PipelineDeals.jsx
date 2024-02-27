@@ -214,7 +214,7 @@ function PipelineDeals({ searchData }) {
                 <tr className="" key={rowIndex}>
                   {Object.values(row).map((cell, cellIndex) => (
                     <td key={cellIndex} className="border p-2">
-                      {cellIndex === 2 ? (
+                      {cellIndex === 3 ? (
                         <span
                           onClick={() => handleTableBtn(row.accountID)}
                           className={`text-center p-2 rounded-full cursor-pointer hover:bg-zinc-200 border-b-black bg-zinc-100`}

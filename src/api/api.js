@@ -52,7 +52,7 @@ const login = async (username, password) => {
 const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/clientBrokerAgentAccountSummaries?page=${page}&pageSize=${pageSize}`, {
+    const response = await axiosInstance.get(`/api/brokerAccounts?page=${page}&pageSize=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -68,7 +68,7 @@ const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
 const getAccountByAccountId = async (accoundID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/accounts/${accoundID}`, {
+    const response = await axiosInstance.get(`/api/accountDetails/${accoundID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -77,52 +77,52 @@ const getAccountByAccountId = async (accoundID) => {
       {
         label:"Purpose of Loan",
         type: "text",
-        value: response.data.purposeOfFunds
+        value: response.data.loanPurpose
       },
       {
         label:"Request of Amount",
         type: "number",
-        value: response.data.basicLoanAmount
+        value: response.data.totalAmount
       },
       {
         label:"Est. Value/pur Price",
         type: "number",
-        value: response.data.netWorth
+        value: response.data.totalPurchasePrice
       },
       {
         label:"LTV",
         type: "number",
-        value: response.data.ltv
+        value: response.data.currCombinedLTV
       },
       {
         label:"Term",
         type: "text",
-        value: response.data.closedDate
+        value: response.data.term
       },
       {
         label:"Amortization",
         type: "number",
-        value: response.data.origTotalLoanAmount
+        value: response.data.blendedAmort
       },
       {
         label:"Closing Date",
         type: "text",
-        value: response.data.closedDate
+        value: response.data.closingDate
       },
       {
         label:"First Payment Date",
         type: "text",
-        value: response.data.commitmentIssueDate
+        value: response.data.firstPymtDate
       },
       {
         label:"Solicitor Name",
         type: "text",
-        value: response.data.lenderName
+        value: response.data.primaryClient
       },
       {
         label:"Solicitor Firm",
         type: "text",
-        value: response.data.servicerName
+        value: response.data.propertyAddress
       },
       {
         label:"App Received Date",
@@ -132,32 +132,32 @@ const getAccountByAccountId = async (accoundID) => {
       {
         label:"Total Mortgage",
         type: "number",
-        value: response.data.totalLendingAmount
+        value: response.data.totalDownPaymentAmt
       },
       {
         label:"Product",
         type: "text",
-        value: response.data.listProperties
+        value: response.data.product
       },
       {
         label:"Product Type",
         type: "text",
-        value: response.data.enStatusIndex
+        value: response.data.rateType
       },
       {
         label:"Interest Rate",
         type: "number",
-        value: response.data.tds
+        value: response.data.interestRate
       },
       {
         label:"Principal And Interest",
         type: "number",
-        value: response.data.lendingPremium
+        value: response.data.principal
       },
       {
         label:"Insurer",
         type: "text",
-        value: response.data.listMortgagors
+        value: response.data.mortgageInsurer
       },
       {
         label:"Insurer Ref Number",
@@ -186,7 +186,7 @@ const getAccountByAccountId = async (accoundID) => {
 const getFullAccountByAccountId = async (accoundID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/accounts/${accoundID}`, {
+    const response = await axiosInstance.get(`api/accountDetails/${accoundID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -203,7 +203,23 @@ const getFullAccountByAccountId = async (accoundID) => {
 const getConditionTrackingByAccoundId = async (accountID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/activeConditionTrackings/${accountID}`, {
+    const response = await axiosInstance.get(`/api/accountConditions/${accountID}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+
+const getDocumentsByAccoundId = async (accountID) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/api/accountDocuments/${accountID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -241,5 +257,6 @@ export {
   getFullAccountByAccountId,
   getAccountByAccountId,
   getConditionTrackingByAccoundId,
-  getInternalLoanContactsByAccoundId
+  getInternalLoanContactsByAccoundId,
+  getDocumentsByAccoundId
 };

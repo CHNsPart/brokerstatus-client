@@ -6,15 +6,16 @@ function LabeledInput({ label, id, type, value, widthClass }) {
   return (
     <div className={`flex flex-row w-full justify-start items-center gap-2 ${widthClass}`}>
       <span className='w-1/2'>{t(`dealView.details.${label}`)}</span>
-      <input disabled name='null' className="max-w-full" id={id} type={type} value={value} />
+      <input disabled name='null' className="max-w-full" id={id} type={type} value={value || '--'} />
     </div>
   );
 }
 
+
 LabeledInput.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['string', 'number', 'null']).isRequired,
   value: PropTypes.string,
   widthClass: PropTypes.string, // Optional width class for styling
 };

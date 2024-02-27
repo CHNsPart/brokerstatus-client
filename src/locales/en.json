@@ -82,7 +82,40 @@
       "Payment Frequency": "Payment Frequency",
       "Amount": "Amount",
       "Closing": "Closing",
-      "Property": "Property"
+      "Property": "Property",
+
+      "applicationDate": "Application Date",
+      "closingDate": "Closing Date",
+      "currCombinedLTV": "Current Combined LTV",
+      "gds": "GDS",
+      "insurancePremium": "Insurance Premium",
+      "interestRate": "Interest Rate",
+      "qualGDS": "Qual GDS",
+      "qualTDS": "Qual TDS",
+      "tds": "TDS",
+      "totalAmount": "Total Amount",
+      "numberOfConditions": "Number Of Conditions",
+      "numberOfOutstandingConditions": "Number Of Outstanding Conditions",
+      "remainingDaysToClose": "Remaining Days To Close",
+      "term": "Term",
+      "accountID": "Account ID",
+      "applicationID": "Application ID",
+      "blendedAmort": "Blended Amort",
+      "lob": "LOB",
+      "loanPurpose": "Loan Purpose",
+      "mortgageInsurer": "Mortgage Insurer",
+      "primaryClient": "Primary Client",
+      "product": "Product",
+      "propertyAddress": "Property Address",
+      "rateType": "Rate Type",
+      "status": "Status",
+      "subStatus": "Sub Status",
+      "pymtAmount": "Pyment Amount",
+      "totalDownPaymentAmt": "Total Down Payment Ammount",
+      "totalPurchasePrice": "Total Purchase Price",
+      "numberOfClients": "Number Of Clients",
+      "firstPymtDate": "First Pyment Date"
+
     },
     "contacts": {
       "E-mail": "E-mail",
@@ -96,3 +129,4 @@
   }
 
 }
+
