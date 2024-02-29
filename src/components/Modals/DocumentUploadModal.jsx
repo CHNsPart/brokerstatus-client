@@ -96,7 +96,7 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
                 />
                 <input
                   type="text"
-                  placeholder="Notes"
+                  placeholder="Note"
                   onChange={(e) => handleNotesChange(index, e.target.value)}
                   className="border p-1 rounded-lg"
                 />

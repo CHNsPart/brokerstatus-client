@@ -41,6 +41,8 @@
     "AppReceived": "Demande reçue",
     "InUnderwriting": "En souscription",
     "ReadyToFund": "Prêt à financer",
+    "ADate": "Date de demande",
+    "CDate": "Date de clôture",
     "btn": {
       "ClearSearch": "Effacer la recherche",
       "Search": "Recherche"

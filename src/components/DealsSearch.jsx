@@ -7,17 +7,17 @@ function DealsSearch({ onSearch }) {
   const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
-    bdm: '',
+    // bdm: '',
     mnumber: '',
     blname: '',
-    agent: '',
-    dtype: '',
+    // agent: '',
+    dtype: 'Application Date',
     from: '',
     to: '',
-    selectAll: false,
-    appReceived: false,
-    inUnderwriting: false,
-    readyToFund: false,
+    // selectAll: false,
+    // appReceived: false,
+    // inUnderwriting: false,
+    // readyToFund: false,
   });
 
 
@@ -39,19 +39,20 @@ function DealsSearch({ onSearch }) {
 
   const handleClear = () => {
     setFormData({
-        bdm: '',
+        // bdm: '',
         mnumber: '',
         blname: '',
-        agent: '',
+        // agent: '',
         dtype: '',
         from: '',
         to: '',
-        selectAll: false,
-        appReceived: false,
-        inUnderwriting: false,
-        readyToFund: false,
+        // selectAll: false,
+        // appReceived: false,
+        // inUnderwriting: false,
+        // readyToFund: false,
     })
   }
+
 
   return (
     <div className="w-full p-5">
@@ -61,11 +62,12 @@ function DealsSearch({ onSearch }) {
                 <form action="" onSubmit={handleSubmit} className="" >
                     <div className="w-full flex p-5 flex-col md:flex-row lg:flex-row justify-between items-center gap-5">
                     {/* First Col */}
-                    <div className="w-full md:w-2/5 flex flex-col gap-2">
-                        <div className="w-full flex justify-between items-center gap-2">
+                    {/* md:w-2/5 */}
+                    <div className="w-full md:w-2/4 flex flex-col gap-2">
+                        {/* <div className="w-full flex justify-between items-center gap-2">
                             <label htmlFor="bdm">{t("dealsSearch.BDM")}</label>
                             <input value={formData.bdm} onChange={handleChange} autoComplete="off" id="bdm" type='text' />
-                        </div>
+                        </div> */}
                         <div className="w-full flex justify-between items-center gap-2">
                             <label htmlFor="mnumber">{t("dealsSearch.MortgageNumber")}</label>
                             <input value={formData.mnumber} onChange={handleChange} autoComplete="off" id="mnumber" type='text' />
@@ -76,29 +78,33 @@ function DealsSearch({ onSearch }) {
                         </div>
                     </div>
                     {/* Second Col */}
-                    <div className="w-full md:w-2/5 flex flex-col justify-between gap-2">
-                        <div className="w-full flex justify-between items-center gap-2">
+                    <div className="w-full md:w-2/4 flex flex-col justify-between gap-2">
+                        {/* <div className="w-full flex justify-between items-center gap-2">
                             <label htmlFor="agent">{t("dealsSearch.Agent")}</label>
                             <input value={formData.agent} onChange={handleChange} autoComplete="off" id="agent" type='text' />
-                        </div>
+                        </div> */}
                         <div className="w-full flex justify-between items-center gap-2">
                             <label htmlFor="dtype">{t("dealsSearch.DateType")}</label>
-                            <input value={formData.dtype} onChange={handleChange} autoComplete="off" id="dtype" type='date' />
+                            <select className="px-2 py-2.5 w-2/3 rounded-md" value={formData.dtype} onChange={handleChange} id="dtype">
+                                <option>{t("dealsSearch.ADate")}</option>
+                                <option>{t("dealsSearch.CDate")}</option>
+                            </select>
                         </div>
+
+
                         <div className="flex gap-2">
                             <div className="w-full flex justify-between items-center gap-2">
                                 <label htmlFor="from">{t("dealsSearch.From")}</label>
-                                <input value={formData.from} onChange={handleChange} autoComplete="off" id="from" type='text' />
+                                <input value={formData.from} onChange={handleChange} autoComplete="off" id="from" type='date' />
                             </div>
                             <div className="w-full flex justify-between items-center gap-2">
                                 <label htmlFor="to">{t("dealsSearch.To")}</label>
-                                <input value={formData.to} onChange={handleChange} autoComplete="off" id="to" type='text' />
+                                <input value={formData.to} onChange={handleChange} autoComplete="off" id="to" type='date' />
                             </div>
                         </div>
                     </div>
                     {/* Third Col */}
-                    <div className="w-full md:w-1/5 flex flex-col gap-2">
-                        {/* <div className="w-full h-full"> */}
+                    {/* <div className="w-full md:w-1/5 flex flex-col gap-2">
                         <div className="w-full flex justify-between items-center gap-2">
                             <input value={formData.selectAll} checked={formData.selectAll} onChange={handleChange} autoComplete="off" id="selectAll" type='checkbox' />
                             <label htmlFor="selectAll">{t("dealsSearch.SelectAll")}</label>
@@ -115,8 +121,7 @@ function DealsSearch({ onSearch }) {
                             <input value={formData.readyToFund} checked={formData.readyToFund} onChange={handleChange} autoComplete="off" id="readyToFund" type='checkbox' />
                             <label htmlFor="readyToFund">{t("dealsSearch.ReadyToFund")}</label>
                         </div>
-                        {/* </div> */}
-                    </div>
+                    </div> */}
                     </div>
                     <div className="w-full flex justify-around items-center gap-2 mt-5">
                         <button onClick={handleClear} className="w-full bg-zinc-500">{t("dealsSearch.btn.ClearSearch")}</button>

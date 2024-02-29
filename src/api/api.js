@@ -65,123 +65,123 @@ const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
   }
 };
 
-const getAccountByAccountId = async (accoundID) => {
-  try {
-    const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/accountDetails/${accoundID}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const forgedData = [
-      {
-        label:"Purpose of Loan",
-        type: "text",
-        value: response.data.loanPurpose
-      },
-      {
-        label:"Request of Amount",
-        type: "number",
-        value: response.data.totalAmount
-      },
-      {
-        label:"Est. Value/pur Price",
-        type: "number",
-        value: response.data.totalPurchasePrice
-      },
-      {
-        label:"LTV",
-        type: "number",
-        value: response.data.currCombinedLTV
-      },
-      {
-        label:"Term",
-        type: "text",
-        value: response.data.term
-      },
-      {
-        label:"Amortization",
-        type: "number",
-        value: response.data.blendedAmort
-      },
-      {
-        label:"Closing Date",
-        type: "text",
-        value: response.data.closingDate
-      },
-      {
-        label:"First Payment Date",
-        type: "text",
-        value: response.data.firstPymtDate
-      },
-      {
-        label:"Solicitor Name",
-        type: "text",
-        value: response.data.primaryClient
-      },
-      {
-        label:"Solicitor Firm",
-        type: "text",
-        value: response.data.propertyAddress
-      },
-      {
-        label:"App Received Date",
-        type: "text",
-        value: response.data.applicationDate
-      },
-      {
-        label:"Total Mortgage",
-        type: "number",
-        value: response.data.totalDownPaymentAmt
-      },
-      {
-        label:"Product",
-        type: "text",
-        value: response.data.product
-      },
-      {
-        label:"Product Type",
-        type: "text",
-        value: response.data.rateType
-      },
-      {
-        label:"Interest Rate",
-        type: "number",
-        value: response.data.interestRate
-      },
-      {
-        label:"Principal And Interest",
-        type: "number",
-        value: response.data.principal
-      },
-      {
-        label:"Insurer",
-        type: "text",
-        value: response.data.mortgageInsurer
-      },
-      {
-        label:"Insurer Ref Number",
-        type: "text",
-        value: response.data.primaryKey
-      },
-      {
-        label:"Insurance Premium",
-        type: "number",
-        value: response.data.insurancePremium
-      },
-      {
-        label:"Payment Frequency",
-        type: "number",
-        value: response.data.gds
-      },
-    ]
-    return forgedData;
-  } catch (error) {
-    // Handle error cases
-    console.error('Error fetching client broker agent account summaries:', error.message);
-    return null;
-  }
-};
+// const getAccountByAccountId = async (accoundID) => {
+//   try {
+//     const token = localStorage.getItem("authToken")
+//     const response = await axiosInstance.get(`/api/accountDetails/${accoundID}`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     const forgedData = [
+//       {
+//         label:"Purpose of Loan",
+//         type: "text",
+//         value: response.data.loanPurpose
+//       },
+//       {
+//         label:"Request of Amount",
+//         type: "number",
+//         value: response.data.totalAmount
+//       },
+//       {
+//         label:"Est. Value/pur Price",
+//         type: "number",
+//         value: response.data.totalPurchasePrice
+//       },
+//       {
+//         label:"LTV",
+//         type: "number",
+//         value: response.data.currCombinedLTV
+//       },
+//       {
+//         label:"Term",
+//         type: "text",
+//         value: response.data.term
+//       },
+//       {
+//         label:"Amortization",
+//         type: "number",
+//         value: response.data.blendedAmort
+//       },
+//       {
+//         label:"Closing Date",
+//         type: "text",
+//         value: response.data.closingDate
+//       },
+//       {
+//         label:"First Payment Date",
+//         type: "text",
+//         value: response.data.firstPymtDate
+//       },
+//       {
+//         label:"Solicitor Name",
+//         type: "text",
+//         value: response.data.primaryClient
+//       },
+//       {
+//         label:"Solicitor Firm",
+//         type: "text",
+//         value: response.data.propertyAddress
+//       },
+//       {
+//         label:"App Received Date",
+//         type: "text",
+//         value: response.data.applicationDate
+//       },
+//       {
+//         label:"Total Mortgage",
+//         type: "number",
+//         value: response.data.totalDownPaymentAmt
+//       },
+//       {
+//         label:"Product",
+//         type: "text",
+//         value: response.data.product
+//       },
+//       {
+//         label:"Product Type",
+//         type: "text",
+//         value: response.data.rateType
+//       },
+//       {
+//         label:"Interest Rate",
+//         type: "number",
+//         value: response.data.interestRate
+//       },
+//       {
+//         label:"Principal And Interest",
+//         type: "number",
+//         value: response.data.principal
+//       },
+//       {
+//         label:"Insurer",
+//         type: "text",
+//         value: response.data.mortgageInsurer
+//       },
+//       {
+//         label:"Insurer Ref Number",
+//         type: "text",
+//         value: response.data.primaryKey
+//       },
+//       {
+//         label:"Insurance Premium",
+//         type: "number",
+//         value: response.data.insurancePremium
+//       },
+//       {
+//         label:"Payment Frequency",
+//         type: "number",
+//         value: response.data.gds
+//       },
+//     ]
+//     return forgedData;
+//   } catch (error) {
+//     // Handle error cases
+//     console.error('Error fetching client broker agent account summaries:', error.message);
+//     return null;
+//   }
+// };
 
 const getFullAccountByAccountId = async (accoundID) => {
   try {
@@ -248,6 +248,21 @@ const getInternalLoanContactsByAccoundId = async (accountID) => {
   }
 };
   
+const getDocumentTypes = async () => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/api/documentTypes`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
 
 export { 
   axiosInstance, 
@@ -255,8 +270,9 @@ export {
   login, 
   getClientBrokerAgentAccountSummaries, 
   getFullAccountByAccountId,
-  getAccountByAccountId,
+  // getAccountByAccountId,
   getConditionTrackingByAccoundId,
   getInternalLoanContactsByAccoundId,
-  getDocumentsByAccoundId
+  getDocumentsByAccoundId,
+  getDocumentTypes
 };

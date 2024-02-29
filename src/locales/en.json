@@ -48,6 +48,8 @@
     "AppReceived": "App Received",
     "InUnderwriting": "In Underwriting",
     "ReadyToFund": "Ready To Fund",
+    "ADate": "Application Date",
+    "CDate": "Closing Date",
     "btn": {
       "ClearSearch": "Clear Search",
       "Search": "Search"

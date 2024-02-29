@@ -144,18 +144,34 @@ function PipelineDeals({ searchData }) {
   const { t } = useTranslation();
 
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
   const [pageSize, setPageSize] = useState(100); // Default pageSize
 
   useEffect(() => {
+    // const fetchData = async () => {
+    //   try {
+    //     const apiData = await getClientBrokerAgentAccountSummaries(currentPage, pageSize);
+    //     if (apiData) {
+    //       console.log(apiData.length);
+    //       setData(apiData);
+    //       setFilteredData(apiData); 
+    //       setPageSize(apiData.length);
+    //     } else {
+    //       console.error('Failed to fetch data for PipelineDeals.');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error fetching data for PipelineDeals:', error.message);
+    //   }
+    // };
+
     const fetchData = async () => {
       try {
         const apiData = await getClientBrokerAgentAccountSummaries(currentPage, pageSize);
         if (apiData) {
-          console.log(apiData.length);
           setData(apiData);
-          setPageSize(apiData.length);
+          applyFilters(apiData);  // Apply filters to the fetched data
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
         }
@@ -163,17 +179,58 @@ function PipelineDeals({ searchData }) {
         console.error('Error fetching data for PipelineDeals:', error.message);
       }
     };
+    
+    const applyFilters = (apiData) => {
+      if (!searchData) {
+        // If searchData is null or undefined, do not proceed with filtering
+        setFilteredData(apiData);
+        setPageSize(apiData.length);
+        return;
+      }
+    
+      let updatedData = apiData;
+    
+      // Filter by brokerUniqueID (mnumber)
+      if (searchData.mnumber) {
+        updatedData = updatedData.filter(item => item.brokerUniqueID.includes(searchData.mnumber));
+      }
+    
+      // Filter by brokerName (blname)
+      if (searchData.blname) {
+        updatedData = updatedData.filter(item => item.brokerName.includes(searchData.blname));
+      }
+    
+      // Filter by date (applicationDate or closingDate)
+      if (searchData.dtype && searchData.from && searchData.to) {
+        const dateField = searchData.dtype === 'Application Date' ? 'applicationDate' : 'closingDate';
+        updatedData = updatedData.filter(item => {
+          const date = new Date(item[dateField]).setHours(0, 0, 0, 0);
+          const fromDate = new Date(searchData.from).setHours(0, 0, 0, 0);
+          const toDate = new Date(searchData.to).setHours(0, 0, 0, 0);
+          return date >= fromDate && date <= toDate;
+        });
+      }
+    
+      // Update filteredData with the filtered results
+      setFilteredData(updatedData);
+    
+      // Reset pagination to the first page
+      setCurrentPage(1);
+    };
+    
 
     fetchData();
-  }, []); // Update data when currentPage or pageSize changes
+  }, [searchData]); // Update data when currentPage or pageSize changes
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
+  const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+  
 
   useEffect(() => {
     console.log('Search Data:', searchData);
-    // Add logic to filter or update data based on searchData
+    // Apply filters when searchData changes
+    // applyFilters();
   }, [searchData]);
 
   const handleTableBtn = (accountID) => {
@@ -183,7 +240,7 @@ function PipelineDeals({ searchData }) {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Calculate the total number of pages
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
   // Generate an array of page numbers based on the total number of pages
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
@@ -192,6 +249,7 @@ function PipelineDeals({ searchData }) {
     // Add a space before every capital letter, except when the next letter is also capital
     return inputString.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (str) => str.toUpperCase());
   }
+
 
   return (
     <div className="w-full h-fit p-5">
@@ -258,3 +316,7 @@ PipelineDeals.propTypes = {
 };
 
 export default PipelineDeals;
+
+
+
+

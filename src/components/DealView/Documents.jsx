@@ -5,6 +5,7 @@ import { getDocumentsByAccoundId } from "../../api/api";
 function Documents({ accountID }) {
   const [accountDocuments, setAccountDocuments] = useState({});
   
+  console.log(accountDocuments)
   useEffect(() => {
     const fetchData = async () => {
       try {
