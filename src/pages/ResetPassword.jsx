@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from 'react-i18next';
+import { resetPassword } from "../api/api";
 
 const ResetPassword = () => {
   const { t } = useTranslation();
@@ -16,8 +17,19 @@ const ResetPassword = () => {
     }));
   };
 
-  const handleResetAuth = (e) => {
+  const handleResetAuth = async (e) => {
     e.preventDefault();
+    const username = credentials.username;
+    try {
+      if(username) {
+        const resPass = await resetPassword(username);
+        console.log(resPass)
+      } else {
+        return;
+      }
+    } catch (error) {
+      console.log(error)
+    }
     console.log(credentials)
   }
 

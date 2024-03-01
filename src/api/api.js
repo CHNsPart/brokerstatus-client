@@ -10,14 +10,16 @@ const axiosInstance = axios.create({
 });
 
 // Add a function to set the JWT token to the headers
-const setAuthToken = (token) => {
+const setAuthToken = (token, tenantId) => {
   console.log(token)
     if (token) {
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      localStorage.setItem('authToken', token); // Set token in localStorage
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('X-TenantId', tenantId)
     } else {
       delete axiosInstance.defaults.headers.common['Authorization'];
-      localStorage.removeItem('authToken'); // Remove token from localStorage
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('X-TenantId');
     }
   };
 
@@ -33,8 +35,8 @@ const login = async (username, password) => {
     if (isSuccess) {
 
       const { user, token } = result;
-
-      setAuthToken(token);
+      // console.log(user.tenantId)
+      setAuthToken(token, user.tenantId);
 
       return user;
     } else {
@@ -264,6 +266,22 @@ const getDocumentTypes = async () => {
   }
 };
 
+const resetPassword = async () => {
+  try {
+    const tID =  localStorage.getItem("X-TenantId");
+    const response = await axiosInstance.post(`/resetPassword`, {
+      headers: {
+        tID
+      },
+    });
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+
 export { 
   axiosInstance, 
   setAuthToken, 
@@ -274,5 +292,6 @@ export {
   getConditionTrackingByAccoundId,
   getInternalLoanContactsByAccoundId,
   getDocumentsByAccoundId,
-  getDocumentTypes
+  getDocumentTypes,
+  resetPassword
 };
