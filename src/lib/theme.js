@@ -1,5 +1,7 @@
-import samLogo from '../assets/people01.png';
-import johnLogo from '../assets/people02.png';
+import intellifi from '../assets/Intellifi.png';
+import cmls from '../assets/cmls.png';
+import peoples from '../assets/peoples.png';
+import strive from '../assets/strive.png';
 import defaultLogo from '../assets/default.webp';
 
 
@@ -24,18 +26,18 @@ export const themes = {
     secondaryButtonBgColor: "#03a9f4",
     primaryButtonTextColor: "#ffffff",
     latestNewsColor: "#2196f3",
-    logo: samLogo
+    logo: cmls
   },
   intellifi: {
     backgroundColor: "#fff",
     textColor: "#333333",
-    navBackgroundColor: "#46e3ff",
+    navBackgroundColor: "#310872",
     navTextColor: "#333",
-    primaryButtonBgColor: "#0d97af",
-    secondaryButtonBgColor: "#135d6a",
-    primaryButtonTextColor: "#ffffff",
-    latestNewsColor: "#0d97af",
-    logo: johnLogo
+    primaryButtonBgColor: "#310872",
+    secondaryButtonBgColor: "#310872",
+    primaryButtonTextColor: "#fff",
+    latestNewsColor: "#310872",
+    logo: intellifi
   },
   duca: {
     backgroundColor: "#fff",
@@ -46,28 +48,28 @@ export const themes = {
     secondaryButtonBgColor: "#ff372f",
     primaryButtonTextColor: "#ffffff",
     latestNewsColor: "#ff0000",
-    logo: johnLogo
+    logo: peoples
   },
   peoples: {
     backgroundColor: "#fff",
     textColor: "#4C5454",
-    navBackgroundColor: "#1EA896",
+    navBackgroundColor: "#d14f58",
     navTextColor: "#ffffff",
-    primaryButtonBgColor: "#FF715B",
-    secondaryButtonBgColor: "#ff372f",
+    primaryButtonBgColor: "#d14f58",
+    secondaryButtonBgColor: "#d14f58",
     primaryButtonTextColor: "#ffffff",
-    latestNewsColor: "#1EA896",
-    logo: johnLogo
+    latestNewsColor: "#d14f58",
+    logo: peoples
   },
   strive: {
     backgroundColor: "#fff",
     textColor: "#563F1B",
-    navBackgroundColor: "#F7F052",
+    navBackgroundColor: "#415a69",
     navTextColor: "#ffffff",
-    primaryButtonBgColor: "#38726C",
-    secondaryButtonBgColor: "#38726C",
+    primaryButtonBgColor: "#415a69",
+    secondaryButtonBgColor: "#415a69",
     primaryButtonTextColor: "#ffffff",
-    latestNewsColor: "#38726C",
-    logo: johnLogo
+    latestNewsColor: "#415a69",
+    logo: strive
   },
 };  

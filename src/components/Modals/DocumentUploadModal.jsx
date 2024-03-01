@@ -3,15 +3,70 @@ import { IoIosCloseCircle } from "react-icons/io";
 import PropTypes from 'prop-types';
 import { themes } from '../../lib/theme';
 import { getSubdomain } from '../../lib/utils';
+import { getDocumentTypes } from '../../api/api';
 
 
-const DocumentUploadModal = ({ isOpen, onClose }) => {
+const DocumentUploadModal = ({ isOpen, onClose, accountID }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [docType, setDocType] = useState([]);
 
-  const handleFileInputChange = (event) => {
-    const files = event.target.files;
-    setSelectedFiles((prevFiles) => [...prevFiles, ...files]);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiData = await getDocumentTypes();
+        if (apiData && apiData.attachedDocumentTypes) {
+          const keyNames = apiData.attachedDocumentTypes.map(item => item.keyName);
+          setDocType(keyNames);
+        } else {
+          console.error('Failed to fetch data for Document Types.');
+        }
+      } catch (error) {
+        console.error('Error fetching data for Document Types:', error.message);
+      }
+    };
+  
+    fetchData();
+  }, []);  
+
+//   const handleFileInputChange = (event) => {
+//   const files = event.target.files;
+//   const updatedFiles = Array.from(files).map((file) => ({
+//     fileName: file.name,
+//     accountID: accountID
+//   }));
+
+//   setSelectedFiles((prevFiles) => [...prevFiles, ...updatedFiles]);
+// };
+
+const handleFileInputChange = async (event) => {
+  const files = event.target.files;
+  const updatedFiles = await Promise.all(
+    Array.from(files).map(async (file) => {
+      const base64Data = await readFileAsBase64(file);
+      return {
+        fileName: file.name,
+        data64: base64Data,
+        accountID: accountID
+      };
+    })
+  );
+
+  setSelectedFiles((prevFiles) => [...prevFiles, ...updatedFiles]);
+};
+
+// Function to read file as base64
+const readFileAsBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(',')[1]); // Extract base64 string (excluding data:image/...)
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
+
 
   const handleRemoveDocument = (index) => {
     const updatedFiles = [...selectedFiles];
@@ -24,15 +79,19 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
     // onClose();
   };
 
-  const handleSubjectChange = (index, value) => {
+  const handleSelectChange = (index, value) => {
+    // const selectedValue = event.target.value;
+    // setSelectedDocType(selectedValue);
     const updatedFiles = [...selectedFiles];
-    updatedFiles[index].subject = value;
+    updatedFiles[index].docType = value;
+    // setSelectedDocType(value)
     setSelectedFiles(updatedFiles);
+    // console.log('Selected Document Type:', selectedValue);
   };
 
   const handleNotesChange = (index, value) => {
     const updatedFiles = [...selectedFiles];
-    updatedFiles[index].notes = value;
+    updatedFiles[index].note = value;
     setSelectedFiles(updatedFiles);
   };
 
@@ -87,13 +146,27 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
           <div className="selected-documents max-h-52 overflow-auto">
             {selectedFiles.map((file, index) => (
               <div key={index} className="document-info flex items-center border p-2 rounded-lg justify-between gap-2 mb-2">
-                <span>{file.name.slice(0,10)}...</span>
-                <input
+                <span>{file.fileName.slice(0,10)}...</span>
+                {/* <input
                   type="text"
                   placeholder="Subject"
                   onChange={(e) => handleSubjectChange(index, e.target.value)}
                   className="border p-1 rounded-lg"
-                />
+                /> */}
+                <select
+                  id="docTypeSelect"
+                  // value={selectedDocType}
+                  onChange={(e) => handleSelectChange(index, e.target.value)}
+                  className="py-3 max-w-[220px] rounded-lg"
+                >
+                  <option value="">Select Document Type</option>
+                  {docType.map((typeName, index) => (
+                    <option key={index} value={typeName}>
+                      {typeName}
+                    </option>
+                  ))}
+                </select>
+
                 <input
                   type="text"
                   placeholder="Note"
@@ -125,6 +198,9 @@ const DocumentUploadModal = ({ isOpen, onClose }) => {
 DocumentUploadModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  accountID: PropTypes.string.isRequired,
 };
 
 export default DocumentUploadModal;
+
+

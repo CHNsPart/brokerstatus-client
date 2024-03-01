@@ -56,16 +56,19 @@ import PropTypes from "prop-types";
 import LabeledInput from "../LabeledInput";
 import { useEffect, useState } from "react";
 import { getFullAccountByAccountId } from "../../api/api";
+import { AiOutlineLoading } from "react-icons/ai";
 
 function Details({ accountID }) {
   const [accountDetails, setAccountDetails] = useState({});
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true)
         const apiData = await getFullAccountByAccountId(accountID);
         if (apiData) {
           setAccountDetails(apiData);
+          setLoading(false)
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
         }
@@ -83,19 +86,27 @@ function Details({ accountID }) {
 
   return (
     <>
+    {!loading ? 
+      <>
       {/* First half of the whole response data */}
-      <div className="w-full flex flex-col gap-5">
-        {entries.slice(0, midpoint).map(([key, value]) => (
-          <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
-        ))}
-      </div>
+        <div className="w-full flex flex-col gap-5">
+          {entries.slice(0, midpoint).map(([key, value]) => (
+            <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
+          ))}
+        </div>
 
-      {/* Second half of the whole response data */}
-      <div className="w-full flex flex-col gap-5">
-        {entries.slice(midpoint).map(([key, value]) => (
-          <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
-        ))}
+        {/* Second half of the whole response data */}
+        <div className="w-full flex flex-col gap-5">
+          {entries.slice(midpoint).map(([key, value]) => (
+            <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
+          ))}
+        </div>
+      </>
+      :
+      <div className='w-full h-full flex justify-center p-10'>
+        <AiOutlineLoading className='animate-spin size-10'/>
       </div>
+    }
     </>
   );
 }

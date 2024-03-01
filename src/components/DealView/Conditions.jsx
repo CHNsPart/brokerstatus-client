@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import Button from '../Button';
+// import Button from '../Button';
 import { useEffect, useState } from 'react';
 import { getConditionTrackingByAccoundId } from '../../api/api';
 import { TiTick, TiTimes } from "react-icons/ti";
+import { AiOutlineLoading } from "react-icons/ai";
 
 // function Conditions({ accountID }) {
   
@@ -81,14 +82,17 @@ function Conditions({ accountID }) {
   const [accountConditions, setAccountConditions] = useState([]);
   const [selectedCondition, setSelectedCondition] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true)
         const apiData = await getConditionTrackingByAccoundId(accountID);
         if (apiData) {
           // console.log(apiData.accountConditionsList);
           setAccountConditions(apiData.accountConditionsList);
+          setLoading(false)
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
         }
@@ -113,22 +117,30 @@ function Conditions({ accountID }) {
 
   return (
     <>
-      {accountConditions.map((condition, index) => (
-        <div
-          onClick={() => handleModal(condition)}
-          key={index}
-          className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer"
-        >
-          <div>
-            <span>{index + 1}.</span>
-            {" "}
-            <span>{condition.conditionSetup}</span>
+    {!loading ? 
+      <>
+        {accountConditions.map((condition, index) => (
+          <div
+            onClick={() => handleModal(condition)}
+            key={index}
+            className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer"
+          >
+            <div>
+              <span>{index + 1}.</span>
+              {" "}
+              <span>{condition.conditionSetup}</span>
+            </div>
+            {/* <div className="flex justify-around gap-2">
+              <Button variant={"docUpload"} />
+            </div> */}
           </div>
-          <div className="flex justify-around gap-2">
-            <Button variant={"docUpload"} />
-          </div>
-        </div>
-      ))}
+        ))}
+      </>
+      :
+      <div className='w-full h-full flex justify-center p-10'>
+        <AiOutlineLoading className='animate-spin size-10'/>
+      </div>
+    }
 
       {/* Modal */}
       {isModalOpen && selectedCondition && (

@@ -9,7 +9,7 @@ import { BiMessageAdd } from 'react-icons/bi';
 import useTheme from '../hooks/useTheme';
 import { FaSignOutAlt } from "react-icons/fa";
 
-function Button({ onClick, label, variant }) {
+function Button({ onClick, label, variant, accountID }) {
 
   const { i18n } = useTranslation();
 
@@ -61,7 +61,7 @@ function Button({ onClick, label, variant }) {
           <HiOutlineUpload />
         </button>
         {isModalOpen && (
-            <DocumentUploadModal isOpen={isModalOpen} onClose={closeModal} />
+            <DocumentUploadModal accountID={accountID} isOpen={isModalOpen} onClose={closeModal} />
         )}
       </>
     )
@@ -120,7 +120,8 @@ function Button({ onClick, label, variant }) {
 Button.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string,
-  variant: PropTypes.string
+  variant: PropTypes.string,
+  accountID: PropTypes.string
 };
 
 export default Button;

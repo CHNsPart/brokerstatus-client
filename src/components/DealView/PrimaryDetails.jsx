@@ -42,7 +42,7 @@ export default function PrimaryDetails({ accountID }) {
     <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
        <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"("+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+")"}</span>
        <div className="flex justify-around gap-2">
-        <Button variant={"docUpload"} />
+        <Button accountID={accountID} variant={"docUpload"} />
         {/* <Button variant={"msg"} /> */}
       </div>
     </div>
