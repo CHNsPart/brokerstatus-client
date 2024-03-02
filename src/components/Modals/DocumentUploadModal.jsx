@@ -3,7 +3,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import PropTypes from 'prop-types';
 import { themes } from '../../lib/theme';
 import { getSubdomain } from '../../lib/utils';
-import { getDocumentTypes } from '../../api/api';
+import { getDocumentTypes, uploadDocuments } from '../../api/api';
 
 
 const DocumentUploadModal = ({ isOpen, onClose, accountID }) => {
@@ -27,16 +27,6 @@ const DocumentUploadModal = ({ isOpen, onClose, accountID }) => {
   
     fetchData();
   }, []);  
-
-//   const handleFileInputChange = (event) => {
-//   const files = event.target.files;
-//   const updatedFiles = Array.from(files).map((file) => ({
-//     fileName: file.name,
-//     accountID: accountID
-//   }));
-
-//   setSelectedFiles((prevFiles) => [...prevFiles, ...updatedFiles]);
-// };
 
 const handleFileInputChange = async (event) => {
   const files = event.target.files;
@@ -74,9 +64,22 @@ const readFileAsBase64 = (file) => {
     setSelectedFiles(updatedFiles);
   };
 
-  const handleSendDocuments = () => {
-    console.log(selectedFiles)
-    // onClose();
+  const handleSendDocuments = async () => {
+    if (selectedFiles.length > 0) {
+      try {
+        // Call the uploadDocuments function with selectedFiles
+        const result = await uploadDocuments(selectedFiles);
+
+        if (result) {
+          console.log('Documents uploaded successfully:', result);
+          // You can add further actions here after successful document upload
+        } else {
+          console.error('Failed to upload documents.');
+        }
+      } catch (error) {
+        console.error('Error uploading documents: ', error.message);
+      }
+    }
   };
 
   const handleSelectChange = (index, value) => {
@@ -202,5 +205,12 @@ DocumentUploadModal.propTypes = {
 };
 
 export default DocumentUploadModal;
+
+
+
+
+
+
+
 
 

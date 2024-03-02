@@ -213,7 +213,7 @@ const getConditionTrackingByAccoundId = async (accountID) => {
     return response.data;
   } catch (error) {
     // Handle error cases
-    console.error('Error fetching client broker agent account summaries:', error.message);
+    console.error('Error fetching client broker agent account conditions by ID:', error.message);
     return null;
   }
 };
@@ -245,7 +245,7 @@ const getInternalLoanContactsByAccoundId = async (accountID) => {
     return response.data;
   } catch (error) {
     // Handle error cases
-    console.error('Error fetching client broker agent account summaries:', error.message);
+    console.error('Error fetching client broker agent account internal contacts:', error.message);
     return null;
   }
 };
@@ -261,23 +261,65 @@ const getDocumentTypes = async () => {
     return response.data;
   } catch (error) {
     // Handle error cases
-    console.error('Error fetching client broker agent account summaries:', error.message);
+    console.error('Error fetching client broker agent document types:', error.message);
     return null;
   }
 };
 
-const resetPassword = async () => {
+const resetPassword = async (username) => {
   try {
     const tID =  localStorage.getItem("X-TenantId");
-    const response = await axiosInstance.post(`/resetPassword`, {
+    const response = await axiosInstance.post(`/resetPassword`, 
+    {
+      username,
+    },
+    {
       headers: {
-        tID
+        "X-TenantId": tID,
+      },
+    }
+    );
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent reset password data:', error.message);
+    return null;
+  }
+};
+
+const uploadDocuments = async (files) => {
+  const token = localStorage.getItem("authToken")
+  try {
+    const response = await axiosInstance.post(`/api/attachFileToAccount`, 
+    {
+      files,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    );
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching: ', error.message);
+    return null;
+  }
+};
+
+const getDocumentData = async (accountId, docId) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/api/documentData/${accountId}/${docId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
   } catch (error) {
     // Handle error cases
-    console.error('Error fetching client broker agent account summaries:', error.message);
+    console.error('Error fetching client broker agent documents data:', error.message);
     return null;
   }
 };
@@ -293,5 +335,7 @@ export {
   getInternalLoanContactsByAccoundId,
   getDocumentsByAccoundId,
   getDocumentTypes,
-  resetPassword
+  resetPassword,
+  uploadDocuments,
+  getDocumentData
 };
