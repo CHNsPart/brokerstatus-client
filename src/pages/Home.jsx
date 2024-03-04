@@ -30,6 +30,7 @@ function Home() {
 
   // },[TenantName, isAuthenticated])
   
+  
   return (
     <section className="h-full w-full flex justify-center items-center p-5">
         <div className="flex w-full h-fit justify-center items-center gap-2">
