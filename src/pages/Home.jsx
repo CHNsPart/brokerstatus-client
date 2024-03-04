@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 // import { getSubdomain } from "../lib/utils";
 // import { useAuth } from "../context/AuthContext";
 // import { jwtDecode } from "jwt-decode";
+import useTheme from "../hooks/useTheme";
 
 
 function Home() {
@@ -15,13 +16,18 @@ function Home() {
   // const decodedToken = jwtDecode(token);
   // const { TenantName } = decodedToken;
   
+  useTheme();
+
   // useEffect(() => {
   //   const subdomain = getSubdomain();
     
   //   if ((!subdomain && isAuthenticated) || (subdomain!==TenantName.toLowerCase())) {
   //     localStorage.removeItem('authToken');
-  //     window.location.href = `http://${TenantName.toLowerCase()}.localhost:5173/home`;
+  //     window.location = `http://${TenantName.toLowerCase()}.localhost:5173/home`;
+  //   } else {
+  //     document.title = `${TenantName} | Home`;
   //   }
+
   // },[TenantName, isAuthenticated])
   
   return (

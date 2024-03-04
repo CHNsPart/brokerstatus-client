@@ -1,17 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { themes } from '../lib/theme';
 import PropTypes from 'prop-types';
 import { getSubdomain } from '../lib/utils';
+import { jwtDecode } from 'jwt-decode';
 
 const useTheme =  ( onlyBtn = false ) => {
+  const [subdomain, setSubdomain] = useState(getSubdomain());
 
   useEffect(() => {
-    const subdomain = getSubdomain();
 
+    const token = localStorage.getItem("authToken");
+
+    if(token) {
+      const exist = getSubdomain();
+      console.log("exist",exist)
+      if(exist!==null){
+        setSubdomain(exist)
+      } else {
+        const decodedToken = jwtDecode(token);
+        const { TenantName } = decodedToken; 
+        setSubdomain(TenantName.toLowerCase()); 
+      }
+    }
+    
     const theme = themes[subdomain] || themes.default;
 
     if(onlyBtn) {
-        const themeButton = document.getElementsByClassName("themeButton");
+        const themeButton = document.getElementsByClassName('themeButton');
         for (let i = 0; i < themeButton.length; i++) {
             themeButton[i].style.backgroundColor = theme.primaryButtonBgColor;
             themeButton[i].style.color = theme.primaryButtonTextColor;
@@ -50,7 +65,8 @@ const useTheme =  ( onlyBtn = false ) => {
           logoElement.src = theme.logo;
         }
     }
-  }, []);
+    console.log(subdomain)
+  }, [onlyBtn, subdomain]);
 };
 
 useTheme.propTypes = {

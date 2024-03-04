@@ -64,7 +64,7 @@ const Signin = () => {
   
     if (user) {
       // Login successful, you can navigate or perform other actions
-      console.log('Login successful:', user);
+      // console.log('Login successful:', user);
       window.location = "/home"
     } else {
       // Login failed, handle accordingly
