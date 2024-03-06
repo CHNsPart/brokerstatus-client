@@ -12,15 +12,18 @@ const useTheme =  ( onlyBtn = false ) => {
     const token = localStorage.getItem("authToken");
 
     if(token) {
-      const exist = getSubdomain();
-      console.log("exist",exist)
-      if(exist!==null){
-        setSubdomain(exist)
-      } else {
-        const decodedToken = jwtDecode(token);
-        const { TenantName } = decodedToken; 
-        setSubdomain(TenantName.toLowerCase()); 
-      }
+      const decodedToken = jwtDecode(token);
+      const { TenantName } = decodedToken; 
+      setSubdomain(TenantName.toLowerCase()); 
+      // const exist = getSubdomain();
+      // console.log("exist",exist)
+      // if(exist!==null){
+      //   setSubdomain(exist)
+      // } else {
+      //   const decodedToken = jwtDecode(token);
+      //   const { TenantName } = decodedToken; 
+      //   setSubdomain(TenantName.toLowerCase()); 
+      // }
     }
     
     const theme = themes[subdomain] || themes.default;
