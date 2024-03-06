@@ -1,5 +1,6 @@
 import axios from 'axios';
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
 
 
 const formatter = new Intl.NumberFormat('en-CA', {
