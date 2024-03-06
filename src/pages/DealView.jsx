@@ -21,7 +21,7 @@ function DealView() {
     handleTabs({
       target: document.querySelector('.tabs') || document.createElement('div'), // Mock event
     });
-  }, [handleTabs]);
+  }, []);
 
 
   return (
