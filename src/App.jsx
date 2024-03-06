@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
 import './App.css';
 import Navbar from './components/Navbar';
-// import { exampleNewsData } from './lib/utils';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Signin from './pages/Signin';
-// import LatesNews from './components/LatesNews';
 import ResetPassword from './pages/ResetPassword';
 import Home from './pages/Home';
-// import DocumentLib from './pages/DocumentLib';
 import DealsOverview from './pages/DealsOverview';
 import DealView from './pages/DealView';
 import useTheme from './hooks/useTheme';
@@ -41,7 +37,6 @@ function App() {
               <Route path="*" exact component={Signin} />
             }
         </Switch>
-        {/* <LatesNews newsData={exampleNewsData}/> */}
       </div>
     </Router>
   )
