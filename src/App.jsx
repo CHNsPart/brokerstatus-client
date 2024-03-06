@@ -7,10 +7,11 @@ import Signin from './pages/Signin';
 // import LatesNews from './components/LatesNews';
 import ResetPassword from './pages/ResetPassword';
 import Home from './pages/Home';
-import DocumentLib from './pages/DocumentLib';
+// import DocumentLib from './pages/DocumentLib';
 import DealsOverview from './pages/DealsOverview';
 import DealView from './pages/DealView';
 import useTheme from './hooks/useTheme';
+import ViewAllDeals from './pages/ViewAllDeals';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
               <>
                 <Route path="/home" exact component={Home} />
                 <Route path="/deals" exact component={DealsOverview} />
-                <Route path="/docs" exact component={DocumentLib} />
+                <Route path="/allDeals" exact component={ViewAllDeals} />
                 <Route path="/dview/:accountID" exact component={DealView} />
               </>
               :

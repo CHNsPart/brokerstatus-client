@@ -1,23 +1,29 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { getDocumentData, getDocumentsByAccoundId } from "../../api/api";
+import Loading from "../Loading";
 
 function Documents({ accountID }) {
   const [accountDocuments, setAccountDocuments] = useState({});
+  const [loading, setLoading] = useState(false);
 
   console.log(accountDocuments);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       try {
         const apiData = await getDocumentsByAccoundId(accountID);
         if (apiData) {
-          // console.log(apiData);
+          console.log(apiData);
           setAccountDocuments(apiData);
+          setLoading(false)
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
+          setLoading(false)
         }
       } catch (error) {
         console.error('Error fetching data for PipelineDeals:', error.message);
+        setLoading(false)
       }
     };
 
@@ -45,30 +51,38 @@ function Documents({ accountID }) {
 
   return (
     <>
-      <span className="font-semibold text-black">Uploaded Documents</span>
-      {/* attachedDocuments loop */}
-      {accountDocuments.attachedDocuments &&
-        accountDocuments.attachedDocuments.map((document, index) => (
-          <div
-            key={index}
-            onClick={() => handleDocumentClick(document)}
-            className="border-2 p-2 flex justify-between items-center w-full rounded-lg gap-2 hover:bg-zinc-100 transition-all cursor-pointer"
-          >
-            {document.fileName}
-          </div>
-        ))}
-      <span className="font-semibold text-black">System Generated Documents</span>
-      {/* mergedDocuments loop */}
-      {accountDocuments.mergedDocuments &&
-        accountDocuments.mergedDocuments.map((document, index) => (
-          <div
-            key={index}
-            onClick={() => handleDocumentClick(document)}
-            className="border-2 p-2 flex justify-between items-center w-full rounded-lg gap-2 hover:bg-zinc-100 transition-all cursor-pointer"
-          >
-            {document.fileName}
-          </div>
-        ))}
+      {!loading ?  
+        <>
+          {/* attachedDocuments loop */}
+          {accountDocuments.attachedDocuments &&
+            accountDocuments.attachedDocuments.map((document, index) => (
+              <div
+                key={index}
+                onClick={() => handleDocumentClick(document)}
+                className="border-2 p-2 flex items-center w-full rounded-lg gap-2 hover:bg-zinc-100 transition-all cursor-pointer"
+              >
+                <span className="w-1/3 text-left">{document.fileName}</span>
+                <span className="w-1/3 text-center">Broker Uploaded Documents</span>
+                <span className="w-1/3 text-right">{document.createdDate}</span>
+              </div>
+            ))}
+          {/* mergedDocuments loop */}
+          {accountDocuments.mergedDocuments &&
+            accountDocuments.mergedDocuments.map((document, index) => (
+              <div
+                key={index}
+                onClick={() => handleDocumentClick(document)}
+                className="border-2 p-2 flex items-center w-full rounded-lg gap-2 hover:bg-zinc-100 transition-all cursor-pointer"
+              >
+                <span className="w-1/3 text-left">{document.fileName}</span>
+                <span className="w-1/3 text-center">System Generated Documents</span>
+                <span className="w-1/3 text-right">{document.created}</span>
+              </div>
+            ))}
+          </>
+          :
+          <Loading/>
+      }
     </>
   );
 }

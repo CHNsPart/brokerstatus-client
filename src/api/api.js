@@ -1,4 +1,13 @@
 import axios from 'axios';
+import * as dayjs from 'dayjs'
+dayjs().format()
+
+
+const formatter = new Intl.NumberFormat('en-CA', {
+  style: 'currency',
+  currency: 'CAD',
+});
+
 
 export const API_BASE_URL = 'https://unifi-api-brokerui-dev.azurewebsites.net'; // Update with your backend API URL
 
@@ -51,15 +60,36 @@ const login = async (username, password) => {
   }
 };
 
-const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
+
+const getBrokerAccounts = async (page, pageSize) => {
   try {
-    const token = localStorage.getItem("authToken")
+    const token = localStorage.getItem("authToken");
     const response = await axiosInstance.get(`/api/brokerAccounts?page=${page}&pageSize=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+
+    if (response && response.data && Array.isArray(response.data)) {
+      const data = response.data
+      // Map and modify the key names
+      const modifiedData = data.map((account) => ({
+        "Broker": account.brokerName,
+        "Status": account.status,
+        "Purpose": account.loanPurpose,
+        "Mortgage": account.accountID,
+        "BorrowerName": account.primaryClient,
+        "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD hh:mm A"),
+        "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD hh:mm A"),
+        "Amount": formatter.format(account.totalAmount),
+        "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
+      }));
+
+      return modifiedData;
+    } else {
+      console.error('Invalid data format received from the server.');
+      return null;
+    }
   } catch (error) {
     // Handle error cases
     console.error('Error fetching client broker agent account summaries:', error.message);
@@ -67,123 +97,37 @@ const getClientBrokerAgentAccountSummaries = async (page, pageSize) => {
   }
 };
 
-// const getAccountByAccountId = async (accoundID) => {
-//   try {
-//     const token = localStorage.getItem("authToken")
-//     const response = await axiosInstance.get(`/api/accountDetails/${accoundID}`, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     const forgedData = [
-//       {
-//         label:"Purpose of Loan",
-//         type: "text",
-//         value: response.data.loanPurpose
-//       },
-//       {
-//         label:"Request of Amount",
-//         type: "number",
-//         value: response.data.totalAmount
-//       },
-//       {
-//         label:"Est. Value/pur Price",
-//         type: "number",
-//         value: response.data.totalPurchasePrice
-//       },
-//       {
-//         label:"LTV",
-//         type: "number",
-//         value: response.data.currCombinedLTV
-//       },
-//       {
-//         label:"Term",
-//         type: "text",
-//         value: response.data.term
-//       },
-//       {
-//         label:"Amortization",
-//         type: "number",
-//         value: response.data.blendedAmort
-//       },
-//       {
-//         label:"Closing Date",
-//         type: "text",
-//         value: response.data.closingDate
-//       },
-//       {
-//         label:"First Payment Date",
-//         type: "text",
-//         value: response.data.firstPymtDate
-//       },
-//       {
-//         label:"Solicitor Name",
-//         type: "text",
-//         value: response.data.primaryClient
-//       },
-//       {
-//         label:"Solicitor Firm",
-//         type: "text",
-//         value: response.data.propertyAddress
-//       },
-//       {
-//         label:"App Received Date",
-//         type: "text",
-//         value: response.data.applicationDate
-//       },
-//       {
-//         label:"Total Mortgage",
-//         type: "number",
-//         value: response.data.totalDownPaymentAmt
-//       },
-//       {
-//         label:"Product",
-//         type: "text",
-//         value: response.data.product
-//       },
-//       {
-//         label:"Product Type",
-//         type: "text",
-//         value: response.data.rateType
-//       },
-//       {
-//         label:"Interest Rate",
-//         type: "number",
-//         value: response.data.interestRate
-//       },
-//       {
-//         label:"Principal And Interest",
-//         type: "number",
-//         value: response.data.principal
-//       },
-//       {
-//         label:"Insurer",
-//         type: "text",
-//         value: response.data.mortgageInsurer
-//       },
-//       {
-//         label:"Insurer Ref Number",
-//         type: "text",
-//         value: response.data.primaryKey
-//       },
-//       {
-//         label:"Insurance Premium",
-//         type: "number",
-//         value: response.data.insurancePremium
-//       },
-//       {
-//         label:"Payment Frequency",
-//         type: "number",
-//         value: response.data.gds
-//       },
-//     ]
-//     return forgedData;
-//   } catch (error) {
-//     // Handle error cases
-//     console.error('Error fetching client broker agent account summaries:', error.message);
-//     return null;
-//   }
-// };
+
+const getBrokerPipelineAccounts = async (page, pageSize) => {
+  try {
+    const token = localStorage.getItem("authToken")
+    const response = await axiosInstance.get(`/api/brokerPipelineAccounts?page=${page}&pageSize=${pageSize}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const modifiedData = response.data.map(account => ({
+      "Broker": account.brokerName,
+      "Status": account.status,
+      "Purpose": account.loanPurpose,
+      "Mortgage": account.accountID,
+      "BorrowerName": account.primaryClient,
+      "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD hh:mm A"),
+      "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD hh:mm A"),
+      "Amount": formatter.format(account.totalAmount),
+      "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
+    }));
+
+    return modifiedData;
+
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent account summaries:', error.message);
+    return null;
+  }
+};
+
 
 const getFullAccountByAccountId = async (accoundID) => {
   try {
@@ -328,8 +272,9 @@ export {
   axiosInstance, 
   setAuthToken, 
   login, 
-  getClientBrokerAgentAccountSummaries, 
   getFullAccountByAccountId,
+  getBrokerAccounts, 
+  getBrokerPipelineAccounts,
   // getAccountByAccountId,
   getConditionTrackingByAccoundId,
   getInternalLoanContactsByAccoundId,

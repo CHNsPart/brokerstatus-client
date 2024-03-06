@@ -22,7 +22,9 @@
 
   "home": {
     "dealBtn" : "Deals Overview",
-    "docBtn" : "Document Library"
+    "docBtn" : "Document Library",
+    "allDeals" : "View All  Deals",
+    "pipeDeals": "View Pipeline Deals"
   },
 
   "documentLib": {
@@ -36,10 +38,24 @@
   },
 
   "dealsSearch": {
+    "Broker": "Broker",
+    "Status": "Status",
+    "Purpose": "Purpose",
+    "Mortgage #": "Mortgage #",
+    "Borrower Name": "Borrower Name",
+    "App Date": "App Date",
+    "Closing Date": "Closing Date",
+    "Amount": "Amount",
+    "Condtions": "Condtions",
+    "Actions": "Actions",
+
+
     "DealsSearch": "Deals Search",
+    "PipelineDeals": "Pipeline Deals",
+    "AllDocs": "All Deals",
     "BDM": "BDM",
     "MortgageNumber": "Mortgage Number / Source App ID",
-    "BorrowerLastName": "Borrower Last Name",
+    "BorrowerName": "Borrower Name",
     "Agent": "Agent",
     "DateType": "Date Type",
     "From": "From",

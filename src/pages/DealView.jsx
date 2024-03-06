@@ -15,15 +15,14 @@ function DealView() {
 
   const { accountID } = useParams(); 
   const { t } = useTranslation();
+  const { activeTab, handleTabs } = useTabs();
 
   useEffect(() => {
-    // Run handleTabs on the initial render
     handleTabs({
       target: document.querySelector('.tabs') || document.createElement('div'), // Mock event
     });
-  }, []);
+  }, [handleTabs]);
 
-  const { activeTab, handleTabs } = useTabs();
 
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">

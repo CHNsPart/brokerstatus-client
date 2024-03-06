@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button";
 import LabeledInput from "../LabeledInput";
 import PropTypes from "prop-types";
+import { Tooltip } from 'react-tooltip'
 import { getFullAccountByAccountId } from "../../api/api";
 
 export default function PrimaryDetails({ accountID }) {
@@ -40,11 +41,13 @@ export default function PrimaryDetails({ accountID }) {
   return (
     <div className="border-2 p-5">
     <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
-       <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"("+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+")"}</span>
-       <div className="flex justify-around gap-2">
+       <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+" )"}</span>
+       
+       <div className="flex justify-around gap-2" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
         <Button accountID={accountID} variant={"docUpload"} />
         {/* <Button variant={"msg"} /> */}
       </div>
+      <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
     </div>
     <div className="flex flex-col md:flex-row justify-between items-center gap-5">
         <div className="flex flex-col w-full gap-5 items-center">

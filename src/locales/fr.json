@@ -17,7 +17,9 @@
   },
   "home": {
     "dealBtn" : "Aperçu des offres",
-    "docBtn" : "Bibliothèque de documents"
+    "docBtn" : "Bibliothèque de documents",
+    "allDeals" : "Voir toutes les offres",
+    "pipeDeals": "Voir les offres en pipeline"
   },
   "documentLib": {
     "Document Library": "Bibliothèque de documents",
@@ -29,10 +31,24 @@
     "Trailer Fee Calculator": "Calculateur de frais de remorque"
   },
   "dealsSearch": {
+    "Broker": "Courtier",
+    "Status": "Statut",
+    "Purpose": "Objectif",
+    "Mortgage #": "Hypothèque #",
+    "Borrower Name": "Nom de l'emprunteur",
+    "App Date": "Date de demande",
+    "Closing Date": "Date de clôture",
+    "Amount": "Montant",
+    "Condtions": "Conditions",
+    "Actions": "Actions",
+    
+
     "DealsSearch": "Recherche d'offres",
+    "PipelineDeals": "Deals en Pipeline",
+    "AllDocs": "Toutes les offres",
     "BDM": "BDM",
     "MortgageNumber": "Numéro de prêt hypothécaire / ID d'application source",
-    "BorrowerLastName": "Nom du demandeur",
+    "BorrowerName": "Nom de l'emprunteur",
     "Agent": "Agent",
     "DateType": "Type de date",
     "From": "De",

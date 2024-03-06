@@ -8,7 +8,7 @@ const useTabs = () => {
   const [subdomain, setSubdomain] = useState(getSubdomain());
 
   const handleTabs = (e) => {
-
+    
     const token = localStorage.getItem("authToken");
 
     if(token) {

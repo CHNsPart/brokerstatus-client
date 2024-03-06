@@ -35,10 +35,11 @@ function Home() {
     <section className="h-full w-full flex justify-center items-center p-5">
         <div className="flex w-full h-fit justify-center items-center gap-2">
           <Link to={"/deals"}>
-              <Button variant={"tile"} label={t('home.dealBtn')} />
+              <Button variant={"tile"} label={t('home.pipeDeals')} />
           </Link>
-          <Link to={"/docs"}>
-              <Button variant={"tile"} label={t('home.docBtn')} />
+          <Link to={"/allDeals"}>
+              {/* <Button variant={"tile"} label={t('home.docBtn')} /> */}
+              <Button variant={"tile"} label={t('home.allDeals')} />
           </Link>
         </div>
     </section>
@@ -46,3 +47,15 @@ function Home() {
 }
 
 export default Home
+
+
+// Default Intellifi****
+// Document Library****
+// View Pipeline Deals (1st Tile)****
+// View All  Deals (2nd Tile)****
+// DealView flex styling setTop)****
+// Loading everywhere)****
+// Borrower Name and AccID in search)****
+// tooltip for the uploadBtn)****
+// Oustanding Condition)****
+// dOCUMENTS LIKE PDF****

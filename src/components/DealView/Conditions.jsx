@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { getConditionTrackingByAccoundId } from '../../api/api';
 import { TiTick, TiTimes } from "react-icons/ti";
-import { AiOutlineLoading } from "react-icons/ai";
+import Loading from "../Loading";
 
 // function Conditions({ accountID }) {
   
@@ -123,7 +123,7 @@ function Conditions({ accountID }) {
           <div
             onClick={() => handleModal(condition)}
             key={index}
-            className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer"
+            className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer hover:bg-zinc-100"
           >
             <div>
               <span>{index + 1}.</span>
@@ -137,9 +137,7 @@ function Conditions({ accountID }) {
         ))}
       </>
       :
-      <div className='w-full h-full flex justify-center p-10'>
-        <AiOutlineLoading className='animate-spin size-10'/>
-      </div>
+      <Loading/>
     }
 
       {/* Modal */}
