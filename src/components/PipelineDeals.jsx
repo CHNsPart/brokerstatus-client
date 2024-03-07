@@ -4,7 +4,12 @@ import Button from './Button';
 import { useTranslation } from 'react-i18next';
 import { getBrokerPipelineAccounts, getBrokerAccounts } from '../api/api';
 import Loading from './Loading';
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
+import isBetween from 'dayjs/plugin/isBetween'; // Import the isBetween plugin
 
+dayjs.locale('en'); 
+dayjs.extend(isBetween);
 function PipelineDeals({ searchData, allDocs }) {
   const { t } = useTranslation();
 
@@ -23,7 +28,7 @@ function PipelineDeals({ searchData, allDocs }) {
           setLoading(true)
           const apiData = await getBrokerAccounts(currentPage, pageSize);
           if (apiData) {
-            console.log("all",apiData)
+            // console.log("all",apiData)
             setData(apiData);
             applyFilters(apiData);
             setLoading(false)
@@ -40,7 +45,7 @@ function PipelineDeals({ searchData, allDocs }) {
           setLoading(true)
           const apiData = await getBrokerPipelineAccounts(currentPage, pageSize);
           if (apiData) {
-            console.log("pipe",apiData)
+            // console.log("pipe",apiData)
             setData(apiData);
             applyFilters(apiData);
             setLoading(false)
@@ -68,25 +73,27 @@ function PipelineDeals({ searchData, allDocs }) {
     
       // Filter by brokerUniqueID (mnumber)
       if (searchData.mnumber) {
-        updatedData = updatedData.filter(item => item.accountID.includes(searchData.mnumber));
+        updatedData = updatedData.filter(item => item.Mortgage.includes(searchData.mnumber));
       }
     
       // Filter by brokerName (blname)
       if (searchData.blname) {
-        updatedData = updatedData.filter(item => item.primaryClient.toLowerCase().includes(searchData.blname.toLowerCase()));
+        updatedData = updatedData.filter(item => item.BorrowerName.toLowerCase().includes(searchData.blname.toLowerCase()));
       }
-    
-      // Filter by date (applicationDate or closingDate)
+
       if (searchData.dtype && searchData.from && searchData.to) {
-        const dateField = searchData.dtype === 'Application Date' ? 'applicationDate' : 'closingDate';
+        const dateField = searchData.dtype === 'Application Date' ? 'App Date' : 'Closing Date';
+      
         updatedData = updatedData.filter(item => {
-          const date = new Date(item[dateField]).setHours(0, 0, 0, 0);
-          const fromDate = new Date(searchData.from).setHours(0, 0, 0, 0);
-          const toDate = new Date(searchData.to).setHours(0, 0, 0, 0);
-          setLoading(false)
-          return date >= fromDate && date <= toDate;
+          const date = dayjs(item[dateField], 'YYYY-MM-DD'); // Parse the date with the correct format
+          const fromDate = dayjs(searchData.from, 'YYYY-MM-DD');
+          const toDate = dayjs(searchData.to, 'YYYY-MM-DD').endOf('day');
+      
+          setLoading(false);
+          return date.isBetween(fromDate, toDate, null, '[]');
         });
       }
+      
     
       // Update filteredData with the filtered results
       setFilteredData(updatedData);

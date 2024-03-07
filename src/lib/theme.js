@@ -9,12 +9,12 @@ export const themes = {
     backgroundColor: "#fff",
     textColor: "#333333",
     navBackgroundColor: "#fff",
-    navTextColor: "#333",
-    primaryButtonBgColor: "#310872",
-    secondaryButtonBgColor: "#310872",
-    primaryButtonTextColor: "#fff",
-    latestNewsColor: "#310872",
-    logo: intellifi
+    navTextColor: "#ffffff",
+    primaryButtonBgColor: "#00467f",
+    secondaryButtonBgColor: "#03a9f4",
+    primaryButtonTextColor: "#ffffff",
+    latestNewsColor: "#00467f",
+    logo: cmls
   },
   cmls: {
     backgroundColor: "#fff",

@@ -79,8 +79,8 @@ const getBrokerAccounts = async (page, pageSize) => {
         "Purpose": account.loanPurpose,
         "Mortgage": account.accountID,
         "BorrowerName": account.primaryClient,
-        "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD hh:mm A"),
-        "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD hh:mm A"),
+        "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD"),
+        "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD"),
         "Amount": formatter.format(account.totalAmount),
         "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
       }));
@@ -113,8 +113,8 @@ const getBrokerPipelineAccounts = async (page, pageSize) => {
       "Purpose": account.loanPurpose,
       "Mortgage": account.accountID,
       "BorrowerName": account.primaryClient,
-      "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD hh:mm A"),
-      "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD hh:mm A"),
+      "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD"),
+      "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD"),
       "Amount": formatter.format(account.totalAmount),
       "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
     }));
