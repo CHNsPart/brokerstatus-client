@@ -72,12 +72,10 @@ function PipelineDeals({ searchData, allDocs }) {
     
       let updatedData = apiData;
     
-      // Filter by brokerUniqueID (mnumber)
       if (searchData.mnumber) {
         updatedData = updatedData.filter(item => item.Mortgage.includes(searchData.mnumber));
       }
     
-      // Filter by brokerName (blname)
       if (searchData.blname) {
         updatedData = updatedData.filter(item => item.BorrowerName.toLowerCase().includes(searchData.blname.toLowerCase()));
       }
