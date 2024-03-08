@@ -145,7 +145,8 @@ function Conditions({ accountID }) {
         <div onClick={closeModal} className="absolute cursor-zoom-out h-screen top-0 left-0 w-full z-10 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-12 rounded-lg flex flex-col gap-4 justify-center z-50 items-center max-w-2xl relative">
             <span className="cursor-pointer text-gray-500 text-xl absolute top-2 right-2" onClick={closeModal}>&times;</span>
-            <p>{selectedCondition.clause}</p>
+            <p className='text-xl font-semibold'>{selectedCondition.conditionSetup}</p>
+            <p className='text-justify'>{selectedCondition.clause}</p>
             <div className='flex gap-2 mt-4'>
               <span className='flex items-center'>
                 Active:{" "}

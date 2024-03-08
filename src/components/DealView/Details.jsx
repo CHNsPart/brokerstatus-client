@@ -57,7 +57,11 @@ import LabeledInput from "../LabeledInput";
 import { useEffect, useState } from "react";
 import { getFullAccountByAccountId } from "../../api/api";
 import { AiOutlineLoading } from "react-icons/ai";
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
+import { formatter } from "../../lib/utils";
 
+dayjs.locale('en'); 
 function Details({ accountID }) {
   const [accountDetails, setAccountDetails] = useState({});
   const [loading, setLoading] = useState(false);
@@ -67,6 +71,7 @@ function Details({ accountID }) {
         setLoading(true)
         const apiData = await getFullAccountByAccountId(accountID);
         if (apiData) {
+          // console.log(apiData)
           setAccountDetails(apiData);
           setLoading(false)
         } else {
@@ -91,14 +96,40 @@ function Details({ accountID }) {
       {/* First half of the whole response data */}
         <div className="w-full flex flex-col gap-5">
           {entries.slice(0, midpoint).map(([key, value]) => (
-            <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
+            <LabeledInput key={key} label={key} 
+              value=
+              {
+                (key === "applicationDate" || key === "closingDate") 
+                ? 
+                  dayjs(value).format('YYYY-MM-DD') 
+                : 
+                  (key === "totalAmount") 
+                  ? 
+                    formatter.format(value)
+                  :
+                    value
+              } 
+              type={'string'} />
           ))}
         </div>
 
         {/* Second half of the whole response data */}
         <div className="w-full flex flex-col gap-5">
           {entries.slice(midpoint).map(([key, value]) => (
-            <LabeledInput key={key} label={key} value={value} type={typeof value === 'number' ? 'number' : 'string'} />
+            <LabeledInput key={key} label={key} 
+              value=
+              {
+                (key === "firstPymtDate") 
+                ? 
+                  dayjs(value).format('YYYY-MM-DD') 
+                : 
+                  (key === "totalDownPaymentAmt" || key === "totalPurchasePrice" || key === "pymtAmount") 
+                  ? 
+                    formatter.format(value)
+                  :
+                    value
+              } 
+              type={'string'} />
           ))}
         </div>
       </>

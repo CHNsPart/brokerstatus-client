@@ -1,12 +1,7 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-
-
-const formatter = new Intl.NumberFormat('en-CA', {
-  style: 'currency',
-  currency: 'CAD',
-});
+import { formatter } from '../lib/utils';
 
 
 export const API_BASE_URL = 'https://unifi-api-brokerui-dev.azurewebsites.net'; // Update with your backend API URL

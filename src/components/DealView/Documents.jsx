@@ -37,13 +37,13 @@ function Documents({ accountID }) {
         const result = await getDocumentData(accountID, document.id);
 
         if (result) {
-          console.log('Documents uploaded successfully:', result);
+          console.log('Documents downloaded successfully:', result);
         } else {
-          console.error('Failed to upload documents.');
+          console.error('Failed to downloaded documents.');
         }
 
       } catch (error) {
-        console.error('Error uploading documents: ', error.message);
+        console.error('Error downloading documents: ', error.message);
       }
     }
     // Perform any other action you need with the document ID
@@ -74,7 +74,7 @@ function Documents({ accountID }) {
                 onClick={() => handleDocumentClick(document)}
                 className="border-2 p-2 flex items-center w-full rounded-lg gap-2 hover:bg-zinc-100 transition-all cursor-pointer"
               >
-                <span className="w-1/3 text-left">{document.fileName}</span>
+                <span className="w-1/3 text-left">{document.fileName}{document.fileExtention}</span>
                 <span className="w-1/3 text-center">System Generated Documents</span>
                 <span className="w-1/3 text-right">{document.created}</span>
               </div>

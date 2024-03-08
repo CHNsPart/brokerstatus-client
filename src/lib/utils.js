@@ -3,6 +3,11 @@ export function getSubdomain() {
     return parts.length > 1 ? parts[0] : null;
 }
 
+export const formatter = new Intl.NumberFormat('en-CA', {
+  style: 'currency',
+  currency: 'CAD',
+});
+
 export const exampleNewsData = [
     {       
         id: 1,

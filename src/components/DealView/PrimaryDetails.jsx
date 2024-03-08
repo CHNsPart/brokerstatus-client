@@ -4,7 +4,11 @@ import LabeledInput from "../LabeledInput";
 import PropTypes from "prop-types";
 import { Tooltip } from 'react-tooltip'
 import { getFullAccountByAccountId } from "../../api/api";
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
+import { formatter } from "../../lib/utils";
 
+dayjs.locale('en'); 
 export default function PrimaryDetails({ accountID }) {
   
   const [primaryDetails, setPrimaryDetails] = useState([]);
@@ -37,29 +41,28 @@ export default function PrimaryDetails({ accountID }) {
   //   return newStr;
   // }
 
-
   return (
     <div className="border-2 p-5">
-    <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
-       <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+" )"}</span>
-       
-       <div className="flex justify-around gap-2" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
-        <Button accountID={accountID} variant={"docUpload"} />
-        {/* <Button variant={"msg"} /> */}
+      <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
+        <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+" )"}</span>
+        
+        <div className="flex justify-around gap-2" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
+          <Button accountID={accountID} variant={"docUpload"} />
+          {/* <Button variant={"msg"} /> */}
+        </div>
+        <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
       </div>
-      <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
+      <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+          <div className="flex flex-col w-full gap-5 items-center">
+              <LabeledInput label={"Amount"} type="string" value={formatter.format(primaryDetails.totalAmount)} />
+              <LabeledInput label={"Property"} type="string" value={primaryDetails.propertyAddress} />
+          </div>
+          <div className="flex flex-col w-full gap-5 items-center">
+              <LabeledInput label={"Closing"} type="string" value={dayjs(primaryDetails.closingDate).format('YYYY-MM-DD')} />
+              <LabeledInput label={"Product"} type="string" value={primaryDetails.product} />
+          </div>
+      </div>
     </div>
-    <div className="flex flex-col md:flex-row justify-between items-center gap-5">
-        <div className="flex flex-col w-full gap-5 items-center">
-            <LabeledInput label={"Amount"} type="number" value={primaryDetails.totalAmount} />
-            <LabeledInput label={"Property"} type="text" value={primaryDetails.propertyAddress} />
-        </div>
-        <div className="flex flex-col w-full gap-5 items-center">
-            <LabeledInput label={"Closing"} type="text" value={primaryDetails.closingDate} />
-            <LabeledInput label={"Product"} type="text" value={primaryDetails.product} />
-        </div>
-    </div>
-</div>
   )
 }
 

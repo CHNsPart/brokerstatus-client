@@ -7,8 +7,9 @@ import Loading from './Loading';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import isBetween from 'dayjs/plugin/isBetween'; // Import the isBetween plugin
+import { Tooltip } from 'react-tooltip'
 
-dayjs.locale('en'); 
+dayjs.locale('en');
 dayjs.extend(isBetween);
 function PipelineDeals({ searchData, allDocs }) {
   const { t } = useTranslation();
@@ -175,10 +176,11 @@ function PipelineDeals({ searchData, allDocs }) {
                           )}
                         </td>
                       ))}
-                      <td className="border px-5 w-full h-full p-2 flex gap-2 items-center justify-around">
+                      <td className="border px-5 w-full h-full p-2 flex gap-2 items-center justify-around" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
                         <Button variant={"docUpload"} />
                         {/* <Button variant={"msg"} /> */}
                       </td>
+                      <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
                     </tr>
                   ))}
                 </tbody>
