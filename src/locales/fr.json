@@ -7,7 +7,8 @@
     "resetPassword": "Réinitialiser le mot de passe",
     "signin": "Se connecter",
     "Username": "Nom d'utilisateur",
-    "Password": "Mot de passe"
+    "Password": "Mot de passe",
+    "error": "Identifiants incorrects!"
   },
   "resetPassword": {
     "resetPassword": "Réinitialiser le mot de passe"
@@ -39,7 +40,7 @@
     "App Date": "Date de demande",
     "Closing Date": "Date de clôture",
     "Amount": "Montant",
-    "Condtions": "Conditions",
+    "Conditions": "Conditions",
     "Actions": "Actions",
     
 
@@ -67,7 +68,9 @@
   "dealView": {
     "backtoList": "Retour à la liste",
     "tabs": {
-      "Details": "Détails"
+      "Details": "Détails",
+      "Conditions": "Conditions",
+      "Documents": "Documents"
     },
     "details":{
       "Purpose of Loan": "Objectif du prêt",

@@ -69,22 +69,22 @@ function DealsSearch({ onSearch }) {
                             <input value={formData.bdm} onChange={handleChange} autoComplete="off" id="bdm" type='text' />
                         </div> */}
                         <div className="w-full flex justify-between items-center gap-2">
-                            <label className="font-semibold" htmlFor="mnumber">{t("dealsSearch.MortgageNumber")}</label>
+                            <label className="labels font-semibold" htmlFor="mnumber">{t("dealsSearch.MortgageNumber")}</label>
                             <input  className="lg:max-w-fit" value={formData.mnumber} onChange={handleChange} autoComplete="off" id="mnumber" type='text' />
                         </div>
                         <div className="w-full flex justify-between items-center gap-2">
-                            <label className="font-semibold" htmlFor="blname">{t("dealsSearch.BorrowerName")}</label>
+                            <label className="labels font-semibold" htmlFor="blname">{t("dealsSearch.BorrowerName")}</label>
                             <input  className="lg:max-w-fit" value={formData.blname} onChange={handleChange} autoComplete="off" id="blname" type='text' />
                         </div>
                     </div>
                     {/* Second Col */}
                     <div className="w-full md:w-2/4 flex flex-col justify-between gap-2">
                         {/* <div className="w-full flex justify-between items-center gap-2">
-                            <label className="font-semibold" htmlFor="agent">{t("dealsSearch.Agent")}</label>
+                            <label className="labels font-semibold" htmlFor="agent">{t("dealsSearch.Agent")}</label>
                             <input value={formData.agent} onChange={handleChange} autoComplete="off" id="agent" type='text' />
                         </div> */}
                         <div className="w-full flex justify-between items-center gap-2">
-                            <label className="font-semibold" htmlFor="dtype">{t("dealsSearch.DateType")}</label>
+                            <label className="labels font-semibold" htmlFor="dtype">{t("dealsSearch.DateType")}</label>
                             <select className="px-2 py-2.5 w-2/3 rounded-md" value={formData.dtype} onChange={handleChange} id="dtype">
                                 <option>{t("dealsSearch.ADate")}</option>
                                 <option>{t("dealsSearch.CDate")}</option>
@@ -93,11 +93,11 @@ function DealsSearch({ onSearch }) {
 
                         <div className="flex flex-col lg:flex-row gap-2">
                             <div className="w-full flex justify-between items-center gap-2">
-                                <label className="font-semibold" htmlFor="from">{t("dealsSearch.From")}</label>
+                                <label className="labels font-semibold" htmlFor="from">{t("dealsSearch.From")}</label>
                                 <input  className="lg:max-w-fit" value={formData.from} onChange={handleChange} autoComplete="off" id="from" type='date' />
                             </div>
                             <div className="w-full flex justify-between items-center gap-2">
-                                <label className="font-semibold" htmlFor="to">{t("dealsSearch.To")}</label>
+                                <label className="labels font-semibold" htmlFor="to">{t("dealsSearch.To")}</label>
                                 <input  className="lg:max-w-fit" value={formData.to} onChange={handleChange} autoComplete="off" id="to" type='date' />
                             </div>
                         </div>
@@ -106,19 +106,19 @@ function DealsSearch({ onSearch }) {
                     {/* <div className="w-full md:w-1/5 flex flex-col gap-2">
                         <div className="w-full flex justify-between items-center gap-2">
                             <input value={formData.selectAll} checked={formData.selectAll} onChange={handleChange} autoComplete="off" id="selectAll" type='checkbox' />
-                            <label className="font-semibold" htmlFor="selectAll">{t("dealsSearch.SelectAll")}</label>
+                            <label className="labels font-semibold" htmlFor="selectAll">{t("dealsSearch.SelectAll")}</label>
                         </div>
                         <div className="w-full flex justify-between items-center gap-2">
                             <input value={formData.appReceived} checked={formData.appReceived} onChange={handleChange} autoComplete="off" id="appReceived" type='checkbox' />
-                            <label className="font-semibold" htmlFor="appReceived">{t("dealsSearch.AppReceived")}</label>
+                            <label className="labels font-semibold" htmlFor="appReceived">{t("dealsSearch.AppReceived")}</label>
                         </div>
                         <div className="w-full flex justify-between items-center gap-2">
                             <input value={formData.inUnderwriting} checked={formData.inUnderwriting} onChange={handleChange} autoComplete="off" id="inUnderwriting" type='checkbox' />
-                            <label className="font-semibold" htmlFor="inUnderwriting">{t("dealsSearch.InUnderwriting")}</label>
+                            <label className="labels font-semibold" htmlFor="inUnderwriting">{t("dealsSearch.InUnderwriting")}</label>
                         </div>
                         <div className="w-full flex justify-between items-center gap-2">
                             <input value={formData.readyToFund} checked={formData.readyToFund} onChange={handleChange} autoComplete="off" id="readyToFund" type='checkbox' />
-                            <label className="font-semibold" htmlFor="readyToFund">{t("dealsSearch.ReadyToFund")}</label>
+                            <label className="labels font-semibold" htmlFor="readyToFund">{t("dealsSearch.ReadyToFund")}</label>
                         </div>
                     </div> */}
                     </div>

@@ -1,57 +1,3 @@
-// import PropTypes from "prop-types";
-// import LabeledInput from "../LabeledInput";
-// import { useEffect, useState } from "react";
-// import { getFullAccountByAccountId } from "../../api/api";
-// // getAccountByAccountId
-// function Details({ accountID }) {
-
-//   const  [accountDetails, setAccountDetails] = useState([]);
-
-//   useEffect(() => {
-    
-//     const fetchData = async () => {
-//       try {
-//         const apiData = await getFullAccountByAccountId(accountID);
-//         if (apiData) {
-//           setAccountDetails(apiData)
-//         } else {
-//           console.error('Failed to fetch data for PipelineDeals.');
-//         }
-//       } catch (error) {
-//         console.error('Error fetching data for PipelineDeals:', error.message);
-//       }
-//     };
-
-//     fetchData();
-//   }, [accountID]); 
-
-//   const splitIndex = Math.ceil(accountDetails.length / 2);
-//   const f1Data = accountDetails.slice(0, splitIndex);
-//   const f2Data = accountDetails.slice(splitIndex);
-
-//   return (
-//     <>
-//       <div className="w-full flex flex-col gap-5">
-//         {f1Data.map((item, index) => (
-//           <LabeledInput key={index} {...item} />
-//         ))}
-//       </div>
-//       <div className="w-full flex flex-col gap-5">
-//         {f2Data.map((item, index) => (
-//           <LabeledInput key={index + splitIndex} {...item} />
-//         ))}
-//       </div>
-//     </>
-//   );
-// }
-
-// Details.propTypes = {
-//   accountID: PropTypes.string.isRequired,
-// };
-
-// export default Details;
-
-
 import PropTypes from "prop-types";
 import LabeledInput from "../LabeledInput";
 import { useEffect, useState } from "react";
@@ -59,21 +5,44 @@ import { getFullAccountByAccountId } from "../../api/api";
 import { AiOutlineLoading } from "react-icons/ai";
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-import { formatter } from "../../lib/utils";
+import { formatter, getSubdomain } from "../../lib/utils";
+import { jwtDecode } from "jwt-decode";
+import { themes } from '../../lib/theme';
 
 dayjs.locale('en'); 
 function Details({ accountID }) {
   const [accountDetails, setAccountDetails] = useState({});
   const [loading, setLoading] = useState(false);
+  const [subdomain, setSubdomain] = useState(getSubdomain());
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
         const apiData = await getFullAccountByAccountId(accountID);
         if (apiData) {
-          // console.log(apiData)
-          setAccountDetails(apiData);
+          // eslint-disable-next-line no-unused-vars
+          const { accountID, applicationID, subStatus, ...cleanedApiData } = apiData;
+          setAccountDetails(cleanedApiData);
           setLoading(false)
+
+          const token = localStorage.getItem("authToken");
+
+          if(token) {
+            const decodedToken = jwtDecode(token);
+            const { TenantName } = decodedToken; 
+            setSubdomain(TenantName.toLowerCase()); 
+          }
+
+          const theme = themes[subdomain] || themes.default;
+
+          const label = document.getElementsByClassName('labels');
+          if(label) {
+            for (let i = 0; i < label.length; i++) {
+              label[i].style.color =  theme.labelColor;
+            }
+          }
+
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
         }
@@ -88,6 +57,8 @@ function Details({ accountID }) {
   // Calculate the midpoint for splitting into two columns
   const entries = Object.entries(accountDetails);
   const midpoint = Math.ceil(entries.length / 2);
+
+
 
   return (
     <>
@@ -147,3 +118,10 @@ Details.propTypes = {
 };
 
 export default Details;
+
+
+
+
+
+
+

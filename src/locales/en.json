@@ -9,7 +9,8 @@
     "resetPassword": "Reset Password",
     "signin": "Signin",
     "Username": "Username",
-    "Password": "Password"
+    "Password": "Password",
+    "error": "Wrong Credintials!"
   },
 
   "resetPassword": {
@@ -46,7 +47,7 @@
     "App Date": "App Date",
     "Closing Date": "Closing Date",
     "Amount": "Amount",
-    "Condtions": "Condtions",
+    "Conditions": "Conditions",
     "Actions": "Actions",
 
 
@@ -75,7 +76,9 @@
   "dealView": {
     "backtoList": "Back to List",
     "tabs": {
-      "Details": "Details"
+      "Details": "Details",
+      "Conditions": "Conditions",
+      "Documents": "Documents"
     },
     "details":{
       "Purpose of Loan": "Purpose of Loan",

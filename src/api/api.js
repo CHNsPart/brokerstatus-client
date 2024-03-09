@@ -14,16 +14,18 @@ const axiosInstance = axios.create({
 });
 
 // Add a function to set the JWT token to the headers
-const setAuthToken = (token, tenantId) => {
+const setAuthToken = (token, tenantId, tenantName) => {
   console.log(token)
     if (token) {
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       localStorage.setItem('authToken', token);
       localStorage.setItem('X-TenantId', tenantId)
+      localStorage.setItem('tenantName', tenantName)
     } else {
       delete axiosInstance.defaults.headers.common['Authorization'];
       localStorage.removeItem('authToken');
       localStorage.removeItem('X-TenantId');
+      localStorage.removeItem('tenantName')
     }
   };
 
@@ -40,7 +42,7 @@ const login = async (username, password) => {
 
       const { user, token } = result;
       // console.log(user.tenantId)
-      setAuthToken(token, user.tenantId);
+      setAuthToken(token, user.tenantId, user.tenantName);
 
       return user;
     } else {
@@ -77,7 +79,7 @@ const getBrokerAccounts = async (page, pageSize) => {
         "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD"),
         "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD"),
         "Amount": formatter.format(account.totalAmount),
-        "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
+        "Conditions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
       }));
 
       return modifiedData;
@@ -111,7 +113,7 @@ const getBrokerPipelineAccounts = async (page, pageSize) => {
       "App Date": dayjs(account.applicationDate).format("YYYY-MM-DD"),
       "Closing Date": dayjs(account.closingDate).format("YYYY-MM-DD"),
       "Amount": formatter.format(account.totalAmount),
-      "Condtions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
+      "Conditions": account.numberOfOutstandingConditions+"/"+account.numberOfConditions
     }));
 
     return modifiedData;

@@ -35,7 +35,7 @@ function DealView() {
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <div className="border-2 p-5 flex flex-col gap-5">
                 <ul className="flex flex-wrap w-fit border-2 rounded-lg text-sm gap-2 font-medium text-center">
-                    {["Details", "Conditions", "Documents"].map((label, index) => (
+                    {[t("dealView.tabs.Details"), t("dealView.tabs.Conditions"), t("dealView.tabs.Documents")].map((label, index) => (
                     <li key={index}>
                         <Button variant={"tabs"} onClick={handleTabs} label={label} />
                     </li>

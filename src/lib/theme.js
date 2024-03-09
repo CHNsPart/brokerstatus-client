@@ -8,10 +8,11 @@ export const themes = {
   default: {
     backgroundColor: "#fff",
     textColor: "#333333",
+    labelColor: "#00467f",
     navBackgroundColor: "#fff",
     navTextColor: "#ffffff",
     primaryButtonBgColor: "#00467f",
-    secondaryButtonBgColor: "#03a9f4",
+    secondaryButtonBgColor: "#00467f",
     primaryButtonTextColor: "#ffffff",
     latestNewsColor: "#00467f",
     logo: cmls
@@ -19,6 +20,7 @@ export const themes = {
   cmls: {
     backgroundColor: "#fff",
     textColor: "#333333",
+    labelColor: "#00467f",
     navBackgroundColor: "#fff",
     navTextColor: "#ffffff",
     primaryButtonBgColor: "#00467f",
@@ -30,6 +32,7 @@ export const themes = {
   intellifi: {
     backgroundColor: "#fff",
     textColor: "#333333",
+    labelColor: "#310872",
     navBackgroundColor: "#fff",
     navTextColor: "#333",
     primaryButtonBgColor: "#310872",
@@ -41,6 +44,7 @@ export const themes = {
   duca: {
     backgroundColor: "#fff",
     textColor: "#333333",
+    labelColor: "#ff4f00",
     navBackgroundColor: "#ff0000",
     navTextColor: "#ffffff",
     primaryButtonBgColor: "#ff4f00",
@@ -52,6 +56,7 @@ export const themes = {
   peoples: {
     backgroundColor: "#fff",
     textColor: "#4C5454",
+    labelColor: "#d14f58",
     navBackgroundColor: "#fff",
     navTextColor: "#ffffff",
     primaryButtonBgColor: "#d14f58",
@@ -63,6 +68,7 @@ export const themes = {
   strive: {
     backgroundColor: "#fff",
     textColor: "#563F1B",
+    labelColor: "#415a69",
     navBackgroundColor: "#fff",
     navTextColor: "#ffffff",
     primaryButtonBgColor: "#415a69",

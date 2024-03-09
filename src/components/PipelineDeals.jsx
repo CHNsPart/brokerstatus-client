@@ -8,6 +8,9 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import isBetween from 'dayjs/plugin/isBetween'; // Import the isBetween plugin
 import { Tooltip } from 'react-tooltip'
+import { jwtDecode } from 'jwt-decode';
+import { themes } from '../lib/theme';
+import { getSubdomain } from '../lib/utils';
 
 dayjs.locale('en');
 dayjs.extend(isBetween);
@@ -20,6 +23,7 @@ function PipelineDeals({ searchData, allDocs }) {
   const rowsPerPage = 5;
   const [pageSize, setPageSize] = useState(100); // Default pageSize
   const [loading, setLoading] = useState(false);
+  const [subdomain, setSubdomain] = useState(getSubdomain());
 
   useEffect(() => {
 
@@ -50,6 +54,24 @@ function PipelineDeals({ searchData, allDocs }) {
             setData(apiData);
             applyFilters(apiData);
             setLoading(false)
+
+            const token = localStorage.getItem("authToken");
+
+            if(token) {
+              const decodedToken = jwtDecode(token);
+              const { TenantName } = decodedToken; 
+              setSubdomain(TenantName.toLowerCase()); 
+            }
+  
+            const theme = themes[subdomain] || themes.default;
+  
+            const label = document.getElementsByClassName('labels');
+            if(label) {
+              for (let i = 0; i < label.length; i++) {
+                label[i].style.color =  theme.labelColor;
+              }
+            }
+
           } else {
             console.error('Failed to fetch data for PipelineDeals.');
             setLoading(false)
@@ -150,11 +172,11 @@ function PipelineDeals({ searchData, allDocs }) {
                 <thead>
                   <tr>
                     {Object.keys(data[0] || {}).map((key) => (
-                      <th key={key} className="border p-2">
+                      <th key={key} className="labels border p-2">
                         {key === "Mortgage" ? t(`dealsSearch.Mortgage #`) : formatCamelCaseString(t(`dealsSearch.${key}`))}
                       </th>
                     ))}
-                    <th className="border p-2">{t('Actions')}</th>
+                    <th className="labels border p-2">{t('Actions')}</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -2,16 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/cmls.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       const parts = window.location.hostname.split('.');
       const sDomain = parts.length > 1 ? parts[0] : null;
+      const tenant = localStorage.getItem("tenantName");
 
-      // Wait for the DOM to be ready
       document.addEventListener('DOMContentLoaded', function () {
-        // Update the title with sDomain
-        document.title = sDomain ? `${sDomain.toUpperCase()} - Broker Status` : 'Broker Status';
+        
+        if(sDomain) {
+          document.title = sDomain ? `${sDomain.toUpperCase()} - Broker Status` : 'Broker Status';
+        } else {
+          document.title = tenant ? `${tenant.toUpperCase()} - Broker Status` : 'Broker Status';
+        }
       });
     </script>
   </head>

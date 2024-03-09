@@ -61,6 +61,14 @@ const useTheme =  ( onlyBtn = false ) => {
     
           document.getElementById('latesNewsWrapper').style.border = `2px solid ${theme.latestNewsColor}`;
         }
+
+        //labels
+        const label = document.getElementsByClassName('labels');
+        if(label) {
+          for (let i = 0; i < label.length; i++) {
+            label[i].style.color =  theme.labelColor;
+          }
+        }
     
         // Load subdomain-specific logo
         const logoElement = document.getElementById('logo');

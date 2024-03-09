@@ -44,7 +44,7 @@ export default function PrimaryDetails({ accountID }) {
   return (
     <div className="border-2 p-5">
       <div className="border-2 p-2 flex justify-between items-center rounded-lg mb-5">
-        <span className="mr-2">{accountID} - {primaryDetails.primaryClient} - {"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+" )"}</span>
+        <span className="labels font-semibold mr-2">{accountID} - {primaryDetails.primaryClient} - {"( Outstanding Conditions "}{+primaryDetails.numberOfOutstandingConditions>0 ? <span className="text-red-500">{primaryDetails.numberOfOutstandingConditions}</span> : primaryDetails.numberOfOutstandingConditions}{`/${primaryDetails.numberOfConditions} )`}</span>
         
         <div className="flex justify-around gap-2" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
           <Button accountID={accountID} variant={"docUpload"} />

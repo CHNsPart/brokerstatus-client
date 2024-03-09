@@ -4,85 +4,17 @@ import { useEffect, useState } from 'react';
 import { getConditionTrackingByAccoundId } from '../../api/api';
 import { TiTick, TiTimes } from "react-icons/ti";
 import Loading from "../Loading";
-
-// function Conditions({ accountID }) {
-  
-//   const  [accountConditions, setAccountConditions] = useState([]);
-//   const [selectedCondition, setSelectedCondition] = useState(null);
-//   const [isModalOpen, setModalOpen] = useState(false);
-
-//   useEffect(() => {
-    
-//     const fetchData = async () => {
-//       try {
-//         const apiData = await getConditionTrackingByAccoundId(accountID);
-//         if (apiData) {
-//           // Handle fetched data
-//           console.log(apiData)
-//           setAccountConditions(apiData)
-//         } else {
-//           console.error('Failed to fetch data for PipelineDeals.');
-//         }
-//       } catch (error) {
-//         console.error('Error fetching data for PipelineDeals:', error.message);
-//       }
-//     };
-
-//     fetchData();
-//   }, [accountID]); 
-
-//   const handleModal = (condition) => {
-//     setSelectedCondition(condition);
-//     setModalOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setModalOpen(false);
-//     console.log("first")
-//   };
-
-//   return (
-//     <>
-//       {accountConditions.map((condition, index) => (
-//         <div onClick={()=>handleModal(condition)} key={index} className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2">
-//           <div>
-//             <span>{index + 1}.</span>
-//             {" "}
-//             <span>{condition.enConditionSetup}</span>
-//           </div>
-//           <div className="flex justify-around gap-2">
-//             <Button variant={"docUpload"} />
-//           </div>
-//         </div>
-//       ))}
-//       {/* Modal */}
-//       {isModalOpen && selectedCondition && (
-//         <div className="modal">
-//           <div className="modal-content">
-//             <span className="close" onClick={closeModal}>&times;</span>
-//             <p>{selectedCondition.clause}</p>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-// Conditions.propTypes = {
-//   accountID: PropTypes.string.isRequired
-// };
-
-
-// export default Conditions;
-
-
-// ... (other imports)
+import { BiError } from 'react-icons/bi';
 
 function Conditions({ accountID }) {
   const [accountConditions, setAccountConditions] = useState([]);
   const [selectedCondition, setSelectedCondition] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  function isEmptyObject(obj) {
+    return obj && obj.accountConditionsList && obj.accountConditionsList.length === 0;
+  }  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,29 +49,36 @@ function Conditions({ accountID }) {
 
   return (
     <>
-    {!loading ? 
-      <>
-        {accountConditions.map((condition, index) => (
-          <div
-            onClick={() => handleModal(condition)}
-            key={index}
-            className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer hover:bg-zinc-100"
-          >
-            <div>
-              <span>{index + 1}.</span>
-              {" "}
-              <span>{condition.conditionSetup}</span>
-            </div>
-            {/* <div className="flex justify-around gap-2">
-              <Button variant={"docUpload"} />
-            </div> */}
-          </div>
-        ))}
-      </>
-      :
-      <Loading/>
-    }
-
+      {!isEmptyObject(accountConditions) ?
+        <>
+          {!loading ? 
+            <>
+              {accountConditions.map((condition, index) => (
+                <div
+                  onClick={() => handleModal(condition)}
+                  key={index}
+                  className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer hover:bg-zinc-100"
+                >
+                  <div>
+                    <span>{index + 1}.</span>
+                    {" "}
+                    <span>{condition.conditionSetup}</span>
+                  </div>
+                  {/* <div className="flex justify-around gap-2">
+                    <Button variant={"docUpload"} />
+                  </div> */}
+                </div>
+              ))}
+            </>
+            :
+            <Loading/>
+          }
+        </>
+        :
+        <div className="w-full text-center p-5 italic text-zinc-500">
+          <BiError size={50} className="text-red-500 text-center w-full mb-2 animate-bounce" />No data found.<br/>Please try again later.
+        </div>
+      }
       {/* Modal */}
       {isModalOpen && selectedCondition && (
         <div onClick={closeModal} className="absolute cursor-zoom-out h-screen top-0 left-0 w-full z-10 bg-black bg-opacity-50 flex justify-center items-center">

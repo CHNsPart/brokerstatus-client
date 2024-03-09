@@ -68,7 +68,7 @@ const Signin = () => {
       window.location = "/home"
     } else {
       // Login failed, handle accordingly
-      setErrorMsg(t('Wrong Credintials!'));
+      setErrorMsg(t('signin.error'));
     }
   };
 
