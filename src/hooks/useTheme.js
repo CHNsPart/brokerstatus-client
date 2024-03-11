@@ -1,17 +1,30 @@
 import { useEffect, useState } from 'react';
 import { themes } from '../lib/theme';
 import PropTypes from 'prop-types';
-import { getSubdomain } from '../lib/utils';
+// import { getSubdomain } from '../lib/utils';
 import { jwtDecode } from 'jwt-decode';
 
 const useTheme =  ( onlyBtn = false ) => {
-  const [subdomain, setSubdomain] = useState(getSubdomain());
+  
+    const getTenant = () => {
+      const token = localStorage.getItem("authToken");
+  
+      if(token) {
+        const decodedToken = jwtDecode(token);
+        const { TenantName } = decodedToken; 
+  
+        return TenantName.toLowerCase();
+      }
+    }
+
+  const [subdomain, setSubdomain] = useState(getTenant());
+
 
   useEffect(() => {
 
     const token = localStorage.getItem("authToken");
 
-    if(token) {
+    if(token && subdomain===null) {
       const decodedToken = jwtDecode(token);
       const { TenantName } = decodedToken; 
       setSubdomain(TenantName.toLowerCase()); 
@@ -27,6 +40,7 @@ const useTheme =  ( onlyBtn = false ) => {
     }
     
     const theme = themes[subdomain] || themes.default;
+    console.log("theme",theme.logo)
 
     if(onlyBtn) {
         const themeButton = document.getElementsByClassName('themeButton');

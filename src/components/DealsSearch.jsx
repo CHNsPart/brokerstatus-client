@@ -57,7 +57,7 @@ function DealsSearch({ onSearch }) {
   return (
     <div className="w-full p-5">
         <div className="flex flex-col gap-2">
-            <span className='text-xl font-semibold'>{t("dealsSearch.DealsSearch")}</span>
+            <span className='labels text-xl font-semibold'>{t("dealsSearch.DealsSearch")}</span>
             <div className="rounded-md border-2 p-5">
                 <form action="" onSubmit={handleSubmit} className="" >
                     <div className="w-full flex p-5 flex-col md:flex-row lg:flex-row justify-between items-center gap-5">

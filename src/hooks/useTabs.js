@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import { themes } from '../lib/theme';
-import { getSubdomain } from '../lib/utils';
+// import { getSubdomain } from '../lib/utils';
 import { jwtDecode } from 'jwt-decode';
 
 const useTabs = () => {
   const [activeTab, setActiveTab] = useState('');
-  const [subdomain, setSubdomain] = useState(getSubdomain());
+  const getTenant = () => {
+    const token = localStorage.getItem("authToken");
+
+    if(token) {
+      const decodedToken = jwtDecode(token);
+      const { TenantName } = decodedToken; 
+
+      return TenantName.toLowerCase();
+    }
+  }
+
+const [subdomain, setSubdomain] = useState(getTenant());
 
   const handleTabs = (e) => {
     

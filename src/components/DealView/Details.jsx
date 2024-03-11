@@ -5,15 +5,18 @@ import { getFullAccountByAccountId } from "../../api/api";
 import { AiOutlineLoading } from "react-icons/ai";
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-import { formatter, getSubdomain } from "../../lib/utils";
-import { jwtDecode } from "jwt-decode";
-import { themes } from '../../lib/theme';
+import { formatter } from "../../lib/utils";
+// import { jwtDecode } from "jwt-decode";
+// import { themes } from '../../lib/theme';
+import useTheme from "../../hooks/useTheme";
 
 dayjs.locale('en'); 
 function Details({ accountID }) {
   const [accountDetails, setAccountDetails] = useState({});
   const [loading, setLoading] = useState(false);
-  const [subdomain, setSubdomain] = useState(getSubdomain());
+  // const [subdomain, setSubdomain] = useState(getSubdomain());
+
+  useTheme()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,22 +29,22 @@ function Details({ accountID }) {
           setAccountDetails(cleanedApiData);
           setLoading(false)
 
-          const token = localStorage.getItem("authToken");
+          // const token = localStorage.getItem("authToken");
 
-          if(token) {
-            const decodedToken = jwtDecode(token);
-            const { TenantName } = decodedToken; 
-            setSubdomain(TenantName.toLowerCase()); 
-          }
+          // if(token) {
+          //   const decodedToken = jwtDecode(token);
+          //   const { TenantName } = decodedToken; 
+          //   setSubdomain(TenantName.toLowerCase()); 
+          // }
 
-          const theme = themes[subdomain] || themes.default;
+          // const theme = themes[subdomain] || themes.default;
 
-          const label = document.getElementsByClassName('labels');
-          if(label) {
-            for (let i = 0; i < label.length; i++) {
-              label[i].style.color =  theme.labelColor;
-            }
-          }
+          // const label = document.getElementsByClassName('labels');
+          // if(label) {
+          //   for (let i = 0; i < label.length; i++) {
+          //     label[i].style.color =  theme.labelColor;
+          //   }
+          // }
 
         } else {
           console.error('Failed to fetch data for PipelineDeals.');
@@ -53,6 +56,8 @@ function Details({ accountID }) {
 
     fetchData();
   }, [accountID]);
+
+  useTheme()
 
   // Calculate the midpoint for splitting into two columns
   const entries = Object.entries(accountDetails);
