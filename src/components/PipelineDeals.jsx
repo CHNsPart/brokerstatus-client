@@ -17,7 +17,6 @@ dayjs.locale('en');
 dayjs.extend(isBetween);
 function PipelineDeals({ searchData, allDocs }) {
   const { t } = useTranslation();
-  useTheme(); 
 
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -37,7 +36,17 @@ function PipelineDeals({ searchData, allDocs }) {
     }
   }
 
-const [subdomain] = useState(getTenant());
+  const [subdomain] = useState(getTenant());
+
+  useEffect(() => {
+    const theme = themes[subdomain];
+  
+    const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+    labeledHeaderCells.forEach((cell) => {
+      cell.style.color = `${theme.labelColor} !important`;
+      cell.classList.add = `text-${subdomain}`
+    });
+  }, [subdomain, searchData, data]);
 
   useEffect(() => {
 
@@ -52,11 +61,12 @@ const [subdomain] = useState(getTenant());
             applyFilters(apiData);
             setLoading(false)
 
-            const theme = themes[subdomain] || themes.default;
-            const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
-            labeledHeaderCells.forEach((cell) => {
-              cell.style.color = theme.labelColor;
-            });
+            // const theme = themes[subdomain] || themes.default;
+            // const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+            // labeledHeaderCells.forEach((cell) => {
+            //   cell.style.color = theme.labelColor;
+            // });
+            
           } else {
             console.error('Failed to fetch data for PipelineDeals.');
             setLoading(false)
@@ -92,12 +102,14 @@ const [subdomain] = useState(getTenant());
             //   }
             // }
 
-            const theme = themes[subdomain] || themes.default;
-            const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
-            labeledHeaderCells.forEach((cell) => {
-              cell.style.color = theme.labelColor;
-            });
 
+            // const theme = themes[subdomain] || themes.default;
+            // const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+            // labeledHeaderCells.forEach((cell) => {
+            //   cell.style.color = `${theme.labelColor} !important`;
+            // });
+
+            // setSubDomain(getTenant())
           } else {
             console.error('Failed to fetch data for PipelineDeals.');
             setLoading(false)
@@ -148,8 +160,8 @@ const [subdomain] = useState(getTenant());
       // Reset pagination to the first page
       setCurrentPage(1);
     };
-
     fetchData();
+    // setSubDomain(getTenant())
 
   }, [searchData]); // Update data when currentPage or pageSize changes
 
@@ -183,7 +195,7 @@ const [subdomain] = useState(getTenant());
     // Add a space before every capital letter, except when the next letter is also capital
     return inputString.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (str) => str.toUpperCase());
   }
-
+  useTheme(); 
   return (
     <div className="w-full h-fit p-5">
       <div className="flex flex-col h-full gap-2">
@@ -198,11 +210,23 @@ const [subdomain] = useState(getTenant());
                 <thead>
                   <tr className='labels'>
                     {Object.keys(data[0] || {}).map((key) => (
-                      <th key={key} className="labels border p-2">
+                      <th key={key} className={
+                        subdomain==="cmls" && `labels border p-2 text-cmls` ||
+                        subdomain==="peoples" && `labels border p-2 text-peoples` ||
+                        subdomain==="intellifi" && `labels border p-2 text-intellifi` ||
+                        subdomain==="duca" && `labels border p-2 text-duca` ||
+                        subdomain==="strive" && `labels border p-2 text-strive`
+                      }>
                         {key === "Mortgage" ? t(`dealsSearch.Mortgage #`) : formatCamelCaseString(t(`dealsSearch.${key}`))}
                       </th>
                     ))}
-                    <th className="labels border p-2">{t('Actions')}</th>
+                    <th className={
+                      subdomain==="cmls" && `labels border p-2 text-cmls` ||
+                      subdomain==="peoples" && `labels border p-2 text-peoples` ||
+                      subdomain==="intellifi" && `labels border p-2 text-intellifi` ||
+                      subdomain==="duca" && `labels border p-2 text-duca` ||
+                      subdomain==="strive" && `labels border p-2 text-strive`
+                    }>{t('Actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -259,7 +283,6 @@ PipelineDeals.propTypes = {
 };
 
 export default PipelineDeals;
-
 
 
 

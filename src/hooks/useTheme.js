@@ -87,7 +87,7 @@ const useTheme =  ( onlyBtn = false ) => {
         // Update table header row styles
         const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
         labeledHeaderCells.forEach((cell) => {
-          cell.style.color = theme.labelColor;
+          cell.style.color = `${theme.labelColor} !important`;
         });
     
     
