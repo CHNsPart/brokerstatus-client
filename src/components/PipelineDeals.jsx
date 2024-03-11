@@ -9,8 +9,8 @@ import 'dayjs/locale/en';
 import isBetween from 'dayjs/plugin/isBetween'; // Import the isBetween plugin
 import { Tooltip } from 'react-tooltip'
 import useTheme from '../hooks/useTheme';
-// import { jwtDecode } from 'jwt-decode';
-// import { themes } from '../lib/theme';
+import { jwtDecode } from 'jwt-decode';
+import { themes } from '../lib/theme';
 // import { getSubdomain } from '../lib/utils';
 
 dayjs.locale('en');
@@ -25,8 +25,18 @@ function PipelineDeals({ searchData, allDocs }) {
   const [pageSize, setPageSize] = useState(100); // Default pageSize
   const [loading, setLoading] = useState(false);
   // const [subdomain, setSubdomain] = useState(getSubdomain());
+  const getTenant = () => {
+    const token = localStorage.getItem("authToken");
 
-  useTheme()
+    if(token) {
+      const decodedToken = jwtDecode(token);
+      const { TenantName } = decodedToken; 
+
+      return TenantName.toLowerCase();
+    }
+  }
+
+const [subdomain] = useState(getTenant());
 
   useEffect(() => {
 
@@ -40,6 +50,12 @@ function PipelineDeals({ searchData, allDocs }) {
             setData(apiData);
             applyFilters(apiData);
             setLoading(false)
+
+            const theme = themes[subdomain] || themes.default;
+            const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+            labeledHeaderCells.forEach((cell) => {
+              cell.style.color = theme.labelColor;
+            });
           } else {
             console.error('Failed to fetch data for PipelineDeals.');
             setLoading(false)
@@ -74,6 +90,12 @@ function PipelineDeals({ searchData, allDocs }) {
             //     label[i].style.color =  theme.labelColor;
             //   }
             // }
+
+            const theme = themes[subdomain] || themes.default;
+            const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+            labeledHeaderCells.forEach((cell) => {
+              cell.style.color = theme.labelColor;
+            });
 
           } else {
             console.error('Failed to fetch data for PipelineDeals.');
@@ -131,8 +153,6 @@ function PipelineDeals({ searchData, allDocs }) {
   }, [searchData]); // Update data when currentPage or pageSize changes
 
 
-  useTheme()
-
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
@@ -163,6 +183,7 @@ function PipelineDeals({ searchData, allDocs }) {
     return inputString.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (str) => str.toUpperCase());
   }
 
+  useTheme();
 
   return (
     <div className="w-full h-fit p-5">

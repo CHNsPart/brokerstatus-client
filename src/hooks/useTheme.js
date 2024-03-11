@@ -84,6 +84,13 @@ const useTheme =  ( onlyBtn = false ) => {
           }
         }
     
+        // Update table header row styles
+        const labeledHeaderCells = document.querySelectorAll('table thead tr.labels th.labels');
+        labeledHeaderCells.forEach((cell) => {
+          cell.style.color = theme.labelColor;
+        });
+    
+    
         // Load subdomain-specific logo
         const logoElement = document.getElementById('logo');
         if (logoElement) {
