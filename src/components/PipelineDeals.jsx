@@ -17,6 +17,7 @@ dayjs.locale('en');
 dayjs.extend(isBetween);
 function PipelineDeals({ searchData, allDocs }) {
   const { t } = useTranslation();
+  useTheme(); 
 
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -182,8 +183,6 @@ const [subdomain] = useState(getTenant());
     // Add a space before every capital letter, except when the next letter is also capital
     return inputString.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (str) => str.toUpperCase());
   }
-
-  useTheme();
 
   return (
     <div className="w-full h-fit p-5">
