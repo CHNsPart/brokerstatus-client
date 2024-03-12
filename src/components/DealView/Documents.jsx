@@ -35,23 +35,41 @@ function Documents({ accountID }) {
     fetchData();
   }, [accountID]);
 
+
   const handleDocumentClick = async (document) => {
     console.log('Document ID:', document.id);
-    if(document.id){
+    if (document.id) {
+
       try {
         const result = await getDocumentData(accountID, document.id);
-
+        // cursor mode loading
         if (result) {
-          console.log('Documents downloaded successfully:', result);
+          // Convert the base64 encoded PDF content to a Blob
+          const byteCharacters = atob(result.file);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], { type: 'application/pdf' });
+  
+          // Create a download link for the Blob
+          const url = URL.createObjectURL(blob);
+          const a = window.document.createElement('a');
+          a.href = url;
+          a.download = `${result.name}.${result.extension}`;
+          a.click();
+          // cursor mode normal
         } else {
-          console.error('Failed to downloaded documents.');
+          console.error('Failed to download document.');
         }
-
       } catch (error) {
-        console.error('Error downloading documents: ', error.message);
+        console.error('Error downloading document: ', error.message);
       }
     }
   };
+  
+  
 
   return (
     <>
@@ -107,3 +125,8 @@ Documents.propTypes = {
 };
 
 export default Documents;
+
+
+
+
+
