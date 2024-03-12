@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
       if (isExpired) {
         // Token is expired, log out the user
         localStorage.removeItem("authToken");
+        localStorage.removeItem('tenantName')
         logout();
       } else {
         setIsAuthenticated(true);
@@ -43,6 +44,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('tenantName')
     setUserDetails(null);
     setIsAuthenticated(false);
     window.location = "/";

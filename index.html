@@ -5,15 +5,20 @@
     <link rel="icon" type="image/png" href="/cmls.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script> 
+      const tenant = localStorage.getItem("tenantName");
       document.addEventListener('DOMContentLoaded', function () {
         const parts = window.location.hostname.split('.');
         const sDomain = parts.length > 1 ? parts[0] : null;
-        const tenant = localStorage.getItem("tenantName");
         
-        if(sDomain) {
-          document.title = sDomain ? `${sDomain.toUpperCase()} - Broker Status` : 'Broker Status';
+        console.log("sDomain:", sDomain);
+        console.log("tenant:", tenant);
+        
+        if (sDomain) {
+          document.title = sDomain.toUpperCase() + ' - Broker Status';
+        } else if (tenant) {
+          document.title = tenant.toUpperCase() + ' - Broker Status';
         } else {
-          document.title = tenant ? `${tenant.toUpperCase()} - Broker Status` : 'Broker Status';
+          document.title = 'Broker Status';
         }
       });
     </script>

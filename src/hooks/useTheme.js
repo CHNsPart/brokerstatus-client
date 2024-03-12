@@ -40,7 +40,7 @@ const useTheme =  ( onlyBtn = false ) => {
     }
     
     const theme = themes[subdomain] || themes.default;
-    console.log("theme",theme.logo)
+    // console.log("theme",theme.logo)
 
     if(onlyBtn) {
         const themeButton = document.getElementsByClassName('themeButton');
@@ -97,7 +97,7 @@ const useTheme =  ( onlyBtn = false ) => {
           logoElement.src = theme.logo;
         }
     }
-    console.log(subdomain)
+    // console.log(subdomain)
   }, [onlyBtn, subdomain]);
 };
 
