@@ -8,8 +8,8 @@
       const tenant = localStorage.getItem("tenantName");
       document.addEventListener('DOMContentLoaded', function () {
         const parts = window.location.hostname.split('.');
-        const sDomain = parts.length > 1 ? parts[0] : null;
-        
+        //const sDomain = parts.length > 1 ? parts[0] : null;
+        sDomain = null
         console.log("sDomain:", sDomain);
         console.log("tenant:", tenant);
         
