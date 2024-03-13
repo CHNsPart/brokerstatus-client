@@ -64,23 +64,58 @@ const readFileAsBase64 = (file) => {
     setSelectedFiles(updatedFiles);
   };
 
+  // const handleSendDocuments = async () => {
+  //   if (selectedFiles.length > 0) {
+  //     try {
+  //       // Call the uploadDocuments function with selectedFiles
+  //       const result = await uploadDocuments(selectedFiles);
+
+  //       if (result) {
+  //         console.log('Documents uploaded successfully:', result);
+  //         // You can add further actions here after successful document upload
+  //       } else {
+  //         console.error('Failed to upload documents.');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error uploading documents: ', error.message);
+  //     }
+  //   }
+  // };
+
   const handleSendDocuments = async () => {
     if (selectedFiles.length > 0) {
       try {
-        // Call the uploadDocuments function with selectedFiles
-        const result = await uploadDocuments(selectedFiles);
-
-        if (result) {
-          console.log('Documents uploaded successfully:', result);
-          // You can add further actions here after successful document upload
+        // Send the first document in the selectedFiles array
+        const firstDocument = selectedFiles[0];
+        console.log(firstDocument);
+        const resultFirst = await uploadDocuments([firstDocument]);
+        
+        if (resultFirst) {
+          console.log('First document uploaded successfully:', resultFirst);
+          // You can add further actions here after successful upload of the first document
         } else {
-          console.error('Failed to upload documents.');
+          console.error('Failed to upload the first document.');
+        }
+  
+        // If there are more documents, send them one by one
+        if (selectedFiles.length > 1) {
+          for (let i = 1; i < selectedFiles.length; i++) {
+            const nextDocument = selectedFiles[i];
+            const resultNext = await uploadDocuments([nextDocument]);
+            if (resultNext) {
+              console.log(`Document ${i + 1} uploaded successfully:`, resultNext);
+              // You can add further actions here after successful upload of subsequent documents
+            } else {
+              console.error(`Failed to upload document ${i + 1}.`);
+            }
+          }
         }
       } catch (error) {
         console.error('Error uploading documents: ', error.message);
       }
     }
   };
+  
 
   const handleSelectChange = (index, value) => {
     // const selectedValue = event.target.value;

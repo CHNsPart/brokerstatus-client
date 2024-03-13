@@ -18,7 +18,7 @@
         } else if (tenant) {
           document.title = tenant.toUpperCase() + ' - Broker Status';
         } else {
-          document.title = 'Broker Status';
+          document.title = window.DEFAULT_THEME.toUpperCase() + ' - Broker Status';
         }
       });
     </script>
@@ -26,5 +26,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="/config.js"></script>
   </body>
 </html>

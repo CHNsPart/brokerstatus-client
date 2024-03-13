@@ -39,7 +39,7 @@ const useTheme =  ( onlyBtn = false ) => {
       // }
     }
     
-    const theme = themes[subdomain] || themes.default;
+    const theme = themes[subdomain] || themes[window.DEFAULT_THEME.toLowerCase()];
     // console.log("theme",theme.logo)
 
     if(onlyBtn) {

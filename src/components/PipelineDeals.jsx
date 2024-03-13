@@ -247,7 +247,7 @@ function PipelineDeals({ searchData, allDocs }) {
                         </td>
                       ))}
                       <td className="border px-5 w-full h-full p-2 flex gap-2 items-center justify-around" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
-                        <Button variant={"docUpload"} />
+                        <Button accountID={row.Mortgage} variant={"docUpload"} />
                         {/* <Button variant={"msg"} /> */}
                       </td>
                       <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
