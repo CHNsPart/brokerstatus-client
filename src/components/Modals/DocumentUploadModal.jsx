@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { themes } from '../../lib/theme';
 import { getSubdomain } from '../../lib/utils';
 import { getDocumentTypes, uploadDocuments } from '../../api/api';
+import useTheme from '../../hooks/useTheme';
 
 
 const DocumentUploadModal = ({ isOpen, onClose, accountID }) => {
@@ -88,7 +89,7 @@ const readFileAsBase64 = (file) => {
         // Send the first document in the selectedFiles array
         const firstDocument = selectedFiles[0];
         console.log(firstDocument);
-        const resultFirst = await uploadDocuments([firstDocument]);
+        const resultFirst = await uploadDocuments(firstDocument);
         
         if (resultFirst) {
           console.log('First document uploaded successfully:', resultFirst);
@@ -143,6 +144,8 @@ const readFileAsBase64 = (file) => {
     button.style.backgroundColor = theme.primaryButtonBgColor;
     button.style.color = theme.primaryButtonTextColor;
   }, []);
+
+  useTheme();
 
   return (
     <div className={`document-upload-modal ${isOpen ? 'flex' : 'hidden'} fixed inset-0 items-center justify-center`}>
@@ -224,7 +227,7 @@ const readFileAsBase64 = (file) => {
           <button onClick={onClose} className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg">
             Cancel/Clear
           </button>
-          <button onClick={handleSendDocuments} id='docUploadBtn' className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-lg">
+          <button onClick={handleSendDocuments} id='docUploadBtn' className="themeButton py-2 px-4 rounded-lg">
             Send Document to CMLS
           </button>
         </div>

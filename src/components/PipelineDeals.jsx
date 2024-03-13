@@ -261,7 +261,13 @@ function PipelineDeals({ searchData, allDocs }) {
                     key={pageNumber}
                     onClick={() => paginate(pageNumber)}
                     className={`mx-1 p-2 border rounded-full ${
-                      currentPage === pageNumber ? 'bg-gray-500 text-white' : 'bg-white text-black'
+                      currentPage === pageNumber ? (
+                        subdomain==="cmls" && `bg-cmls text-white` ||
+                        subdomain==="peoples" && `bg-peoples text-white` ||
+                        subdomain==="intellifi" && `bg-intellifi text-white` ||
+                        subdomain==="duca" && `bg-duca text-white` ||
+                        subdomain==="strive" && `bg-strive text-white`
+                        ) : ('bg-white text-black')
                     }`}
                   >
                     {pageNumber}

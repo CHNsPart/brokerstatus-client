@@ -232,12 +232,11 @@ const uploadDocuments = async (files) => {
   const token = localStorage.getItem("authToken")
   try {
     const response = await axiosInstance.post(`/api/attachFileToAccount`, 
-    {
-      files,
-    },
+    files,
     {
       headers: {
         Authorization: `Bearer ${token}`,
+        Accept: "application/json",
       },
     }
     );
