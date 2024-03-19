@@ -8,7 +8,9 @@
     "signin": "Se connecter",
     "Username": "Nom d'utilisateur",
     "Password": "Mot de passe",
-    "error": "Identifiants incorrects!"
+    "error": "Identifiants incorrects!",
+    "CurrentPassword": "Mot de passe actuel",
+    "NewPassword": "Nouveau mot de passe"
   },
   "resetPassword": {
     "resetPassword": "Réinitialiser le mot de passe"

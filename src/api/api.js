@@ -4,7 +4,7 @@ import 'dayjs/locale/en';
 import { formatter } from '../lib/utils';
 
 
-export const API_BASE_URL = 'https://unifi-api-brokerui-dev.azurewebsites.net'; // Update with your backend API URL
+export const API_BASE_URL = window.GLOBAL_API_BASE_URL; // Update with your backend API URL
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -19,8 +19,8 @@ const setAuthToken = (token, tenantId, tenantName) => {
     if (token) {
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       localStorage.setItem('authToken', token);
-      localStorage.setItem('X-TenantId', tenantId)
       localStorage.setItem('tenantName', tenantName)
+      localStorage.setItem('X-TenantId', tenantId)
     } else {
       delete axiosInstance.defaults.headers.common['Authorization'];
       localStorage.removeItem('authToken');
@@ -207,27 +207,6 @@ const getDocumentTypes = async () => {
   }
 };
 
-const resetPassword = async (username) => {
-  try {
-    const tID =  localStorage.getItem("X-TenantId");
-    const response = await axiosInstance.post(`/resetPassword`, 
-    {
-      username,
-    },
-    {
-      headers: {
-        "X-TenantId": tID,
-      },
-    }
-    );
-    return response.data;
-  } catch (error) {
-    // Handle error cases
-    console.error('Error fetching client broker agent reset password data:', error.message);
-    return null;
-  }
-};
-
 const uploadDocuments = async (files) => {
   const token = localStorage.getItem("authToken")
   try {
@@ -245,6 +224,44 @@ const uploadDocuments = async (files) => {
     // Handle error cases
     console.error('Error fetching: ', error.message);
     return null;
+  }
+};
+
+const resetPassword = async (username) => {
+
+  try {
+    const response = await axiosInstance.post(`/resetPassword`, 
+    {
+      username,
+    },
+    {
+      headers: {
+        "X-TenantId": window.TENANT_ID,
+      },
+    }
+    );
+    return response.data.isSuccess;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent reset password data:', error);
+    return error.response.data.message;
+  }
+};
+
+const changePassword = async (userDetails) => {
+  try {
+    const response = await axiosInstance.post(`/changePassword`,  
+    userDetails,
+    {
+      headers: {
+        "X-TenantId": window.TENANT_ID,
+      },
+    });
+    return response.data.isSuccess;
+  } catch (error) {
+    // Handle error cases
+    console.error('Error fetching client broker agent documents data:', error.message);
+    return error.response.data.message;
   }
 };
 
@@ -271,6 +288,7 @@ export {
   getFullAccountByAccountId,
   getBrokerAccounts, 
   getBrokerPipelineAccounts,
+  changePassword,
   // getAccountByAccountId,
   getConditionTrackingByAccoundId,
   getInternalLoanContactsByAccoundId,

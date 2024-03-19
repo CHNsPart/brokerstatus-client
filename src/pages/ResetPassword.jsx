@@ -2,12 +2,15 @@ import { useState } from "react";
 import Button from "../components/Button";
 import { useTranslation } from 'react-i18next';
 import { resetPassword } from "../api/api";
+import Loading from "../components/Loading"
 
 const ResetPassword = () => {
   const { t } = useTranslation();
   const [credentials, setCredentials] = useState({
     username: "",
   });
+  const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState("")
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -22,16 +25,26 @@ const ResetPassword = () => {
     const username = credentials.username;
     try {
       if(username) {
-        const resPass = await resetPassword(username);
-        console.log(resPass)
+        setLoading(true)
+        setErr("")
+        const data = await resetPassword(username);
+        if (data === true) {
+          window.location.href = "/changePassword"
+        }
+        if (typeof data === 'string') {setErr(data)}
+        console.log("reset data", data)
+        setLoading(false)
       } else {
         return;
       }
     } catch (error) {
-      console.log(error)
+      setLoading(false)
     }
+    setLoading(false)
     console.log(credentials)
   }
+
+
 
   return (
     <section className="h-full w-full flex justify-center items-center p-5">
@@ -46,8 +59,13 @@ const ResetPassword = () => {
                 </a>
             </div>
             <div className="w-full flex justify-center items-center">
-                <Button onClick={handleResetAuth} label={t('resetPassword.resetPassword')} />
+              {!loading ? 
+                <Button onClick={handleResetAuth} disabled label={t('resetPassword.resetPassword')} />
+                :
+                <Loading/>
+              }
             </div>
+        { err && <span className="w-full text-center text-red-500 mt-2">{err}</span>}    
         </form>
     </section>
   );

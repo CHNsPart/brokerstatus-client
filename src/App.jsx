@@ -8,6 +8,7 @@ import DealsOverview from './pages/DealsOverview';
 import DealView from './pages/DealView';
 import useTheme from './hooks/useTheme';
 import ViewAllDeals from './pages/ViewAllDeals';
+import ChangePassword from './pages/ChangePassword';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
             {/* Public Routes */}
             <Route path="/" exact component={Signin} />
             <Route path="/resetPassword" exact component={ResetPassword} />
-            
+            <Route path="/changePassword" exact component={ChangePassword} />
             {/* Protected Routes */}
             {
               token ? 

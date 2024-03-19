@@ -86,26 +86,22 @@ const readFileAsBase64 = (file) => {
   const handleSendDocuments = async () => {
     if (selectedFiles.length > 0) {
       try {
-        // Send the first document in the selectedFiles array
         const firstDocument = selectedFiles[0];
         console.log(firstDocument);
         const resultFirst = await uploadDocuments(firstDocument);
         
         if (resultFirst) {
           console.log('First document uploaded successfully:', resultFirst);
-          // You can add further actions here after successful upload of the first document
         } else {
           console.error('Failed to upload the first document.');
         }
   
-        // If there are more documents, send them one by one
         if (selectedFiles.length > 1) {
           for (let i = 1; i < selectedFiles.length; i++) {
             const nextDocument = selectedFiles[i];
             const resultNext = await uploadDocuments([nextDocument]);
             if (resultNext) {
               console.log(`Document ${i + 1} uploaded successfully:`, resultNext);
-              // You can add further actions here after successful upload of subsequent documents
             } else {
               console.error(`Failed to upload document ${i + 1}.`);
             }
@@ -148,7 +144,7 @@ const readFileAsBase64 = (file) => {
   useTheme();
 
   return (
-    <div className={`document-upload-modal ${isOpen ? 'flex' : 'hidden'} fixed inset-0 items-center justify-center`}>
+    <div className={`document-upload-modal ${isOpen ? 'flex' : 'hidden'} fixed inset-0 items-center justify-center z-50`}>
       <div className="modal-backdrop absolute bg-black/50 inset-0" onClick={onClose}></div>
 
       <div className="modal-content rounded-lg absolute max-w-[18rem] md:min-w-fit p-10 overflow-auto bg-white z-50">

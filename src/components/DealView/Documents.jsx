@@ -112,7 +112,7 @@ function Documents({ accountID }) {
       }
       </>
       :
-      <div className="w-full text-center p-5 italic text-zinc-500">
+      <div className="w-full text-center p-5 italic text-zinc-500 -z-10">
         <BiError size={50} className="text-red-500 text-center w-full mb-2 animate-bounce" />No data found.<br/>Please try again later.
       </div>
     }

@@ -10,7 +10,9 @@
     "signin": "Signin",
     "Username": "Username",
     "Password": "Password",
-    "error": "Wrong Credintials!"
+    "error": "Wrong Credintials!",
+    "CurrentPassword": "Current Password",
+    "NewPassword": "New Password"
   },
 
   "resetPassword": {
