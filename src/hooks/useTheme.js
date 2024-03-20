@@ -93,8 +93,10 @@ const useTheme =  ( onlyBtn = false ) => {
     
         // Load subdomain-specific logo
         const logoElement = document.getElementById('logo');
+        const iconElement = document.getElementById("icon");
         if (logoElement) {
           logoElement.src = theme.logo;
+          iconElement.href = theme.logo;
         }
     }
     // console.log(subdomain)

@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 var DEFAULT_THEME = 'cmls';
 var TENANT_ID;
-// eslint-disable-next-line no-unused-vars
 var GLOBAL_API_BASE_URL = 'https://unifi-api-brokerui-dev.azurewebsites.net'
 
 switch (DEFAULT_THEME) {
@@ -18,6 +17,5 @@ switch (DEFAULT_THEME) {
       TENANT_ID=4
       break;
     default:
-      // eslint-disable-next-line no-unused-vars
       TENANT_ID=1
 }

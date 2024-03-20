@@ -1,4 +1,4 @@
-import intellifi from '../assets/Intellifi.png';
+import intellifi from '../assets/intellifi.png';
 import cmls from '../assets/cmls.png';
 import peoples from '../assets/peoples.png';
 import strive from '../assets/strive.png';
