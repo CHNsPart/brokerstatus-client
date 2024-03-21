@@ -249,12 +249,13 @@ const resetPassword = async (username) => {
 };
 
 const changePassword = async (userDetails) => {
+  const tID = localStorage.getItem('X-TenantId')
   try {
     const response = await axiosInstance.post(`/changePassword`,  
     userDetails,
     {
       headers: {
-        "X-TenantId": window.TENANT_ID,
+        "X-TenantId": tID,
       },
     });
     return response.data.isSuccess;

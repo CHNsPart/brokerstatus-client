@@ -40,8 +40,8 @@ const ChangePassword = () => {
             setSuccess(true);
             console.log("Successfully changed password");
             setTimeout(() => {
-                window.location.href = "/signin";
-                }, 2000);            
+              window.location.href = "/home";
+            }, 2000);            
         }
         if (typeof data === 'string') {setErr(data)}
         console.log("change data", data)

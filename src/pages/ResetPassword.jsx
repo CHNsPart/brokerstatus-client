@@ -11,6 +11,7 @@ const ResetPassword = () => {
   });
   const [loading, setLoading] = useState(false)
   const [err, setErr] = useState("")
+  const [success, setSuccess] = useState(false)
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -29,7 +30,10 @@ const ResetPassword = () => {
         setErr("")
         const data = await resetPassword(username);
         if (data === true) {
-          window.location.href = "/changePassword"
+          setSuccess(true);
+          setTimeout(() => {
+            window.location.href = "/signin";
+          }, 2000); 
         }
         if (typeof data === 'string') {setErr(data)}
         console.log("reset data", data)
@@ -66,6 +70,7 @@ const ResetPassword = () => {
               }
             </div>
         { err && <span className="w-full text-center text-red-500 mt-2">{err}</span>}    
+        { success && <span className="w-full text-center text-green-600 mt-2">Changed Successfully! Please wait...</span>}    
         </form>
     </section>
   );
