@@ -14,7 +14,8 @@
   },
   "resetPassword": {
     "forgotPassword": "Mot de passe oublié ?",
-    "terms": "Conditions générales & Politique de confidentialité",
+    "privacyPolicy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
     "rateSheet": "Fiche tarifaire",
     "resetPassword": "Réinitialiser le mot de passe"
   },

@@ -81,44 +81,50 @@ const Signin = () => {
               <h2 className="text-xl text-center text-cyan-600">Sign in to Broker Portal</h2>
             </div>
             <div className="w-full flex justify-center items-center">
-                {/* <label htmlFor="username" className="pr-2">{t('signin.Username')}</label> */}
-                <input 
-                  autoComplete="off" 
-                  id="username" 
-                  type='text' 
-                  placeholder={t('signin.Username')} 
-                  value={credentials.username}
-                  className="min-w-full"
-                  onChange={handleChange}
-                />
+              {/* <label htmlFor="username" className="pr-2">{t('signin.Username')}</label> */}
+              <input 
+                autoComplete="off" 
+                id="username" 
+                type='text' 
+                placeholder={t('signin.Username')} 
+                value={credentials.username}
+                className="min-w-full"
+                onChange={handleChange}
+              />
             </div>
             <div className="w-full flex justify-center items-center">
-                {/* <label htmlFor="password" className="pr-2">{t('signin.Password')}</label> */}
-                <input 
-                  autoComplete="off" 
-                  id="password" 
-                  type='password' 
-                  placeholder={t('signin.Password')} 
-                  value={credentials.password}
-                  className="min-w-full"
-                  onChange={handleChange}
-                />
+              {/* <label htmlFor="password" className="pr-2">{t('signin.Password')}</label> */}
+              <input 
+                autoComplete="off" 
+                id="password" 
+                type='password' 
+                placeholder={t('signin.Password')} 
+                value={credentials.password}
+                className="min-w-full"
+                onChange={handleChange}
+              />
             </div>
             <div className="w-full flex justify-end items-center my-2">
-                <a href="/resetpassword">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.forgotPassword')}</p>
-                </a>
+              <a href="/resetpassword">
+                  <p className="text-sm text-cyan-600">{t('resetPassword.forgotPassword')}</p>
+              </a>
             </div>
             <div className="w-full flex justify-center items-center">
-                <Button variant={"block"} onClick={handleLogin} label={t('signin.signin')} />
+              <Button variant={"block"} onClick={handleLogin} label={t('signin.signin')} />
             </div>
             <div className="w-full flex flex-col justify-end items-end gap-2 my-2">
-                <a href="#">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.terms')}</p>
+              <div className="flex text-sm text-cyan-600 gap-1">
+                <a href={window.PRIVACY_LINK}>
+                  <p>{t('resetPassword.privacyPolicy')}</p>
                 </a>
-                <a href="#">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.rateSheet')}</p>
+                <span>&</span>
+                <a href={window.TERMS_LINK}>
+                  <p>{t('resetPassword.terms')}</p>
                 </a>
+              </div>
+              <a href={window.RATE_LINK}>
+                  <p className="text-sm text-cyan-600">{t('resetPassword.rateSheet')}</p>
+              </a>
             </div>
             { errorMsg !== "" && 
               <span className="w-full text-center text-red-500">{errorMsg}</span>

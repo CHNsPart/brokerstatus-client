@@ -17,7 +17,8 @@
 
   "resetPassword": {
     "forgotPassword": "Forgot Password?",
-    "terms": "Terms & Privacy Policy",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Use",
     "rateSheet": "Rate Sheet",
     "resetPassword": "Reset Password"
   },

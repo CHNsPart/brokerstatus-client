@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 var DEFAULT_THEME = 'cmls';
 var TENANT_ID;
+var PRIVACY_LINK = '#'
+var TERMS_LINK = '#'
+var RATE_LINK = '#'
 var GLOBAL_API_BASE_URL = 'https://unifi-api-brokerui-dev.azurewebsites.net'
 
 switch (DEFAULT_THEME) {

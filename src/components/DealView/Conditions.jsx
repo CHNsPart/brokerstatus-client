@@ -59,10 +59,17 @@ function Conditions({ accountID }) {
                   key={index}
                   className="border-2 p-2 flex justify-between items-center w-full md:w-2/3 rounded-lg gap-2 cursor-pointer hover:bg-zinc-100"
                 >
-                  <div>
-                    <span>{index + 1}.</span>
+                  <div className='flex items-center gap-2'>
+                    {/* <span>{index + 1}.</span> */}
                     {" "}
                     <span>{condition.conditionSetup}</span>
+                    <>
+                      {condition.isVerified ? 
+                        <span className='flex gap-2 rounded-full text-green-500 items-center justify-between px-3 py-1 bg-green-50'>Satisfied<TiTick className='text-green-500' size={20} /></span> 
+                        : 
+                        <span className='flex gap-2 rounded-full text-red-500 items-center justify-between px-3 py-1 bg-red-50'>Unsatisfied<TiTimes className='text-red-500' size={20} /></span> 
+                      }
+                    </>
                   </div>
                   {/* <div className="flex justify-around gap-2">
                     <Button variant={"docUpload"} />
