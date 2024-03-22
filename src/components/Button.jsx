@@ -109,6 +109,13 @@ function Button({ onClick, label, variant, accountID }) {
     )
   }
   
+  if(variant==="block"){
+    return (
+      <button className="themeButton w-full" onClick={onClick}>
+        {label}
+      </button>
+    )
+  }
 
   return (
     <button className="themeButton" onClick={onClick}>

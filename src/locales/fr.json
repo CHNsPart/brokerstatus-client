@@ -13,6 +13,9 @@
     "NewPassword": "Nouveau mot de passe"
   },
   "resetPassword": {
+    "forgotPassword": "Mot de passe oublié ?",
+    "terms": "Conditions générales & Politique de confidentialité",
+    "rateSheet": "Fiche tarifaire",
     "resetPassword": "Réinitialiser le mot de passe"
   },
   "latestNews": {

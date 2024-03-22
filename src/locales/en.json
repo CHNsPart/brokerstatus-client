@@ -16,6 +16,9 @@
   },
 
   "resetPassword": {
+    "forgotPassword": "Forgot Password?",
+    "terms": "Terms & Privacy Policy",
+    "rateSheet": "Rate Sheet",
     "resetPassword": "Reset Password"
   },
 

@@ -75,50 +75,40 @@ const Signin = () => {
   
   return (
     <section className="h-full w-full flex justify-center items-center ">
-        <form className="border-2 p-10 rounded-xl flex flex-col gap-2 w-2/4 justify-center items-start">
-            <div className="w-full flex flex-col justify-center items-center mb-5 gap-4">
-              <img className="h-24 w-auto" src={`/${window.DEFAULT_THEME}.png`} alt="Logo" />
-              <h2 className="text-xl text-center text-cyan-600">Sign in to Broker Portal</h2>
+        <form className="border-2 p-10 rounded-xl flex flex-col gap-2 min-w-1/2 bg-zinc-100 justify-center items-start">
+            <div className="w-full flex flex-col justify-center items-center my-4">
+              <img className="h-12 w-auto" src="/cmls.png" alt="Logo" />
+              <h2 className="text-xl">Sign in to Broker Portal</h2>
             </div>
-            <div className="w-full flex justify-center items-center">
-                {/* <label htmlFor="username" className="pr-2">{t('signin.Username')}</label> */}
+            <div className="w-full flex justify-between items-center">
+                <label htmlFor="username" className="pr-2">{t('signin.Username')}</label>
                 <input 
                   autoComplete="off" 
                   id="username" 
                   type='text' 
                   placeholder={t('signin.Username')} 
                   value={credentials.username}
-                  className="min-w-full"
                   onChange={handleChange}
                 />
             </div>
-            <div className="w-full flex justify-center items-center">
-                {/* <label htmlFor="password" className="pr-2">{t('signin.Password')}</label> */}
+            <div className="w-full flex justify-between items-center">
+                <label htmlFor="password" className="pr-2">{t('signin.Password')}</label>
                 <input 
                   autoComplete="off" 
                   id="password" 
                   type='password' 
                   placeholder={t('signin.Password')} 
                   value={credentials.password}
-                  className="min-w-full"
                   onChange={handleChange}
                 />
             </div>
-            <div className="w-full flex justify-end items-center my-2">
+            <div className="w-full flex justify-end items-center">
                 <a href="/resetpassword">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.forgotPassword')}</p>
+                    <p className="text-xs">{t('resetPassword.resetPassword')}</p>
                 </a>
             </div>
             <div className="w-full flex justify-center items-center">
-                <Button variant={"block"} onClick={handleLogin} label={t('signin.signin')} />
-            </div>
-            <div className="w-full flex flex-col justify-end items-end gap-2 my-2">
-                <a href="#">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.terms')}</p>
-                </a>
-                <a href="#">
-                    <p className="text-sm text-cyan-600">{t('resetPassword.rateSheet')}</p>
-                </a>
+                <Button onClick={handleLogin} label={t('signin.signin')} />
             </div>
             { errorMsg !== "" && 
               <span className="w-full text-center text-red-500">{errorMsg}</span>

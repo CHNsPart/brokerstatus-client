@@ -338,7 +338,6 @@ const readFileAsBase64 = (file) => {
         )}
 
 
-
         {((selectedFiles.length > 0) && uplaoding) && (
           <div className="selected-documents max-h-52 overflow-auto">
             {selectedFiles.map((file, index) => (
