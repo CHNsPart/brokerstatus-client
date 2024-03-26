@@ -65,7 +65,11 @@ const Signin = () => {
     if (user) {
       // Login successful, you can navigate or perform other actions
       // console.log('Login successful:', user);
-      window.location = "/home"
+      if(user.passwordChangeRequired === true) {
+        window.location = "/changePassword";
+      } else {
+        window.location = "/home";
+      }
     } else {
       // Login failed, handle accordingly
       setErrorMsg(t('signin.error'));

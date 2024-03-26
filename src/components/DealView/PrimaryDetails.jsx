@@ -9,7 +9,7 @@ import 'dayjs/locale/en';
 import { formatter } from "../../lib/utils";
 
 dayjs.locale('en'); 
-export default function PrimaryDetails({ accountID }) {
+export default function PrimaryDetails({ accountID, handleModalClose }) {
   
   const [primaryDetails, setPrimaryDetails] = useState([]);
   // const [formattedString, setFormattedString] = useState("");
@@ -47,7 +47,7 @@ export default function PrimaryDetails({ accountID }) {
         <span className="labels font-semibold mr-2">{accountID} - {primaryDetails.primaryClient} - {primaryDetails.numberOfOutstandingConditions>0 ? <span className="text-red-500">{"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+")"}</span> : <span>{"( Outstanding Conditions "+primaryDetails.numberOfOutstandingConditions+"/"+primaryDetails.numberOfConditions+")"}</span>}</span>
         
         <div className="flex justify-around gap-2" data-tooltip-content="Document Upload Button" data-tooltip-id="uploadTooltip">
-          <Button accountID={accountID} variant={"docUpload"} />
+          <Button accountID={accountID} variant={"docUpload"} handleModalClose={handleModalClose} />
           {/* <Button variant={"msg"} /> */}
         </div>
         <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
@@ -72,4 +72,7 @@ export default function PrimaryDetails({ accountID }) {
 
 PrimaryDetails.propTypes = {
   accountID: PropTypes.string.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
 };
+
+

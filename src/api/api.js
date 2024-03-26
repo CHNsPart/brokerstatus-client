@@ -43,6 +43,7 @@ const login = async (username, password) => {
       const { user, token } = result;
       // console.log(user.tenantId)
       setAuthToken(token, user.tenantId, user.tenantName);
+      console.log(user)
 
       return user;
     } else {

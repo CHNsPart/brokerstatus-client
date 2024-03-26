@@ -37,14 +37,9 @@ const AuthProvider = ({ children }) => {
 
   const login = (token, user) => {
     localStorage.setItem('authToken', token);
-    
     setUserDetails(user);
     setIsAuthenticated(true);
-    if(user.passwordChangeRequired === true) {
-      window.location = "/changePassword";
-    } else {
-      window.location = "/home";
-    }
+    // console.log(user)
   };
 
   const logout = () => {

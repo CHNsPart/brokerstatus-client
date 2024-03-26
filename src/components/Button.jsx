@@ -9,7 +9,7 @@ import { BiMessageAdd } from 'react-icons/bi';
 import useTheme from '../hooks/useTheme';
 import { FaSignOutAlt } from "react-icons/fa";
 
-function Button({ onClick, label, variant, accountID }) {
+function Button({ onClick, label, variant, accountID, handleModalClose }) {
 
   const { i18n } = useTranslation();
 
@@ -27,6 +27,7 @@ function Button({ onClick, label, variant, accountID }) {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    handleModalClose();
   };
 
 
@@ -128,7 +129,9 @@ Button.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string,
   variant: PropTypes.string,
-  accountID: PropTypes.string
+  accountID: PropTypes.string,
+  handleModalClose: PropTypes.func.isRequired,
 };
 
 export default Button;
+

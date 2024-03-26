@@ -47,15 +47,3 @@ function Home() {
 }
 
 export default Home
-
-
-// Default Intellifi****
-// Document Library****
-// View Pipeline Deals (1st Tile)****
-// View All  Deals (2nd Tile)****
-// DealView flex styling setTop)****
-// Loading everywhere)****
-// Borrower Name and AccID in search)****
-// tooltip for the uploadBtn)****
-// Oustanding Condition)****
-// dOCUMENTS LIKE PDF****

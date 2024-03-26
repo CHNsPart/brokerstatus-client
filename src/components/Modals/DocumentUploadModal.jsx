@@ -202,6 +202,7 @@ const readFileAsBase64 = (file) => {
       { neutral: true, yes: false, no: false } // Initialize upload status for each document
     );
   }
+  
   useEffect(() => {
     // Detect subdomain
     const subdomain = getSubdomain();
@@ -341,7 +342,7 @@ const readFileAsBase64 = (file) => {
             {!uplaoding ? t('uploadDocs.cancel') : t('uploadDocs.close')}
           </button>
           <button onClick={!uplaoding ? handleSendDocuments : handleUploadState} id='docUploadBtn' className="themeButton py-2 px-4 rounded-lg">
-            {!uplaoding ? `${t('uploadDocs.btn')} ${currentTenant.toUpperCase()}` : (success.no ? t('uploadDocs.try') : t('uploadDocs.new'))}
+            {!uplaoding ? `${t('uploadDocs.btn')} ${currentTenant.toUpperCase()}` : (success.no && !success.yes ? t('uploadDocs.try') : t('uploadDocs.new'))}
           </button>
         </div>
       </div>

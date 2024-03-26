@@ -23,6 +23,9 @@ function DealView() {
     });
   }, []);
 
+  const handleModalClose = () => {
+    window.location.reload(); 
+  };
 
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
@@ -30,7 +33,7 @@ function DealView() {
             <a className="w-fit" href="/deals">
                 <Button label={t(`dealView.backtoList`)}  />
             </a>
-            <PrimaryDetails accountID={accountID} />
+            <PrimaryDetails accountID={accountID} handleModalClose={handleModalClose} />
         </div>
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <div className="border-2 p-5 flex flex-col gap-5">
@@ -76,3 +79,7 @@ function DealView() {
 
 
 export default DealView;
+
+
+
+
