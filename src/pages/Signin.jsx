@@ -114,15 +114,15 @@ const Signin = () => {
             </div>
             <div className="w-full flex flex-col justify-end items-end gap-2 my-2">
               <div className="flex text-sm text-cyan-600 gap-1">
-                <a href={window.PRIVACY_LINK}>
+                <a target="_blank" href={window.PRIVACY_LINK} rel="noreferrer">
                   <p>{t('resetPassword.privacyPolicy')}</p>
                 </a>
                 <span>&</span>
-                <a href={window.TERMS_LINK}>
+                <a target="_blank" href={window.TERMS_LINK} rel="noreferrer">
                   <p>{t('resetPassword.terms')}</p>
                 </a>
               </div>
-              <a href={window.RATE_LINK}>
+              <a target="_blank" href={window.RATE_LINK} rel="noreferrer">
                   <p className="text-sm text-cyan-600">{t('resetPassword.rateSheet')}</p>
               </a>
             </div>

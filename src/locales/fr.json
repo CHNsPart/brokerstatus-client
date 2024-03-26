@@ -19,6 +19,23 @@
     "rateSheet": "Fiche tarifaire",
     "resetPassword": "Réinitialiser le mot de passe"
   },
+  "uploadDocs": {
+    "Interest":"Taux d'intérêt",
+    "title": "Téléchargeur de documents",
+    "input": "Attacher un document au compte",
+    "dragone": "Déposez les fichiers ici",
+    "dragtwo": "Sélectionnez les fichiers",
+    "docTypes": "Sélectionnez le type de document",
+    "remove": "Supprimer",
+    "success":"SUCCÈS",
+    "failed":"ÉCHEC",
+    "uploading":"ENVOI EN COURS",
+    "cancel": "Annuler/effacer",
+    "close": "Fermer",
+    "btn": "Envoyer le document à",
+    "try": "Réessayer depuis le téléchargeur",
+    "new": "Télécharger de nouveaux documents"
+  },
   "latestNews": {
     "title": "Dernières actualités"
   },

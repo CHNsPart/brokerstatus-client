@@ -22,7 +22,7 @@ function Conditions({ accountID }) {
         setLoading(true)
         const apiData = await getConditionTrackingByAccoundId(accountID);
         if (apiData) {
-          // console.log(apiData.accountConditionsList);
+          console.log(apiData.accountConditionsList);
           setAccountConditions(apiData.accountConditionsList);
           setLoading(false)
         } else {
@@ -93,6 +93,11 @@ function Conditions({ accountID }) {
             <span className="cursor-pointer text-gray-500 text-xl absolute top-2 right-2" onClick={closeModal}>&times;</span>
             <p className='text-xl font-semibold'>{selectedCondition.conditionSetup}</p>
             <p className='text-justify'>{selectedCondition.clause}</p>
+            {selectedCondition.note && 
+              <p className='flex items-center justify-center w-full gap-2'>
+                <span className='px-2.5 py-1 text-sm rounded-full border border-zinc-500 text-zinc-500'>NOTE : <span className='italic text-black'>{selectedCondition.note}</span></span>
+              </p>
+            }
             <div className='flex gap-2 mt-4'>
               <span className='flex items-center'>
                 Active:{" "}

@@ -23,6 +23,23 @@
     "resetPassword": "Reset Password"
   },
 
+  "uploadDocs": {
+    "title": "Document Uploader",
+    "input": "Attach Document to Account",
+    "dragone": "Drop files here",
+    "dragtwo": "Select Files",
+    "docTypes": "Select Document Type",
+    "remove": "Remove",
+    "success":"SUCCESS",
+    "failed":"FAILED",
+    "uploading":"UPLOADING",
+    "cancel": "Cancel/Clear",
+    "close": "Close",
+    "btn": "Send Document to",
+    "try": "Try Again from Uploader",
+    "new": "Upload New Documents"
+  },
+
   "latestNews": {
     "title": "Latest News"
   },
@@ -87,6 +104,7 @@
       "Documents": "Documents"
     },
     "details":{
+      "Interest":"Interest Rate",
       "Purpose of Loan": "Purpose of Loan",
       "Request of Amount": "Request of Amount",
       "Est. Value/pur Price": "Est. Value/pur Price",

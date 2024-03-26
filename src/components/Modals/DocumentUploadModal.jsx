@@ -7,9 +7,11 @@ import { CgSpinner } from "react-icons/cg";
 import { getDocumentTypes, uploadDocuments } from '../../api/api';
 import useTheme from '../../hooks/useTheme';
 import { BiSolidBadgeCheck, BiSolidError } from 'react-icons/bi';
+import { useTranslation } from 'react-i18next';
 
 
 const DocumentUploadModal = ({ isOpen, onClose, accountID }) => {
+  const { t } = useTranslation();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [docType, setDocType] = useState([]);
   const [uplaoding, setUplaoding] = useState(false);
@@ -74,8 +76,6 @@ const readFileAsBase64 = (file) => {
     setSelectedFiles(updatedFiles);
   };
 
-
-  // const handleSendDocuments = async () => {
   //   if (selectedFiles.length > 0) {
   //     try {
   //       setUplaoding(true)
@@ -178,27 +178,6 @@ const readFileAsBase64 = (file) => {
     }
   };
 
-  // const handleSendDocuments = async () => {
-  //   if (selectedFiles.length > 0) {
-  //     try {
-  //       for (let i = 0; i < selectedFiles.length; i++) {
-  //         const document = selectedFiles[i];
-  //         // Simulate progress
-  //         await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate 1 second progress
-  //         console.log(`Uploading document ${i + 1}...`);
-  //         // Simulate success
-  //         console.log(`Document ${i + 1} uploaded successfully.`);
-  //       }
-  //       setTimeout(() => {
-  //         onClose();
-  //       }, 3000); // Close modal after 3 seconds
-  //     } catch (error) {
-  //       console.error('Error uploading documents: ', error.message);
-  //     }
-  //   }
-  // };
-  
-  
 
   const handleSelectChange = (index, value) => {
     // const selectedValue = event.target.value;
@@ -242,13 +221,13 @@ const readFileAsBase64 = (file) => {
 
       <div className="modal-content rounded-lg absolute max-w-[18rem] md:min-w-fit p-10 overflow-auto bg-white z-50">
         <div className="modal-header flex justify-between items-center">
-          <h2 className='text-zinc-500'>Attach Document to Account</h2>
+          <h2 className='text-zinc-500'>{t('uploadDocs.title')}</h2>
           <button className='text-red-500 bg-transparent border-none hover:text-red-600 p-0' onClick={onClose}><IoIosCloseCircle size={30}/></button>
         </div>
 
         {/* Input Section */}
         <span className='border-2 border-black rounded-lg relative my-4 flex items-center'>
-            <span className='absolute text-center text-black w-full  z-40'>Attach Document to Account</span>
+            <span className='absolute text-center text-black w-full  z-40'>{t('uploadDocs.input')}</span>
             <input type="file" multiple onChange={handleFileInputChange} className="min-w-full z-50 opacity-0" />
         </span>
 
@@ -263,7 +242,7 @@ const readFileAsBase64 = (file) => {
           onDragOver={(e) => e.preventDefault()}
         >
         <span className='w-full text-center text-zinc-500'>
-            Drop files here <br /> or <br /> Select Files
+            {t('uploadDocs.dragone')}<br /> or <br />{t('uploadDocs.dragtwo')}
         </span>
           {/* Drop-down Section */}
           <select multiple onChange={handleFileInputChange} className="overflow-hidden mb-4">
@@ -316,7 +295,7 @@ const readFileAsBase64 = (file) => {
                   onChange={(e) => handleSelectChange(index, e.target.value)}
                   className="py-3 max-w-[220px] rounded-lg"
                 >
-                  <option value="">Select Document Type</option>
+                  <option value="">{t('uploadDocs.docTypes')}</option>
                   {docType.map((typeName, index) => (
                     <option key={index} value={typeName}>
                       {typeName}
@@ -330,7 +309,7 @@ const readFileAsBase64 = (file) => {
                   className="border p-1 rounded-lg"
                 />
                 <button onClick={() => handleRemoveDocument(index)} className="themeButton bg-red-500 text-white p-1 rounded-lg">
-                  Remove
+                  {t('uploadDocs.remove')}
                 </button>
               </div>
             ))}
@@ -345,9 +324,9 @@ const readFileAsBase64 = (file) => {
                 <span>{file.fileName.slice(0,10)}...</span>
                 {success[index] && (
                   <>
-                    {success[index].yes && <span className="flex items-center gap-2 text-green-500">SUCCESS<BiSolidBadgeCheck /></span>}
-                    {success[index].no && <span className="flex items-center gap-2 text-red-500">FAILED <BiSolidError /></span>}
-                    {success[index].neutral && <span className="flex items-center gap-2 text-gray-500">Uploading <CgSpinner className="animate-spin" /></span>}
+                    {success[index].yes && <span className="flex items-center gap-2 text-green-500">{t('uploadDocs.success')}<BiSolidBadgeCheck /></span>}
+                    {success[index].no && <span className="flex items-center gap-2 text-red-500">{t('uploadDocs.failed')}<BiSolidError /></span>}
+                    {success[index].neutral && <span className="flex items-center gap-2 text-gray-500">{t('uploadDocs.uploading')}<CgSpinner className="animate-spin" /></span>}
                   </>
                 )}
               </div>
@@ -359,10 +338,10 @@ const readFileAsBase64 = (file) => {
         {/* Buttons Section */}
         <div className="buttons-section w-full flex flex-col md:flex-row justify-center items-center mt-5 gap-4">
           <button onClick={onClose} className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg">
-            {!uplaoding ? "Cancel/Clear" : "Close"}
+            {!uplaoding ? t('uploadDocs.cancel') : t('uploadDocs.close')}
           </button>
           <button onClick={!uplaoding ? handleSendDocuments : handleUploadState} id='docUploadBtn' className="themeButton py-2 px-4 rounded-lg">
-            {!uplaoding ? `Send Document to ${currentTenant.toUpperCase()}` : "Try Again from Uploader"}
+            {!uplaoding ? `${t('uploadDocs.btn')} ${currentTenant.toUpperCase()}` : (success.no ? t('uploadDocs.try') : t('uploadDocs.new'))}
           </button>
         </div>
       </div>

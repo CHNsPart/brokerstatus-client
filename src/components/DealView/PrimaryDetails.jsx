@@ -52,7 +52,7 @@ export default function PrimaryDetails({ accountID }) {
         </div>
         <Tooltip id="uploadTooltip" place="bottom" effect="solid" />
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-5">
           <div className="flex flex-col w-full gap-5 items-center">
               <LabeledInput label={"Amount"} type="string" value={formatter.format(primaryDetails.totalAmount)} />
               <LabeledInput label={"Property"} type="string" value={primaryDetails.propertyAddress} />
@@ -60,6 +60,10 @@ export default function PrimaryDetails({ accountID }) {
           <div className="flex flex-col w-full gap-5 items-center">
               <LabeledInput label={"Closing"} type="string" value={dayjs(primaryDetails.closingDate).format('YYYY-MM-DD')} />
               <LabeledInput label={"Product"} type="string" value={primaryDetails.product} />
+          </div>
+          <div className="flex flex-col w-full gap-5 items-center">
+              <LabeledInput label={"Interest"} type="string" value={primaryDetails.interestRate} />
+              {/* <LabeledInput label={"Product"} type="string" value={primaryDetails.product} /> */}
           </div>
       </div>
     </div>
