@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="" id="icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script> 
+      const tenant = localStorage.getItem("tenantName");
+      document.addEventListener('DOMContentLoaded', function () {
+        const parts = window.location.hostname.split('.');
+        // const sDomain = parts.length > 1 ? parts[0] : null;
+        const sDomain = null; // Assuming sDomain is always null for this example
+        //console.log("sDomain:", sDomain);
+        //console.log("tenant:", tenant);
+        
+        if (sDomain) {
+          document.title = sDomain.toUpperCase() + ' - Broker Status';
+        } else if (tenant) {
+          document.title = tenant.toUpperCase() + ' - Broker Status';
+        } else {
+          document.title = window.DEFAULT_THEME.toUpperCase() + ' - Broker Status';
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="/config.js"></script>
+  </body>
+</html>

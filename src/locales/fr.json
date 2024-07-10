@@ -1,0 +1,169 @@
+{
+  "navbar": {
+    "buttonLabel": "EN",
+    "logout": "Se déconnecter"
+  },
+  "signin": {
+    "resetPassword": "Réinitialiser le mot de passe",
+    "signin": "Se connecter",
+    "Username": "Nom d'utilisateur",
+    "Password": "Mot de passe",
+    "error": "Identifiants incorrects!",
+    "CurrentPassword": "Mot de passe actuel",
+    "NewPassword": "Nouveau mot de passe",
+    "SignInToBrokerPortal": "Connectez-vous au portail des courtiers",
+    "BrokerResourceCentre": "Centre de ressources pour les courtiers"
+  },
+  "resetPassword": {
+    "forgotPassword": "Mot de passe oublié ?",
+    "privacyPolicy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "rateSheet": "Fiche tarifaire",
+    "resetPassword": "Réinitialiser le mot de passe"
+  },
+  "changePassword": {
+    "changePassword": "Changer le mot de passe"
+  },
+  "uploadDocs": {
+    "Interest": "Taux d'intérêt",
+    "title": "Téléchargeur de documents",
+    "input": "Attacher un document au compte",
+    "dragone": "Déposez les fichiers ici",
+    "dragtwo": "Sélectionnez les fichiers",
+    "docTypes": "Sélectionnez le type de document",
+    "remove": "Supprimer",
+    "success": "SUCCÈS",
+    "failed": "ÉCHEC",
+    "uploading": "ENVOI EN COURS",
+    "cancel": "Annuler/effacer",
+    "close": "Fermer",
+    "btn": "Envoyer le document à",
+    "try": "Réessayer depuis le téléchargeur",
+    "new": "Télécharger de nouveaux documents"
+  },
+  "latestNews": {
+    "title": "Dernières actualités"
+  },
+  "home": {
+    "dealBtn": "Aperçu des offres",
+    "docBtn": "Bibliothèque de documents",
+    "allDeals": "Voir toutes les offres",
+    "pipeDeals": "Voir les offres en pipeline"
+  },
+  "documentLib": {
+    "Document Library": "Bibliothèque de documents",
+    "Policies": "Politiques",
+    "Compensations": "Compensations",
+    "Forms": "Formulaires",
+    "Product Sheets": "Fiches Produits",
+    "Bydown Calculator": "Calculateur Bydown",
+    "Trailer Fee Calculator": "Calculateur de frais de remorque"
+  },
+  "dealsSearch": {
+    "Broker": "Courtier",
+    "Status": "Statut",
+    "Purpose": "Objectif",
+    "Mortgage #": "Hypothèque #",
+    "Borrower Name": "Nom de l'emprunteur",
+    "App Date": "Date de demande",
+    "Closing Date": "Date de clôture",
+    "Amount": "Montant",
+    "Conditions": "Conditions",
+    "Actions": "Actions",
+
+    "DealsSearch": "Recherche d'offres",
+    "PipelineDeals": "Deals en Pipeline",
+    "AllDocs": "Toutes les offres",
+    "BDM": "BDM",
+    "MortgageNumber": "Hypothèque #",
+    "BorrowerName": "Nom de l'emprunteur",
+    "Agent": "Agent",
+    "DateType": "Type de date",
+    "From": "De",
+    "To": "À",
+    "SelectAll": "Sélectionner tout",
+    "AppReceived": "Demande reçue",
+    "InUnderwriting": "En souscription",
+    "ReadyToFund": "Prêt à financer",
+    "ADate": "Date de demande",
+    "CDate": "Date de clôture",
+    "btn": {
+      "ClearSearch": "Effacer la recherche",
+      "Search": "Recherche"
+    }
+  },
+  "dealView": {
+    "backtoList": "Retour à la liste",
+    "tabs": {
+      "Details": "Détails",
+      "Conditions": "Conditions",
+      "Documents": "Documents"
+    },
+    "details": {
+      "Purpose of Loan": "Objectif du prêt",
+      "Request of Amount": "Demande de montant",
+      "Est. Value/pur Price": "Valeur estimée/prix pur",
+      "LTV": "LTV",
+      "Term": "Terme",
+      "Amortization": "Amortissement",
+      "Closing Date": "Date de clôture",
+      "First Payment Date": "Date du premier paiement",
+      "Solicitor Name": "Nom du notaire",
+      "Solicitor Firm": "Cabinet du notaire",
+      "App Received Date": "Date de réception de la demande",
+      "Total Mortgage": "Hypothèque totale",
+      "Product": "Produit",
+      "Product Type": "Type de produit",
+      "Interest Rate": "Taux d'intérêt",
+      "Principal And Interest": "Principal et intérêt",
+      "Insurer": "Assureur",
+      "Insurer Ref Number": "Numéro de référence de l'assureur",
+      "Insurance Premium": "Prime d'assurance",
+      "Payment Frequency": "Fréquence de paiement",
+      "Amount": "Montant",
+      "Closing": "Clôture",
+      "Property": "Propriété",
+
+      "applicationDate": "Date de demande",
+      "closingDate": "Date de clôture",
+      "currCombinedLTV": "LTV combiné actuel",
+      "gds": "GDS",
+      "insurancePremium": "Prime d'assurance",
+      "interestRate": "Taux d'intérêt",
+      "qualGDS": "Qual GDS",
+      "qualTDS": "Qual TDS",
+      "tds": "TDS",
+      "totalAmount": "Montant total",
+      "numberOfConditions": "Nombre de conditions",
+      "numberOfOutstandingConditions": "Nombre de conditions en attente",
+      "remainingDaysToClose": "Jours restants pour la clôture",
+      "term": "Terme",
+      "accountID": "ID du compte",
+      "applicationID": "ID de la demande",
+      "blendedAmort": "Amortissement combiné",
+      "lob": "LOB",
+      "loanPurpose": "Objectif du prêt",
+      "mortgageInsurer": "Assureur hypothécaire",
+      "primaryClient": "Client principal",
+      "product": "Produit",
+      "propertyAddress": "Adresse de la propriété",
+      "rateType": "Type de taux",
+      "status": "Statut",
+      "subStatus": "Sous-statut",
+      "pymtAmount": "Montant du paiement",
+      "totalDownPaymentAmt": "Montant total du versement initial",
+      "totalPurchasePrice": "Prix d'achat total",
+      "numberOfClients": "Nombre de clients",
+      "firstPymtDate": "Date du premier paiement"
+    },
+    "contacts": {
+      "E-mail": "Courriel",
+      "Mobile": "Mobile",
+      "Work": "Travail",
+      "Address": "Adresse"
+    },
+    "messages": {
+      "Reply": "Répondre"
+    }
+  }
+}
