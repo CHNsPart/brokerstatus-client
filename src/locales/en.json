@@ -1,8 +1,7 @@
 {
-
   "navbar": {
     "buttonLabel": "FR",
-    "logout":"Log out"
+    "logout": "Log out"
   },
 
   "signin": {
@@ -12,7 +11,9 @@
     "Password": "Password",
     "error": "Wrong Credintials!",
     "CurrentPassword": "Current Password",
-    "NewPassword": "New Password"
+    "NewPassword": "New Password",
+    "SignInToBrokerPortal": "Sign in to Broker Portal",
+    "BrokerResourceCentre": "Broker Resource Centre"
   },
 
   "resetPassword": {
@@ -23,6 +24,10 @@
     "resetPassword": "Reset Password"
   },
 
+  "changePassword": {
+    "changePassword": "Change Password"
+  },
+
   "uploadDocs": {
     "title": "Document Uploader",
     "input": "Attach Document to Account",
@@ -30,9 +35,9 @@
     "dragtwo": "Select Files",
     "docTypes": "Select Document Type",
     "remove": "Remove",
-    "success":"SUCCESS",
-    "failed":"FAILED",
-    "uploading":"UPLOADING",
+    "success": "SUCCESS",
+    "failed": "FAILED",
+    "uploading": "UPLOADING",
     "cancel": "Cancel/Clear",
     "close": "Close",
     "btn": "Send Document to",
@@ -45,9 +50,9 @@
   },
 
   "home": {
-    "dealBtn" : "Deals Overview",
-    "docBtn" : "Document Library",
-    "allDeals" : "View All  Deals",
+    "dealBtn": "Deals Overview",
+    "docBtn": "Document Library",
+    "allDeals": "View All  Deals",
     "pipeDeals": "View Pipeline Deals"
   },
 
@@ -72,7 +77,6 @@
     "Amount": "Amount",
     "Conditions": "Conditions",
     "Actions": "Actions",
-
 
     "DealsSearch": "Deals Search",
     "PipelineDeals": "Pipeline Deals",
@@ -103,8 +107,8 @@
       "Conditions": "Conditions",
       "Documents": "Documents"
     },
-    "details":{
-      "Interest":"Interest Rate",
+    "details": {
+      "Interest": "Interest Rate",
       "Purpose of Loan": "Purpose of Loan",
       "Request of Amount": "Request of Amount",
       "Est. Value/pur Price": "Est. Value/pur Price",
@@ -160,7 +164,6 @@
       "totalPurchasePrice": "Total Purchase Price",
       "numberOfClients": "Number Of Clients",
       "firstPymtDate": "First Pyment Date"
-
     },
     "contacts": {
       "E-mail": "E-mail",
@@ -172,6 +175,4 @@
       "Reply": "Reply"
     }
   }
-
 }
-
