@@ -1,7 +1,7 @@
 {
   "navbar": {
     "buttonLabel": "EN",
-    "logout":"Se déconnecter"
+    "logout": "Se déconnecter"
   },
   "signin": {
     "resetPassword": "Réinitialiser le mot de passe",
@@ -10,7 +10,9 @@
     "Password": "Mot de passe",
     "error": "Identifiants incorrects!",
     "CurrentPassword": "Mot de passe actuel",
-    "NewPassword": "Nouveau mot de passe"
+    "NewPassword": "Nouveau mot de passe",
+    "SignInToBrokerPortal": "Connectez-vous au portail des courtiers",
+    "BrokerResourceCentre": "Centre de ressources pour les courtiers"
   },
   "resetPassword": {
     "forgotPassword": "Mot de passe oublié ?",
@@ -19,17 +21,20 @@
     "rateSheet": "Fiche tarifaire",
     "resetPassword": "Réinitialiser le mot de passe"
   },
+  "changePassword": {
+    "changePassword": "Changer le mot de passe"
+  },
   "uploadDocs": {
-    "Interest":"Taux d'intérêt",
+    "Interest": "Taux d'intérêt",
     "title": "Téléchargeur de documents",
     "input": "Attacher un document au compte",
     "dragone": "Déposez les fichiers ici",
     "dragtwo": "Sélectionnez les fichiers",
     "docTypes": "Sélectionnez le type de document",
     "remove": "Supprimer",
-    "success":"SUCCÈS",
-    "failed":"ÉCHEC",
-    "uploading":"ENVOI EN COURS",
+    "success": "SUCCÈS",
+    "failed": "ÉCHEC",
+    "uploading": "ENVOI EN COURS",
     "cancel": "Annuler/effacer",
     "close": "Fermer",
     "btn": "Envoyer le document à",
@@ -40,9 +45,9 @@
     "title": "Dernières actualités"
   },
   "home": {
-    "dealBtn" : "Aperçu des offres",
-    "docBtn" : "Bibliothèque de documents",
-    "allDeals" : "Voir toutes les offres",
+    "dealBtn": "Aperçu des offres",
+    "docBtn": "Bibliothèque de documents",
+    "allDeals": "Voir toutes les offres",
     "pipeDeals": "Voir les offres en pipeline"
   },
   "documentLib": {
@@ -65,7 +70,6 @@
     "Amount": "Montant",
     "Conditions": "Conditions",
     "Actions": "Actions",
-    
 
     "DealsSearch": "Recherche d'offres",
     "PipelineDeals": "Deals en Pipeline",
@@ -95,7 +99,7 @@
       "Conditions": "Conditions",
       "Documents": "Documents"
     },
-    "details":{
+    "details": {
       "Purpose of Loan": "Objectif du prêt",
       "Request of Amount": "Demande de montant",
       "Est. Value/pur Price": "Valeur estimée/prix pur",
@@ -119,7 +123,6 @@
       "Amount": "Montant",
       "Closing": "Clôture",
       "Property": "Propriété",
-
 
       "applicationDate": "Date de demande",
       "closingDate": "Date de clôture",
@@ -161,6 +164,6 @@
     },
     "messages": {
       "Reply": "Répondre"
-    }    
+    }
   }
 }

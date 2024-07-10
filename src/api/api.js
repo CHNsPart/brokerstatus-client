@@ -62,7 +62,7 @@ const login = async (username, password) => {
 const getBrokerAccounts = async (page, pageSize) => {
   try {
     const token = localStorage.getItem("authToken");
-    const response = await axiosInstance.get(`/api/brokerAccounts?page=${page}&pageSize=${pageSize}`, {
+    const response = await axiosInstance.get(`/brokerAccounts?page=${page}&pageSize=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -99,7 +99,7 @@ const getBrokerAccounts = async (page, pageSize) => {
 const getBrokerPipelineAccounts = async (page, pageSize) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/brokerPipelineAccounts?page=${page}&pageSize=${pageSize}`, {
+    const response = await axiosInstance.get(`/brokerPipelineAccounts?page=${page}&pageSize=${pageSize}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -130,7 +130,7 @@ const getBrokerPipelineAccounts = async (page, pageSize) => {
 const getFullAccountByAccountId = async (accoundID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`api/accountDetails/${accoundID}`, {
+    const response = await axiosInstance.get(`/accountDetails/${accoundID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -147,7 +147,7 @@ const getFullAccountByAccountId = async (accoundID) => {
 const getConditionTrackingByAccoundId = async (accountID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/accountConditions/${accountID}`, {
+    const response = await axiosInstance.get(`/accountConditions/${accountID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -163,7 +163,7 @@ const getConditionTrackingByAccoundId = async (accountID) => {
 const getDocumentsByAccoundId = async (accountID) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/accountDocuments/${accountID}`, {
+    const response = await axiosInstance.get(`/accountDocuments/${accountID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -195,7 +195,7 @@ const getInternalLoanContactsByAccoundId = async (accountID) => {
 const getDocumentTypes = async () => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/documentTypes`, {
+    const response = await axiosInstance.get(`/documentTypes`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -211,7 +211,7 @@ const getDocumentTypes = async () => {
 const uploadDocuments = async (files) => {
   const token = localStorage.getItem("authToken")
   try {
-    const response = await axiosInstance.post(`/api/attachFileToAccount`, 
+    const response = await axiosInstance.post(`/attachFileToAccount`, 
     files,
     {
       headers: {
@@ -270,7 +270,7 @@ const changePassword = async (userDetails) => {
 const getDocumentData = async (accountId, docId) => {
   try {
     const token = localStorage.getItem("authToken")
-    const response = await axiosInstance.get(`/api/documentData/${accountId}/${docId}`, {
+    const response = await axiosInstance.get(`/documentData/${accountId}/${docId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

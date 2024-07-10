@@ -75,7 +75,7 @@ const Signin = () => {
   
   return (
     <section className="h-full w-full flex justify-center items-center ">
-        <form className="border-2 p-10 rounded-xl flex flex-col gap-2 min-w-1/2 bg-zinc-100 justify-center items-start">
+        <form className="border-2 p-10 rounded-xl flex flex-col gap-2 max-w-1/2 bg-zinc-100 justify-center items-start">
             <div className="w-full flex flex-col justify-center items-center my-4">
               <img className="h-12 w-auto" src="/cmls.png" alt="Logo" />
               <h2 className="text-xl">Sign in to Broker Portal</h2>
