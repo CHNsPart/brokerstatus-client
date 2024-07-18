@@ -67,11 +67,11 @@ const ChangePassword = () => {
             </div>
             <div className="w-full flex justify-between items-center">
                 <label htmlFor="currentPassword" className="pr-2">{t('signin.CurrentPassword')}</label>
-                <input onChange={handleChange} autoComplete="off" id="currentPassword" type='text' placeholder={t('signin.CurrentPassword')} />
+                <input onChange={handleChange} autoComplete="off" id="currentPassword" type='password' placeholder={t('signin.CurrentPassword')} />
             </div>
             <div className="w-full flex justify-between items-center">
                 <label htmlFor="newPassword" className="pr-2">{t('signin.NewPassword')}</label>
-                <input onChange={handleChange} autoComplete="off" id="newPassword" type='text' placeholder={t('signin.NewPassword')} />
+                <input onChange={handleChange} autoComplete="off" id="newPassword" type='password' placeholder={t('signin.NewPassword')} />
             </div>
             {/* <div className="w-full flex justify-end items-center">
                 <a href="/">
