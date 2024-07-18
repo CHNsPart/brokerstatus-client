@@ -7,7 +7,12 @@ export default function ViewAllDeals() {
   const [searchData, setSearchData] = useState(null);
   
   const handleSearchData = (formData) => {
-    setSearchData(formData);
+    if (formData === null) {
+      // Clear search triggered
+      setSearchData(null);
+    } else {
+      setSearchData(formData);
+    }
   };
   return (
     <section className="h-full w-full flex flex-col justify-normal items-start gap-2 p-5">

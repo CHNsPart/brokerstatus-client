@@ -10,12 +10,18 @@ import Details from "../components/DealView/Details";
 import useTabs from "../hooks/useTabs";
 import { useParams } from "react-router-dom";
 import PrimaryDetails from "../components/DealView/PrimaryDetails";
+import { useHistory } from 'react-router-dom';
 
 function DealView() {
 
   const { accountID } = useParams(); 
   const { t } = useTranslation();
   const { activeTab, handleTabs } = useTabs();
+  const history = useHistory();
+
+  const handleBackClick = () => {
+      history.goBack();
+  };
 
   useEffect(() => {
     handleTabs({
@@ -30,13 +36,20 @@ function DealView() {
   return (
     <section className="flex-grow w-full flex flex-col justify-start items-center gap-2 p-5">
         <div className="w-full h-fit flex flex-col justify-between gap-5">
-            <a className="w-fit" href="/deals">
-                <Button label={t(`dealView.backtoList`)}  />
-            </a>
+            <div className="w-fit">
+                <Button label={t(`dealView.backtoList`)} onClick={handleBackClick}  />
+            </div>
             <PrimaryDetails accountID={accountID} handleModalClose={handleModalClose} />
         </div>
         <div className="w-full h-fit flex flex-col justify-between gap-5">
             <div className="border-2 p-5 flex flex-col gap-5">
+                {/* <ul className="flex flex-wrap w-fit border-2 rounded-lg text-sm gap-2 font-medium text-center">
+                    {[t("dealView.tabs.Details"), t("dealView.tabs.Conditions"), t("dealView.tabs.Documents")].map((label, index) => (
+                    <li key={index}>
+                        <Button variant={"tabs"} onClick={handleTabs} label={label} />
+                    </li>
+                    ))}
+                </ul> */}
                 <ul className="flex flex-wrap w-fit border-2 rounded-lg text-sm gap-2 font-medium text-center">
                     {[t("dealView.tabs.Details"), t("dealView.tabs.Conditions"), t("dealView.tabs.Documents")].map((label, index) => (
                     <li key={index}>
@@ -44,9 +57,9 @@ function DealView() {
                     </li>
                     ))}
                 </ul>
-                { activeTab === "Details" &&            
+                { (activeTab === "Details"|| activeTab === "Détails") &&            
                     <div className="flex flex-col md:flex-row w-full justify-between gap-5">
-                        <Details accountID={accountID} />
+                        <Details accountID={accountID} activeTab={activeTab} />
                     </div>
                 }
                 {/* { activeTab === "Contacts" &&            

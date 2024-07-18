@@ -6,7 +6,7 @@
 
   "signin": {
     "resetPassword": "Reset Password",
-    "signin": "Signin",
+    "signin": "Sign in",
     "Username": "Username",
     "Password": "Password",
     "error": "Wrong Credintials!",
@@ -159,11 +159,11 @@
       "rateType": "Rate Type",
       "status": "Status",
       "subStatus": "Sub Status",
-      "pymtAmount": "Pyment Amount",
-      "totalDownPaymentAmt": "Total Down Payment Ammount",
+      "pymtAmount": "Payment Amount",
+      "totalDownPaymentAmt": "Total Down Payment Amount",
       "totalPurchasePrice": "Total Purchase Price",
       "numberOfClients": "Number Of Clients",
-      "firstPymtDate": "First Pyment Date"
+      "firstPymtDate": "First Payment Date"
     },
     "contacts": {
       "E-mail": "E-mail",

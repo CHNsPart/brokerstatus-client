@@ -11,7 +11,7 @@ import { formatter } from "../../lib/utils";
 import useTheme from "../../hooks/useTheme";
 
 dayjs.locale('en'); 
-function Details({ accountID }) {
+function Details({ accountID, activeTab }) {
   const [accountDetails, setAccountDetails] = useState({});
   const [loading, setLoading] = useState(false);
   // const [subdomain, setSubdomain] = useState(getSubdomain());
@@ -54,8 +54,12 @@ function Details({ accountID }) {
       }
     };
 
+    if (activeTab === "Details" || activeTab === "Détails") {
+      fetchData();
+    }
+
     fetchData();
-  }, [accountID]);
+  }, [accountID, activeTab]);
 
   useTheme()
 
@@ -120,6 +124,7 @@ function Details({ accountID }) {
 
 Details.propTypes = {
   accountID: PropTypes.string.isRequired,
+  activeTab: PropTypes.string.isRequired,
 };
 
 export default Details;
