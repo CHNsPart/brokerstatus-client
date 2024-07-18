@@ -87,43 +87,95 @@ function PipelineDeals({ searchData, allDocs }) {
     updateData();
   }, [searchData, fetchData]);
 
+  // const applyFiltersAndSort = (apiData, filters) => {
+  //   if (!filters) {
+  //     setFilteredData(apiData);
+  //     setPageSize(apiData.length);
+  //     return;
+  //   }
+
+  //   let updatedData = apiData;
+
+  //   // Apply filters
+  //   if (filters.mnumber) {
+  //     updatedData = updatedData.filter(item => item.Mortgage.includes(filters.mnumber));
+  //   }
+
+  //   if (filters.blname) {
+  //     updatedData = updatedData.filter(item => item.BorrowerName.toLowerCase().includes(filters.blname.toLowerCase()));
+  //   }
+
+  //   if (filters.dtype && filters.from && filters.to) {
+  //     const dateField = filters.dtype === 'Application Date' ? 'App Date' : 'Closing Date';
+  //     const fromDate = dayjs(filters.from);
+  //     const toDate = dayjs(filters.to).endOf('day');
+
+  //     updatedData = updatedData.filter(item => {
+  //       const date = dayjs(item[dateField]);
+  //       return date.isBetween(fromDate, toDate, null, '[]');
+  //     });
+
+  //     // Sort the filtered data by the selected date field
+  //     updatedData.sort((a, b) => {
+  //       return dayjs(a[dateField]).diff(dayjs(b[dateField]));
+  //     });
+  //   }
+
+  //   setFilteredData(updatedData);
+  //   setCurrentPage(1);
+  // };
+
   const applyFiltersAndSort = (apiData, filters) => {
     if (!filters) {
       setFilteredData(apiData);
       setPageSize(apiData.length);
       return;
     }
-
+  
     let updatedData = apiData;
-
+  
     // Apply filters
     if (filters.mnumber) {
       updatedData = updatedData.filter(item => item.Mortgage.includes(filters.mnumber));
     }
-
+  
     if (filters.blname) {
       updatedData = updatedData.filter(item => item.BorrowerName.toLowerCase().includes(filters.blname.toLowerCase()));
     }
-
-    if (filters.dtype && filters.from && filters.to) {
+  
+    if (filters.dtype) {
       const dateField = filters.dtype === 'Application Date' ? 'App Date' : 'Closing Date';
-      const fromDate = dayjs(filters.from);
-      const toDate = dayjs(filters.to).endOf('day');
-
-      updatedData = updatedData.filter(item => {
-        const date = dayjs(item[dateField]);
-        return date.isBetween(fromDate, toDate, null, '[]');
-      });
-
+      const fromDate = filters.from ? dayjs(filters.from) : null;
+      const toDate = filters.to ? dayjs(filters.to).endOf('day') : dayjs(); // Current date if 'to' is not provided
+  
+      if (fromDate && !filters.to) {
+        // From date is provided, but To date is not provided
+        updatedData = updatedData.filter(item => {
+          const date = dayjs(item[dateField]);
+          return date.isBetween(fromDate, toDate, null, '[]');
+        });
+      } else if (!filters.from && filters.to) {
+        // To date is provided, but From date is not provided
+        updatedData = updatedData.filter(item => {
+          const date = dayjs(item[dateField]);
+          return date.isBefore(toDate, 'day');
+        }).sort((a, b) => dayjs(a[dateField]).diff(dayjs(b[dateField])));
+      } else if (fromDate && toDate) {
+        // Both From and To dates are provided
+        updatedData = updatedData.filter(item => {
+          const date = dayjs(item[dateField]);
+          return date.isBetween(fromDate, toDate, null, '[]');
+        });
+      }
+  
       // Sort the filtered data by the selected date field
-      updatedData.sort((a, b) => {
-        return dayjs(a[dateField]).diff(dayjs(b[dateField]));
-      });
+      updatedData.sort((a, b) => dayjs(a[dateField]).diff(dayjs(b[dateField])));
     }
-
+  
     setFilteredData(updatedData);
     setCurrentPage(1);
   };
+  
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
